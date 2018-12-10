@@ -36,6 +36,26 @@ class Media
      */
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Formation")
+     */
+    private $formation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu")
+     */
+    private $lieu;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement")
+     */
+    private $evenement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +105,54 @@ class Media
     public function setCategorie(?string $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getFormation(): ?Formation
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?Formation $formation): self
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    public function getLieu(): ?Lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieu $lieu): self
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getEvenement(): ?Evenement
+    {
+        return $this->evenement;
+    }
+
+    public function setEvenement(?Evenement $evenement): self
+    {
+        $this->evenement = $evenement;
 
         return $this;
     }

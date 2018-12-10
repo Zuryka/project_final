@@ -101,6 +101,23 @@ class User extends BaseUser
     private $formations_comments;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", mappedBy="artistes")
+     */
+    private $evenements;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="users")
+     */
+    private $formations;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->evenements = new ArrayCollection();
+        $this->formations = new ArrayCollection();
+    }
+
+    /**
      * Get the value of type
      *
      * @return  null|string
@@ -312,6 +329,60 @@ class User extends BaseUser
     public function setFormationsComments(?string $formations_comments): self
     {
         $this->formations_comments = $formations_comments;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->evenements;
+    }
+
+    public function addEvenement(Evenement $evenement): self
+    {
+        if (!$this->evenements->contains($evenement)) {
+            $this->evenements[] = $evenement;
+            $evenement->addArtiste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenement): self
+    {
+        if ($this->evenements->contains($evenement)) {
+            $this->evenements->removeElement($evenement);
+            $evenement->removeArtiste($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->contains($formation)) {
+            $this->formations->removeElement($formation);
+        }
 
         return $this;
     }
