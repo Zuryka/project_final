@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -85,6 +87,38 @@ class Evenement
      * @ORM\Column(type="string", length=255)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user_createur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user_contact;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu")
+     */
+    private $lieu;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="evenements")
+     */
+    private $artistes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="evenements")
+     */
+    private $formations;
+
+    public function __construct()
+    {
+        $this->artistes = new ArrayCollection();
+        $this->formations = new ArrayCollection();
+    }
 
     
 
@@ -262,6 +296,94 @@ class Evenement
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getIdUserCreateur(): ?User
+    {
+        return $this->user_createur;
+    }
+
+    public function setIdUserCreateur(?User $user_createur): self
+    {
+        $this->user_createur = $user_createur;
+
+        return $this;
+    }
+
+    public function getUserContact(): ?User
+    {
+        return $this->user_contact;
+    }
+
+    public function setUserContact(?User $user_contact): self
+    {
+        $this->user_contact = $user_contact;
+
+        return $this;
+    }
+
+    public function getLieu(): ?Lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieu $lieu): self
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getArtistes(): Collection
+    {
+        return $this->artistes;
+    }
+
+    public function addArtiste(User $artiste): self
+    {
+        if (!$this->artistes->contains($artiste)) {
+            $this->artistes[] = $artiste;
+        }
+
+        return $this;
+    }
+
+    public function removeArtiste(User $artiste): self
+    {
+        if ($this->artistes->contains($artiste)) {
+            $this->artistes->removeElement($artiste);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->contains($formation)) {
+            $this->formations->removeElement($formation);
+        }
 
         return $this;
     }

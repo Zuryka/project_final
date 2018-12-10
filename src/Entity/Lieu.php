@@ -61,6 +61,17 @@ class Lieu
      */
     private $num_telephone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user_createur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $id_user_contact;
+
     
     public function getId(): ?int
     {
@@ -171,6 +182,30 @@ class Lieu
     public function setNumTelephone(?string $num_telephone): self
     {
         $this->num_telephone = $num_telephone;
+
+        return $this;
+    }
+
+    public function getUserCreateur(): ?User
+    {
+        return $this->user_createur;
+    }
+
+    public function setUserCreateur(?User $user_createur): self
+    {
+        $this->user_createur = $user_createur;
+
+        return $this;
+    }
+
+    public function getIdUserContact(): ?User
+    {
+        return $this->id_user_contact;
+    }
+
+    public function setIdUserContact(?User $id_user_contact): self
+    {
+        $this->id_user_contact = $id_user_contact;
 
         return $this;
     }
