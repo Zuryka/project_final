@@ -37,12 +37,11 @@ class EvenementController extends Controller
     public function show($id)//Evenement $entity)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        // Récupére l'article correpondant à $id
-        $entity = $em->find($id);
+        // $em = $this->getDoctrine()->getManager();
+        // $entity = $em->find($id);
 
         return $this->render('evenement/show.html.twig', array(
-            'entity' => $entity,
+            //'entity' => $entity,
         ));
     }
 }
