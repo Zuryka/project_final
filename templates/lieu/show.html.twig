@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+<ul class="list-group">
+    <li class="list-group-item">{{ entity.nom }}</li>
+    <li class="list-group-item">{{ entity.type }}</li>
+    <li class="list-group-item">{{ entity.presentation }}</li>
+    <li class="list-group-item">{{ entity.adresse }}</li>
+    <li class="list-group-item">{{ entity.CodePostal() }}</li>
+    <li class="list-group-item">{{ entity.ville }}</li>
+    <li class="list-group-item">{{ entity.latitude }}</li>
+    <li class="list-group-item">{{ entity.longitude }}</li>
+    <li class="list-group-item">{{ entity.NumTelephone() }}</li>
+</ul>
+{% endblock %}

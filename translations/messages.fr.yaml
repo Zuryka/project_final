@@ -5,6 +5,12 @@ menu:
 
 date:
   create: Date d'ajout
+registration:
+  type: Type d'utilisateur
+  adresse: Adresse
+  policy: Acceptez les droits d'utilisation
+  name: nom
+  lastname: prenom
 
 user:
   type:
