@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db4576b2d6c28ca30255aa6670403a7e",
+    "content-hash": "b29cd18c2c3c332b72c436ec2553fb8c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2979,16 +2979,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.1.8",
+            "version": "v4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "423f0224fa42f0834ff3d90127a44d05f4fa1600"
+                "reference": "a8fad03c074bd1f4e2de42a93d91883f72f6366a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/423f0224fa42f0834ff3d90127a44d05f4fa1600",
-                "reference": "423f0224fa42f0834ff3d90127a44d05f4fa1600",
+                "url": "https://api.github.com/repos/symfony/form/zipball/a8fad03c074bd1f4e2de42a93d91883f72f6366a",
+                "reference": "a8fad03c074bd1f4e2de42a93d91883f72f6366a",
                 "shasum": ""
             },
             "require": {
@@ -3056,7 +3056,7 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-20T16:14:00+00:00"
+            "time": "2018-12-06T11:26:33+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -4177,7 +4177,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v4.1.8",
+            "version": "v4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
@@ -4719,16 +4719,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.1.8",
+            "version": "v4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "22c456065858e674528fbeef477c0332a013bfd6"
+                "reference": "ba6e80f3556872e5388ce259d6a13432ae4b7e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/22c456065858e674528fbeef477c0332a013bfd6",
-                "reference": "22c456065858e674528fbeef477c0332a013bfd6",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/ba6e80f3556872e5388ce259d6a13432ae4b7e0f",
+                "reference": "ba6e80f3556872e5388ce259d6a13432ae4b7e0f",
                 "shasum": ""
             },
             "require": {
@@ -4801,7 +4801,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-20T16:14:00+00:00"
+            "time": "2018-12-01T08:51:37+00:00"
         },
         {
             "name": "symfony/web-link",
