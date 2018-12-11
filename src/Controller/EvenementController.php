@@ -18,9 +18,13 @@ class EvenementController extends AbstractController
      */
     public function index()
     {
-        return $this->render('evenement/index.html.twig', [
-            'controller_name' => 'EvenementController',
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository(Evenement::class)->findAll(); 
+
+        return $this->render('evenement/index.html.twig', array(
+            'entities' => $entities,
+            'nbr' => 20,
+        ));
     }
 
     /**
@@ -30,6 +34,7 @@ class EvenementController extends AbstractController
     {
         return $this->render('evenement/show.html.twig', array(
             'entity' => $entity,
+            'mediaWithPhotoIdent' => $entity->getMediaWithPhotoIdent(),
         ));
     }
 }

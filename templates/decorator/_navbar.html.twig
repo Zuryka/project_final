@@ -12,6 +12,15 @@
     </a>
     {% endif %}
 
+
+    {% if block('itemEvenements') is defined %}
+        <a class="navbar-itemEvenements" href="{% if itemEvenementsUrl is not empty %}{{ itemEvenementsUrl }}{% else %}#{% endif %}">
+            {{ block('itemEvenements') }}
+        </a>
+    {% endif %}
+
+
+
     {% if block('menu') is defined %}
 
     <button class="navbar-toggler collapsed" controls="navbarResponsive" type="button" data-toggle="collapse" data-target="#{{ id }}" aria-controls="{{ id }}" aria-expanded="false" aria-label="Toggle navigation">
