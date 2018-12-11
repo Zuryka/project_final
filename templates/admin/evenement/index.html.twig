@@ -1,0 +1,52 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}event index{% endblock %}
+
+{% block page_content %}
+    <h1>event index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>nom</th>
+                <th>styles</th>
+                <th>presentation</th>
+                <th>adresse</th>
+                <th>code_postal</th>
+                <th>ville</th>
+                <th>tarif</th>
+                <th>date</th>
+                <th>heure_debut</th>
+                <th>heure_fin</th>
+                <th>type</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.nom }}</td>
+                <td>{{ evenement.styles|join(',') }}</td>
+                <td>{{ evenement.presentation }}</td>
+                <td>{{ evenement.adresse }}</td>
+                <td>{{ evenement.codePostal }}</td>
+                <td>{{ evenement.ville }}</td>
+                <td>{{ evenement.tarif }}</td>
+                <td>{{ evenement.date|date('Y-m-d') }}</td>
+                <td>{{ evenement.heureDebut|date('H:i:s') }}</td>
+                <td>{{ evenement.heureFin|date('H:i:s') }}</td>
+                <td>{{ evenement.type }}</td>
+                <td>
+                    {# <a href="{{ path('admin_event_show', {'id': evenement.id}) }}">show</a>
+                    <a href="{{ path('admin_event_edit', {'id': evenement.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('admin_event_new') }}">Create new</a> #}
+{% endblock %}

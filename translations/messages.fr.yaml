@@ -5,10 +5,13 @@ menu:
 
 date:
   create: Date d'ajout
+registration:
+  type: Type d'utilisateur
+  adresse: Adresse
+  policy: Acceptez les droits d'utilisation
+  name: nom
+  lastname: prenom
 
-user:
-  type:
-    client: Client
-    fournisseur: Fournisseur
+user_artiste: Artiste
 
 logout: .icon-door-open Se déconnecter
