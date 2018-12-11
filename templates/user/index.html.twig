@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+    <h2>Les artistes</h2>
+
+    <div class="card-group mt-5">
+        <div class="row justify-content-center">
+            {% for entity in entities %}
+                {% for i in 0..(entity.type|length - 1) %}
+                    {% if entity.type[i] == 'artiste' %}
+                        <div class="card m-1 p-2 col">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><a href="{{ path('user_show', {'username': entity.username}) }}">{{ entity.username }}</a></h5>
+                                <p class="card-text">{{ entity.presentation }}</p>
+                                <p class="card-text"><small class="text-muted">{{ entity.dateInscription|date('d/m/Y H:i') }}</small></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock page_content %}
