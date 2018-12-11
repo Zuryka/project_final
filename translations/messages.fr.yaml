@@ -12,9 +12,6 @@ registration:
   name: nom
   lastname: prenom
 
-user:
-  type:
-    client: Client
-    fournisseur: Fournisseur
+user_artiste: Artiste
 
 logout: .icon-door-open Se déconnecter

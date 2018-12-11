@@ -29,8 +29,6 @@ class UserController extends AbstractController
      */
     public function new(Request $request, UserManagerInterface $userManager): Response
     {
-        // Récupére le service User Manager
-        //$userManager = $this->get('fos_user.user_manager'); // Sf < 4
         $user = $userManager->createUser();
 
         $form = $this->createForm(UserType::class, $user);
