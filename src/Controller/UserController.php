@@ -17,19 +17,22 @@ class UserController extends AbstractController
      */
     public function index()
     {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository(User::class)->findAll();
+
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+            //'controller_name' => 'UserController',
+            'entities' => $entities,
         ]);
     }
-
     /**
-     * @Route("/profile/{username}", name="profile")
+     * @Route("/show/{username}", name="show")
      */
-    public function profile($username)
+    public function show($username)
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository(User::class)->findOneByUsername($username);
-        return $this->render('/user/profile.html.twig', array(
+        return $this->render('/user/show.html.twig', array(
             'entity' => $entity,
         ));
     }
