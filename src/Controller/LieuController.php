@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route; // Définir les routes en annota
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Translation\TranslatorInterface;
 
 use App\Form\LieuType;
 use App\Entity\Lieu;
@@ -46,10 +47,10 @@ class LieuController extends AbstractController
     /**
      * @Route("/new", name="new")
      */
-    public function new(Request $request, EventDispatcherInterface $eventDispatcher)
+    public function new(Request $request, EventDispatcherInterface $eventDispatcher, TranslatorInterface $translator)
     {
         $entity = new Lieu;
-
+        $entity->setUserCreateur($this->getUser());
         $form = $this->createForm(LieuType::class, $entity);
         $form->handleRequest($request); // Envoi les données de requêtes (POST) au formulaire
 
@@ -60,8 +61,7 @@ class LieuController extends AbstractController
             $em->flush(); // Execute la requête
 
             // Crée un message de confirmation
-            $t = $this->get('translator');
-            $this->addFlash('success', $t->trans('lieu.new.success'));
+            $this->addFlash('success', $translator->trans('lieu.new.success'));
 
             // Déclanchement de l'événement 'lieu.add'
             $event = new GenericEvent($entity);
@@ -78,7 +78,7 @@ class LieuController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", requirements={"id" = "\d+"})
      */
-    public function edit(Request $request, Lieu $entity)
+    public function edit(Request $request, Lieu $entity, TranslatorInterface $translator)
     {
         $form = $this->createForm(LieuType::class, $entity);
         $form->handleRequest($request); // Envoi les données de requêtes (POST) au formulaire
@@ -90,8 +90,7 @@ class LieuController extends AbstractController
             $em->flush(); // Execute la requête
 
             // Crée un message de confirmation
-            $t = $this->get('translator');
-            $this->addFlash('success', $t->trans('lieu.edit.success'));
+            $this->addFlash('success', $translator->trans('lieu.edit.success'));
 
             return $this->redirectToRoute('lieu_index'); // Retour sur la liste des lieux
         }
