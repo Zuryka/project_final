@@ -21,14 +21,21 @@ class UserMenuBuilder
         $user = $this->tokenStorage->getToken()->getUser();
         $menu = $this->factory->createItem('root');
 
-        $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
-        $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
-
-        $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
-
-        if ($user->hasRole('ROLE_SUPER_ADMIN')) {
-            // Ajout menu SUPER ADMIN
+        if (is_object($user)) {
+            $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
+            $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
+    
+            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
+    
+            if ($user->hasRole('ROLE_SUPER_ADMIN')) {
+                // Ajout menu SUPER ADMIN
+            }
+        } else {
+            $menu->addChild('register', ['route' => 'fos_user_registration_register']);
+            $menu->addChild('login', ['route' => 'fos_user_security_login']);
         }
+
+       
 
         return $menu;
     }

@@ -43,10 +43,10 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: createMenu, alias: user }
     
-    #app.form_registration:
-    #    class: App\Form\RegistrationType
-    #    tags:
-    #        - { name: form.type, alias: app_user_registration }
+    app.form_registration:
+        class: App\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
 
     #App\EventListener\NotificationListener:
     #    tags:
