@@ -25,7 +25,6 @@ class UserController extends AbstractController
             'entities' => $entities,
         ]);
     }
-
     /**
      * @Route("/show/{username}", name="show")
      */
