@@ -6,10 +6,10 @@
     {% endif %}
     <div class="card-body">
         {% block body %}
-        {% endblock %}
+        {% endblock body %}
     </div>
     {% block table %}
-    {% endblock %}
+    {% endblock table %}
     {% if block('footer') is defined %}
     <div class="card-footer clearfix {% if footer_class is defined %}{{ footer_class }}{% endif %}">
         {{ block('footer') }}

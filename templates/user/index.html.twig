@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             {% for entity in entities %}
                 {% for i in 0..(entity.type|length - 1) %}
-                    {% if entity.type[i] == 'artiste' %}
+                    {% if entity.type[i] == "user_artiste" %}
                         <div class="card m-1 p-2 col">
                             <div class="card-body">
                                 <h5 class="card-title text-primary"><a href="{{ path('user_show', {'username': entity.username}) }}">{{ entity.username }}</a></h5>
