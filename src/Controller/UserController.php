@@ -21,7 +21,6 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
-
     /**
      * @Route("/profile/{username}", name="profile")
      */
