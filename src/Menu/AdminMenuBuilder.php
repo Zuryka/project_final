@@ -22,6 +22,7 @@ class AdminMenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('menu.users', ['route' => 'admin_user_index']);
+        $menu->addChild('menu.events', ['route' => 'admin_evenement_index']);
 
         return $menu;
     }
