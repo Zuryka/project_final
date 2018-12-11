@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+<div class="card-group mt-5">
+    {% for entity in entities %}
+    <div class="card-body">
+        <h5 class="card-title"><a href="{{ path('lieu_show', {'id': entity.id }) }}">{{ entity.nom }}</a></h5>
+        <p class="card-text">{{ entity.type }}</p>
+        <p class="card-text">{{ entity.presentation }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -70,7 +70,7 @@ class Lieu
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
-    private $id_user_contact;
+    private $user_contact;
 
     
     public function getId(): ?int
@@ -198,14 +198,14 @@ class Lieu
         return $this;
     }
 
-    public function getIdUserContact(): ?User
+    public function getUserContact(): ?User
     {
-        return $this->id_user_contact;
+        return $this->user_contact;
     }
 
-    public function setIdUserContact(?User $id_user_contact): self
+    public function setUserContact(?User $user_contact): self
     {
-        $this->id_user_contact = $id_user_contact;
+        $this->user_contact = $user_contact;
 
         return $this;
     }
