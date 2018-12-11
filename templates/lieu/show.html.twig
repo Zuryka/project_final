@@ -11,5 +11,7 @@
     <li class="list-group-item">{{ entity.latitude }}</li>
     <li class="list-group-item">{{ entity.longitude }}</li>
     <li class="list-group-item">{{ entity.NumTelephone() }}</li>
+    <li class="list-group-item"><a href="{{ path('lieu_index') }}">Retour vers la liste</a><a href="{{ path('lieu_edit', {'id': entity.id }) }}">Modifier</a></li>
 </ul>
+    {{ include('lieu/_delete_form.html.twig') }}
 {% endblock %}
