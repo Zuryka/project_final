@@ -33,7 +33,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_inscription;
+    private $dateInscription;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -43,7 +43,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-    private $code_postal;
+    private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
@@ -53,12 +53,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $num_telephone;
+    private $numTelephone;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $nom_artiste;
+    private $nomArtiste;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -83,7 +83,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $instruments_comments;
+    private $instrumentsComments;
 
     /**
      * @ORM\Column(type="array", nullable=true)
@@ -93,12 +93,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $chants_comments;
+    private $chantsComments;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $formations_comments;
+    private $formationsComments;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", mappedBy="artistes")
@@ -110,36 +110,21 @@ class User extends BaseUser
      */
     private $formations;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $type = [];
+
     public function __construct()
     {
         parent::__construct();
         $this->evenements = new ArrayCollection();
         $this->formations = new ArrayCollection();
+        $this->dateInscription = new \Datetime;
+
     }
 
-    /**
-     * Get the value of type
-     *
-     * @return  null|string
-     */ 
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set the value of type
-     *
-     * @param  null|string  $type
-     *
-     * @return  self
-     */ 
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
+    //================== Mutateur ============================
 
     public function getNom(): ?string
     {
@@ -167,12 +152,12 @@ class User extends BaseUser
 
     public function getDateInscription(): ?\DateTimeInterface
     {
-        return $this->date_inscription;
+        return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTimeInterface $date_inscription): self
+    public function setDateInscription(\DateTimeInterface $dateInscription): self
     {
-        $this->date_inscription = $date_inscription;
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
@@ -191,12 +176,12 @@ class User extends BaseUser
 
     public function getCodePostal(): ?string
     {
-        return $this->code_postal;
+        return $this->codePostal;
     }
 
-    public function setCodePostal(string $code_postal): self
+    public function setCodePostal(string $codePostal): self
     {
-        $this->code_postal = $code_postal;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -215,24 +200,24 @@ class User extends BaseUser
 
     public function getNumTelephone(): ?string
     {
-        return $this->num_telephone;
+        return $this->numTelephone;
     }
 
-    public function setNumTelephone(?string $num_telephone): self
+    public function setNumTelephone(?string $numTelephone): self
     {
-        $this->num_telephone = $num_telephone;
+        $this->numTelephone = $numTelephone;
 
         return $this;
     }
 
     public function getNomArtiste(): ?string
     {
-        return $this->nom_artiste;
+        return $this->nomArtiste;
     }
 
-    public function setNomArtiste(?string $nom_artiste): self
+    public function setNomArtiste(?string $nomArtiste): self
     {
-        $this->nom_artiste = $nom_artiste;
+        $this->nomArtiste = $nomArtiste;
 
         return $this;
     }
@@ -287,12 +272,12 @@ class User extends BaseUser
 
     public function getInstrumentsComments(): ?string
     {
-        return $this->instruments_comments;
+        return $this->instrumentsComments;
     }
 
-    public function setInstrumentsComments(?string $instruments_comments): self
+    public function setInstrumentsComments(?string $instrumentsComments): self
     {
-        $this->instruments_comments = $instruments_comments;
+        $this->instrumentsComments = $instrumentsComments;
 
         return $this;
     }
@@ -311,24 +296,24 @@ class User extends BaseUser
 
     public function getChantsComments(): ?string
     {
-        return $this->chants_comments;
+        return $this->chantsComments;
     }
 
-    public function setChantsComments(?string $chants_comments): self
+    public function setChantsComments(?string $chantsComments): self
     {
-        $this->chants_comments = $chants_comments;
+        $this->chantsComments = $chantsComments;
 
         return $this;
     }
 
     public function getFormationsComments(): ?string
     {
-        return $this->formations_comments;
+        return $this->formationsComments;
     }
 
-    public function setFormationsComments(?string $formations_comments): self
+    public function setFormationsComments(?string $formationsComments): self
     {
-        $this->formations_comments = $formations_comments;
+        $this->formationsComments = $formationsComments;
 
         return $this;
     }
@@ -383,6 +368,18 @@ class User extends BaseUser
         if ($this->formations->contains($formation)) {
             $this->formations->removeElement($formation);
         }
+
+        return $this;
+    }
+
+    public function getType(): ?array
+    {
+        return $this->type;
+    }
+
+    public function setType(array $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
