@@ -22,7 +22,6 @@ class UserType extends AbstractType
     {
         $roles = array(
             'role.admin' => 'ROLE_ADMIN',
-            'role.fournisseur' => 'ROLE_FOURNISSEUR',
             'role.user' => 'ROLE_USER',
         );
 

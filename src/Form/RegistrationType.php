@@ -12,17 +12,32 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('type', Type\ChoiceType::class, array(
-                'choices' => array(
-                    'user.type.fournisseur' => 'fournisseur',
-                    'user.type.client' => 'client',
-                )
+                'label' => 'registration.type',
+                'choices'  => array(
+                    'artiste' => 'user_artiste',
+                    'organisateur_evenement' => 'user_event',
+                    'gerant_local' => 'user_local',
+                ),
+                'required' => true,
+                'multiple' => true,
             ))
-
+            ->add('nom', Type\TextType::class, array(
+                'label' => 'registration.name',
+                'required' => false,
+            ))
+            ->add('prenom', Type\TextType::class, array(
+                'label' => 'registration.lastname',
+                'required' => false,
+            ))
+            ->add('adresse', Type\TextType::class, array(
+                'label' => 'registration.adresse',
+                'required' => true,
+            ))
             ->add('policy', Type\CheckboxType::class, array(
                 'label' => 'registration.policy',
                 'required' => true,
                 'mapped' => false, // Ce champ n'est pas dans l'entité User (pas d'enregistrement en db)
-            ))
+            ))           
         ;
     }
 
