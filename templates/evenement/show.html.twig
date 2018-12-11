@@ -3,22 +3,49 @@
 {% block page_content %}
 <div class="row justify-content-center">
     <div class="col-10">
+        {# {{ dump(entity) }} #}
         <div class="card text-white bg-danger border-dark text-center">
             <img class="card-img-top" src="https://picsum.photos/200/100/?random" alt="Card image cap">
             <div class="card-body">
-                <h2 class="card-title">Nom</h2>
-                <h4 class="card-title">CONCERT ROCK</h4>
-                <h5 class="card-text">20/11/2018 - 21H00 à 23H00 - 23€</h5>
-                <p class="card-text">Ibi victu recreati et quiete, postquam abierat timor, vicos opulentos adorti equestrium adventu cohortium, quae casu propinquabant, nec resistere planitie porrecta conati digressi sunt retroque concedentes omne iuventutis robur relictum in sedibus acciverunt.Ibi victu recreati et quiete, postquam abierat timor, vicos opulentos adorti equestrium adventu cohortium, quae casu propinquabant, nec resistere planitie porrecta conati digressi sunt retroque concedentes omne iuventutis robur relictum in sedibus acciverunt.</p>
+                <h2 class="card-title">{{ entity.nom }}</h2>
+                <h4 class="card-title">
+                    {{ entity.type }} 
+                    {{ entity.styles ? entity.styles|join(', ') : '' }}
+                </h4>
+                <h5 class="card-text">
+                    {{ entity.date|date("d/m/Y") }} - 
+                    {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
+                    {{ entity.tarif }} €
+                </h5>
+                <p class="card-text"> {{ entity.presentation }} </p>
             <ul class="list-group list-group-flush">
+                {% if entity.artistes is not empty or entity.formations is not empty %}
                 <li class="list-group-item bg-dark">
                     <p>Participants :
-                        <a href="#" class="card-link">Les vieilles canailles</a>    
-                        <a href="#" class="card-link">David Vincent</a>    
+                        {% for artiste in entity.artistes %}
+                            <a href="#" class="card-link">
+                                {% if artiste.nomArtiste is not empty %}
+                                    {{ artiste.nomArtiste }}
+                                {% else %}
+                                    {{ artiste.prenom }} {{ artiste.nom }}
+                                {% endif %}
+                            </a>    
+                        {% endfor %}
+
+                        {% for formation in entity.formations %}
+                            <a href="#" class="card-link"> {{ formation.nom }} </a>    
+                        {% endfor %}
                     </p>
                 </li>
-                <li class="list-group-item bg-secondary">Lieu : 5 rue des zèbres - 57999 - Zedrange</li>
-                <li class="list-group-item bg-dark">Contact : 06666666</li>
+                {% endif %}
+                <li class="list-group-item bg-secondary">Lieu : 
+                    {{ entity.adresse }} - 
+                    {{ entity.codepostal }} - 
+                    {{ entity.ville }}
+                </li>
+                <li class="list-group-item bg-dark">Contact :
+                    {{ entity.numTelephone }}
+                </li>
             </ul>
             </div>
         </div>

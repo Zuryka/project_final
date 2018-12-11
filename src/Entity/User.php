@@ -110,6 +110,11 @@ class User extends BaseUser
      */
     private $formations;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $type = [];
+
     public function __construct()
     {
         parent::__construct();
