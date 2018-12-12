@@ -5,18 +5,16 @@
 {% endblock %}
 
 {% block body %}
-{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index'), 'itemEvenementsUrl' : path('evenement_index')} %}
+{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
     {% block brand %}
     P'TITES SCENES
     {% endblock %}
 
-    {% block itemEvenements %}
-    EVENEMENTS
-    {% endblock %}
+    {% block menu %}
+        {{ knp_menu_render('main', {'style': 'horizontal-right'})}}
 
-        {% block menu %}
-            {{ knp_menu_render('user', {'style': 'horizontal-right'})}}
-        {% endblock %}
+        {{ knp_menu_render('user', {'style': 'horizontal-right'})}}
+    {% endblock %}
 {% endembed %}
 <div class="container">
     {% block page_content %}
