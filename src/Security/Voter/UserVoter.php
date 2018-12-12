@@ -12,27 +12,39 @@ class UserVoter extends Voter
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, ['POST_EDIT', 'POST_VIEW'])
-            && $subject instanceof \App\Entity\BlogPost;
+        return in_array($attribute, ['editArtiste', 'viewArtiste', 'createArtiste'])
+            && $subject instanceof \App\Entity\User;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
-        if (!$user instanceof UserInterface) {
-            return false;
-        }
+        // if (!$user instanceof UserInterface) {
+        //     return false;
+        // }
 
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
-            case 'POST_EDIT':
-                // logic to determine if the user can EDIT
-                // return true or false
-                break;
-            case 'POST_VIEW':
+            
+            case 'editArtiste':
+            case 'createArtiste':
+            // Vérifier que l'utilisateur est connecté
+            if (!$user instanceof UserInterface) {
+                return false;
+            }
+            
+            // Si on est SUPER_ADMIN
+            if ($user->hasRole('ROLE_SUPER_ADMIN')) {
+                return true;
+            }
+            
+            return in_array(User::TYPE_ARTISTE, $user->getType());
+            break;
+
+            case 'viewArtiste':
                 // logic to determine if the user can VIEW
-                // return true or false
+                return true;
                 break;
         }
 

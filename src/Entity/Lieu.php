@@ -240,4 +240,14 @@ class Lieu
 
         return $this;
     }
+
+    /**
+     * Set one value of medias
+     */
+    public function addMedia($media)
+    {
+        $this->medias[] = $media;
+
+        return $this;
+    }
 }

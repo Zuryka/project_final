@@ -47,6 +47,21 @@ class FormationVoter extends Voter
                 // logic to determine if the user can VIEW
                 return true;
                 break;
+
+            case 'create':
+                // Vérifier que l'utilisateur est connecté
+                if (!$user instanceof UserInterface) {
+                    return false;
+                }
+
+                // Si on est SUPER_ADMIN
+                if ($user->hasRole('ROLE_SUPER_ADMIN')) {
+                    return true;
+                }
+
+                return in_array(User::TYPE_ARTISTE, $user->getType());
+                
+                break;
         }
 
         return false;

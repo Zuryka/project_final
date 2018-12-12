@@ -3,6 +3,7 @@ menu:
     users: .icon-users Utilisateurs
 
 lieu:
+  photoIdent: Photo d'identification
   nom: Nom
   type: Type
   presentation: Présentation

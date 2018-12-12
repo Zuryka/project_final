@@ -13,6 +13,11 @@ class LieuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('photoIdent', MediaType::class, array(
+                'label' => 'lieu.photoIdent',
+                'mapped' => false,
+            ))
+
             ->add('nom', Type\TextType::class, array(
                 'label' => 'lieu.nom',
                 'required' => true,

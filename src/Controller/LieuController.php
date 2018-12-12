@@ -61,6 +61,11 @@ class LieuController extends AbstractController
         $form->handleRequest($request); // Envoi les données de requêtes (POST) au formulaire
 
         if ($form->isSubmitted() && $form->isValid()) { // Si le form est envoyé et valide
+
+            $photoIdent = $form->get("photoIdent")->getData();
+            var_dump($photoIdent);
+            //$entity->addMedia($photoIdent);
+
             // Ajout du nouvel lieu dans la db
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity); // Prépare la requête

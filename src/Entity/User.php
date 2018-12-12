@@ -14,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     const TYPE_GERANT_SALLE = 'user_local';
+    const TYPE_ARTISTE = 'user_artiste';
+    const TYPE_ORGANISTEUR_EVENEMENT = 'user_evenement';
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
