@@ -47,6 +47,13 @@ class EvenementVoter extends Voter
                 // logic to determine if the user can VIEW
                 return true;
                 break;
+            case 'create':
+                if ($user instanceof UserInterface) {
+                    return true;
+                } else {
+                    return false;
+                }
+                break;
         }
 
         return false;
