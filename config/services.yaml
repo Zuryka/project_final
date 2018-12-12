@@ -45,7 +45,7 @@ services:
 
     app.main_menu_builder:
         class: App\Menu\MainMenuBuilder
-        arguments: ["@knp_menu.factory", "@security.token_storage"]
+        arguments: ["@knp_menu.factory", "@security.token_storage", '@security.authorization_checker']
         tags:
             - { name: knp_menu.menu_builder, method: createMenu, alias: main }
             
