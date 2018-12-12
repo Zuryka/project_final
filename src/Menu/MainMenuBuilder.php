@@ -23,16 +23,16 @@ class MainMenuBuilder
 
         $menu->addChild('EVENEMENTS', ['route' => 'evenement_index']);
         $menu->addChild('ARTISTES', ['route' => 'user_index']);
-        $menu->addChild('FORMATIONS', ['route' => 'user_index']);
+        $menu->addChild('FORMATIONS', ['uri' => '#']);
         $menu->addChild('LIEUX', ['route' => 'lieu_index']);
 
         if (is_object($user)) {
-            // Ajout menu SUPER ADMIN
-            $parent = $menu->addChild('EDITION', ['route' => 'evenement_index']);
-            
-            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
-
-
+            // Ajout menu edition
+            $parent = $menu->addChild('EDITION', ['uri' => '#']);
+            $parent->addChild('Mon profil artiste', ['uri' => '#']);
+            $parent->addChild('Nouvelle formation', ['uri' => '#']);
+            $parent->addChild('Nouvel évènement', ['uri' => '#']);
+            $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
         } 
 
         return $menu;
