@@ -383,4 +383,13 @@ class User extends BaseUser
 
         return $this;
     }
+
+    public function setPlainPassword($password)
+    {
+        if (!empty($password)) {
+            $this->plainPassword = $password;
+        }
+        
+        return $this;
+    }
 }
