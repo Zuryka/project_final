@@ -7,7 +7,13 @@
 {% block body %}
 {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
     {% block brand %}
-    Blog WebForce3
+    P'TITES SCENES
+    {% endblock %}
+
+    {% block menu %}
+        {{ knp_menu_render('main', {'style': 'horizontal-right'})}}
+
+        {{ knp_menu_render('user', {'style': 'horizontal-right'})}}
     {% endblock %}
 {% endembed %}
 <div class="container">

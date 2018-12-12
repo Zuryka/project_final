@@ -12,24 +12,8 @@
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>UsernameCanonical</th>
-                <td>{{ user.usernameCanonical }}</td>
-            </tr>
-            <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>EmailCanonical</th>
-                <td>{{ user.emailCanonical }}</td>
-            </tr>
-            <tr>
-                <th>Enabled</th>
-                <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Salt</th>
-                <td>{{ user.salt }}</td>
             </tr>
             <tr>
                 <th>Password</th>
@@ -40,24 +24,8 @@
                 <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>ConfirmationToken</th>
-                <td>{{ user.confirmationToken }}</td>
-            </tr>
-            <tr>
-                <th>PasswordRequestedAt</th>
-                <td>{{ user.passwordRequestedAt ? user.passwordRequestedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ user.type }}</td>
             </tr>
         </tbody>
     </table>

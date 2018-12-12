@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+{% if entity.getMediaWithPhotoIdent() is not empty %}
+    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+{% else %}
+    <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+{% endif %}
+<hr/>
+<ul class="list-group">
+    <li class="list-group-item">{{ entity.nom }}</li>
+    <li class="list-group-item">{{ entity.type }}</li>
+    <li class="list-group-item">{{ entity.presentation }}</li>
+    <li class="list-group-item">{{ entity.adresse }}</li>
+    <li class="list-group-item">{{ entity.CodePostal() }}</li>
+    <li class="list-group-item">{{ entity.ville }}</li>
+    <li class="list-group-item">{{ entity.latitude }}</li>
+    <li class="list-group-item">{{ entity.longitude }}</li>
+    <li class="list-group-item">{{ entity.NumTelephone() }}</li>
+    <li class="list-group-item"><a href="{{ path('lieu_index') }}">Retour vers la liste</a></li>
+</ul>
+    {% if is_granted('edit', entity) %}
+        <a href="{{ path('lieu_edit', {'id': entity.id }) }}">Modifier</a>
+        {{ include('lieu/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}
