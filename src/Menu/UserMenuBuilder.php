@@ -2,11 +2,13 @@
 
 namespace App\Menu;
 
+use App\Entity\User;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class UserMenuBuilder
 {
+    private $user;
     private $factory;
     private $tokenStorage;
 
@@ -25,6 +27,9 @@ class UserMenuBuilder
             $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             
+            $parent->addChild('mon_compte', ['route' => 'user_show', 'routeParameters' => ['username' => $user->getUsername()]]);
+            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
+
             if ($user->hasRole('ROLE_SUPER_ADMIN')) {
                 // Ajout menu SUPER ADMIN
                 $parent->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);

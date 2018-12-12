@@ -28,6 +28,20 @@ evenement:
   heureFin: Heure de fin
   type: Type
 
+user:
+  edit:
+    title: Modification du profil
+  username: Pseudo
+  email: Adresse Mail
+  password: Mot des passes
+  name: nom
+  userlastname: Prenom
+  codepostal: Code Postal
+  ville: Ville
+  numtelephone: Numéro de Telephone
+  nivau: Status profesionnel
+  adresse: Adresse
+
 date:
   create: Date d'ajout
 registration:
