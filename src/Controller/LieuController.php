@@ -80,6 +80,10 @@ class LieuController extends AbstractController
      */
     public function edit(Request $request, Lieu $entity, TranslatorInterface $translator)
     {
+        // Affiche un deny Access si l'utilisateur ne peut pas modifier
+        $this->denyAccessUnlessGranted('edit', $entity);
+        // $this->isGranted('edit', $lieu);
+
         $form = $this->createForm(LieuType::class, $entity);
         $form->handleRequest($request); // Envoi les données de requêtes (POST) au formulaire
 
@@ -106,6 +110,9 @@ class LieuController extends AbstractController
      */
     public function delete(Request $request, Lieu $lieu): Response
     {
+        // Affiche un deny Access si l'utilisateur ne peut pas modifier
+        $this->denyAccessUnlessGranted('edit', $lieu);
+
         if ($this->isCsrfTokenValid('delete'.$lieu->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($lieu);
