@@ -5,16 +5,15 @@ namespace App\Security\Voter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\User;
 
-class LieuVoter extends Voter
+class EvenementVoter extends Voter
 {
     protected function supports($attribute, $subject)
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, ['edit', 'view', 'create'])
-            && $subject instanceof \App\Entity\Lieu;
+            && $subject instanceof \App\Entity\Evenement;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
@@ -41,26 +40,12 @@ class LieuVoter extends Voter
                 }
 
                 // Sinon, si on est le createur
-                return $subject->getUserCreateur()->getId() == $user->getId();
+                return $subject->getIdUserCreateur()->getId() == $user->getId();
                 
                 break;
             case 'view':
                 // logic to determine if the user can VIEW
                 return true;
-                break;
-            case 'create':
-                // Vérifier que l'utilisateur est connecté
-                if (!$user instanceof UserInterface) {
-                    return false;
-                }
-
-                // Si on est SUPER_ADMIN
-                if ($user->hasRole('ROLE_SUPER_ADMIN')) {
-                    return true;
-                }
-
-                return in_array(User::TYPE_GERANT_SALLE, $user->getType());
-                
                 break;
         }
 

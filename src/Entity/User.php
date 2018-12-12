@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    const TYPE_GERANT_SALLE = 'user_local';
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

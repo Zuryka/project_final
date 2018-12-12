@@ -3,12 +3,19 @@
 {% block page_content %}
 <div class="card-group mt-5">
     {% for entity in entities %}
-    <div class="card-body">
-        <h5 class="card-title"><a href="{{ path('lieu_show', {'id': entity.id }) }}">{{ entity.nom }}</a></h5>
-        <p class="card-text">{{ entity.type }}</p>
-        <p class="card-text">{{ entity.presentation }}</p>
-    </div>
+        {% if entity.getMediaWithPhotoIdent() is not empty %}
+            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+        {% else %}
+            <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title"><a href="{{ path('lieu_show', {'id': entity.id }) }}">{{ entity.nom }}</a></h5>
+            <p class="card-text">{{ entity.type }}</p>
+            <p class="card-text">{{ entity.presentation }}</p>
+        </div>
     {% endfor %}
 </div>
-<a href="{{ path('lieu_new') }}">Créer un lieu</a>
+{% if is_granted('create', newEntity) %}
+    <a href="{{ path('lieu_new') }}">Créer un lieu</a>    
+{% endif %}
 {% endblock %}

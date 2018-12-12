@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Lieu
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -71,6 +72,12 @@ class Lieu
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $user_contact;
+
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="evenement")
+     */
+    private $medias;
 
     
     public function getId(): ?int
@@ -206,6 +213,30 @@ class Lieu
     public function setUserContact(?User $user_contact): self
     {
         $this->user_contact = $user_contact;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
 
         return $this;
     }

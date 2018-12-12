@@ -21,10 +21,10 @@ class LieuType extends AbstractType
             ->add('type', Type\ChoiceType::class, array(
                 'label' => 'lieu.type',
                 'choices' => array(
-                    'lieu.type.bar' => 'bar',
-                    'lieu.type.mjc' => 'mjc',
-                    'lieu.type.salle_des_fetes' => 'salle des fêtes',
-                    'lieu.type.plein_air' => 'plein air',
+                    'Bar' => 'lieu.type.bar',
+                    'Maison de la Jeunesse et de la Culture' => 'lieu.type.mjc',
+                    'Plein air' => 'lieu.type.plein_air',
+                    'Salle des fêtes' => 'lieu.type.salle_des_fetes',
                 ),
                 'required' => true,
             ))
