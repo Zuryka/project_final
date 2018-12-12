@@ -42,7 +42,13 @@ services:
         arguments: ["@knp_menu.factory", "@security.token_storage"]
         tags:
             - { name: knp_menu.menu_builder, method: createMenu, alias: user }
-    
+
+    app.main_menu_builder:
+        class: App\Menu\MainMenuBuilder
+        arguments: ["@knp_menu.factory", "@security.token_storage"]
+        tags:
+            - { name: knp_menu.menu_builder, method: createMenu, alias: main }
+            
     app.form_registration:
         class: App\Form\RegistrationType
         tags:
