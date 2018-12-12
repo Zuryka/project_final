@@ -4,16 +4,19 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class MainMenuBuilder
 {
     private $factory;
     private $tokenStorage;
+    private $autorisationChecker;
 
-    public function __construct(FactoryInterface $factory, TokenStorage $tokenStorage)
+    public function __construct(FactoryInterface $factory, TokenStorage $tokenStorage, AuthorizationChecker $autorisationChecker)
     {
         $this->factory = $factory;
         $this->tokenStorage = $tokenStorage;
+        $this->autorisationChecker = $autorisationChecker;
     }
 
     public function createMenu()
@@ -29,11 +32,25 @@ class MainMenuBuilder
         if (is_object($user)) {
             // Ajout menu edition
             $parent = $menu->addChild('EDITION', ['uri' => '#']);
-            $parent->addChild('Mon profil artiste', ['uri' => '#']);
-            $parent->addChild('Nouvelle formation', ['uri' => '#']);
-            $parent->addChild('Nouvel évènement', ['uri' => '#']);
-            $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
+            // if ($this->autorisationChecker->isGranted('createArtiste', $user))
+            // {
+                $parent->addChild('Mon profil artiste', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouvelle formation', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouvel évènement', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
+            // }
         } 
+
+        
 
         return $menu;
     }
