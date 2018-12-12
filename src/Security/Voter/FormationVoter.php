@@ -6,23 +6,23 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class EvenementVoter extends Voter
+class FormationVoter extends Voter
 {
     protected function supports($attribute, $subject)
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, ['edit', 'view', 'create'])
-            && $subject instanceof \App\Entity\Evenement;
+            && $subject instanceof \App\Entity\Formation;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
-        /*if (!$user instanceof UserInterface) {
-            return false;
-        }*/
+        // if (!$user instanceof UserInterface) {
+        //     return false;
+        // }
 
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
@@ -40,19 +40,12 @@ class EvenementVoter extends Voter
                 }
 
                 // Sinon, si on est le createur
-                return $subject->getIdUserCreateur()->getId() == $user->getId();
-                
+                return $subject->getUserCreateur()->getId() == $user->getId();
                 break;
+
             case 'view':
                 // logic to determine if the user can VIEW
                 return true;
-                break;
-            case 'create':
-                if ($user instanceof UserInterface) {
-                    return true;
-                } else {
-                    return false;
-                }
                 break;
         }
 

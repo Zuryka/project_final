@@ -4,16 +4,19 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class MainMenuBuilder
 {
     private $factory;
     private $tokenStorage;
+    private $autorisationChecker;
 
-    public function __construct(FactoryInterface $factory, TokenStorage $tokenStorage)
+    public function __construct(FactoryInterface $factory, TokenStorage $tokenStorage, AuthorizationChecker $autorisationChecker)
     {
         $this->factory = $factory;
         $this->tokenStorage = $tokenStorage;
+        $this->autorisationChecker = $autorisationChecker;
     }
 
     public function createMenu()
@@ -23,17 +26,31 @@ class MainMenuBuilder
 
         $menu->addChild('EVENEMENTS', ['route' => 'evenement_index']);
         $menu->addChild('ARTISTES', ['route' => 'user_index']);
-        $menu->addChild('FORMATIONS', ['route' => 'user_index']);
+        $menu->addChild('FORMATIONS', ['uri' => '#']);
         $menu->addChild('LIEUX', ['route' => 'lieu_index']);
 
         if (is_object($user)) {
-            // Ajout menu SUPER ADMIN
-            $parent = $menu->addChild('EDITION', ['route' => 'evenement_index']);
-            
-            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
-
-
+            // Ajout menu edition
+            $parent = $menu->addChild('EDITION', ['uri' => '#']);
+            // if ($this->autorisationChecker->isGranted('createArtiste', $user))
+            // {
+                $parent->addChild('Mon profil artiste', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouvelle formation', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouvel évènement', ['uri' => '#']);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+                $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
+            // }
         } 
+
+        
 
         return $menu;
     }
