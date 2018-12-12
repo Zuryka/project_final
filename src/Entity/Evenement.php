@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Evenement
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -113,6 +114,13 @@ class Evenement
      * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="evenements")
      */
     private $formations;
+
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="evenement")
+     */
+    private $medias;
+
 
     public function __construct()
     {
@@ -379,6 +387,30 @@ class Evenement
         if ($this->formations->contains($formation)) {
             $this->formations->removeElement($formation);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
 
         return $this;
     }

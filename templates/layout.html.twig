@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block body %}
-{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
+{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index'), 'itemEvenementsUrl' : path('evenement_index')} %}
     {% block brand %}
-    Music Site
+    P'TITES SCENES
+    {% endblock %}
+
+    {% block itemEvenements %}
+    EVENEMENTS
     {% endblock %}
 
         {% block menu %}

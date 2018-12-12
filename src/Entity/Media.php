@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MediaRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Media
 {
@@ -52,9 +55,24 @@ class Media
     private $lieu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="medias")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $evenement;
+
+    /**
+     * @var UploadedFile
+     * @Assert\Image(
+     * maxSize = "2M"
+     * )
+     */
+    private $file;
+
+    /**
+     * @var ?string
+     * Chemin de l'ancien fichier
+     */
+    private $oldPath;
 
     public function getId(): ?int
     {
@@ -155,5 +173,80 @@ class Media
         $this->evenement = $evenement;
 
         return $this;
+    }
+
+    /**
+     * Get maxSize = "2M"
+     *
+     * @return  UploadedFile
+     */ 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set maxSize = "2M"
+     *
+     * @param  UploadedFile  $file  maxSize = "2M"
+     *
+     * @return  self
+     */ 
+    public function setFile(UploadedFile $file)
+    {
+        // Sauvegarde le chemin de l'ancien fichier pour le supprimer lors de l'upload du nouveau
+        $this->oldPath = $this->path; 
+        // Modifie cette valeur pour activer la modif Doctrine
+        $this->path = ''; 
+        
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function generatePath()
+    {
+        if ($this->file instanceof UploadedFile){
+            // Génére le chemin du fichier à uploader
+            $this->path = uniqid('img_') . '.' . $this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (is_file($this->getPublicRootDirImg() . $this->oldPath)) {
+            unlink($this->getPublicRootDirImg() . $this->oldPath);
+        }
+
+        if ($this->file instanceof UploadedFile){
+            $this->file->move(
+                $this->getPublicRootDirImg(), // Vers le dossier public/uploads
+                $this->path
+            );
+        }
+    }
+
+    public function getPublicRootDirImgImg()
+    {
+        return __DIR__ . '/../../public/uploads/img/';
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function remove()
+    {
+        // Test si le fichier existe
+        if (is_file($this->getPublicRootDirImg() . $this->path)) {
+            unlink($this->getPublicRootDirImg() . $this->path);
+        }
     }
 }
