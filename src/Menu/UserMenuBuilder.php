@@ -25,19 +25,16 @@ class UserMenuBuilder
             $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             
-            
-            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
-            
             if ($user->hasRole('ROLE_SUPER_ADMIN')) {
                 // Ajout menu SUPER ADMIN
-                $menu->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);
+                $parent->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);
             }
             if ($user->hasRole('ROLE_ADMIN')) {
                 // Ajout menu ADMIN
-                $menu->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);
-                
-                
+                $parent->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);
             }
+            
+            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
         } else {
             $menu->addChild('register', ['route' => 'fos_user_registration_register']);
             $menu->addChild('login', ['route' => 'fos_user_security_login']);
