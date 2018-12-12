@@ -29,6 +29,7 @@ class LieuController extends AbstractController
 
         return $this->render('lieu/index.html.twig', [
             'entities' => $entities,
+            'newEntity' => new Lieu, // Pour tester avec le voter
         ]);
     }
 
@@ -39,8 +40,10 @@ class LieuController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository(Lieu::class)->findOneById($id);
+        
         return $this->render('/lieu/show.html.twig', array(
             'entity' => $entity,
+            'mediaWithPhotoIdent' => $entity->getMediaWithPhotoIdent(),
         ));
     }
 
@@ -49,6 +52,9 @@ class LieuController extends AbstractController
      */
     public function new(Request $request, EventDispatcherInterface $eventDispatcher, TranslatorInterface $translator)
     {
+        // Affiche un deny Access si l'utilisateur ne peut pas modifier
+        // $this->denyAccessUnlessGranted('create', $lieu);
+
         $entity = new Lieu;
         $entity->setUserCreateur($this->getUser());
         $form = $this->createForm(LieuType::class, $entity);

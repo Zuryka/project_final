@@ -19,6 +19,17 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
+    public function findAll()
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e, u, uc')
+            ->leftJoin('e.userCreateur', 'u')
+            ->leftJoin('e.userContact', 'uc')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */

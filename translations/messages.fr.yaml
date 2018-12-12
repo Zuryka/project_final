@@ -1,6 +1,33 @@
 menu:
   admin:
     users: .icon-users Utilisateurs
+
+lieu:
+  nom: Nom
+  type: Type
+  presentation: Présentation
+  adresse: Adresse
+  code_postal: Code Postal
+  ville: Ville
+  latitude: Latitude
+  longitude: Longitude
+  num_telephone: Numéro de téléphone de la structure
+
+evenement:
+  nom: Nom
+  presentation: Présentation
+  adresse: Adresse
+  code_postal: Code Postal
+  ville: Ville
+  latitude: Latitude
+  longitude: Longitude
+  numTelephone: Numéro de téléphone
+  tarif: Tarif
+  date: Date
+  heureDebut: Heure de début
+  heureFin: Heure de fin
+  type: Type
+
 user:
   edit:
     title: Modification du profil
