@@ -2,3 +2,18 @@
 
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+
+body {
+    background-image: url(../images/bg_site.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+
+.logo {
+    width: 100%;
+    height: 200px;
+}
+
+.first-menu a {
+    color: white;
+}
