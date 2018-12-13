@@ -76,10 +76,22 @@ class Formation
      */
     private $medias;
 
+        /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"all"}, orphanRemoval=true)
+     * @var ?\App\Entity\Image
+     */
+    private $image;
+
+    /**
+     * @var bool
+     */
+    private $deleteImage;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->deleteImage = false;
     }
 
     public function getId(): ?int
@@ -239,4 +251,56 @@ class Formation
         return $this;
     }
 
+    /**
+     * Get the value of image
+     *
+     * @return  ?\App\Entity\Image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @param  ?\App\Entity\Image  $image
+     *
+     * @return  self
+     */ 
+    public function setImage(?\App\Entity\Image $image)
+    {
+        if ($image instanceof Image && !is_null($image->getFile())){ // Test si une image est envoyéee
+            $this->image = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of deleteImage
+     *
+     * @return  bool
+     */ 
+    public function getDeleteImage()
+    {
+        return $this->deleteImage;
+    }
+
+    /**
+     * Set the value of deleteImage
+     *
+     * @param  bool  $deleteImage
+     *
+     * @return  self
+     */ 
+    public function setDeleteImage(bool $deleteImage)
+    {
+        $this->deleteImage = $deleteImage;
+        if ($deleteImage){
+            $this->image = null;
+        }
+
+        return $this;
+    }
 }
