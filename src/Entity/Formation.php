@@ -66,7 +66,6 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user_contact;
 
@@ -239,18 +238,6 @@ class Formation
         return $this;
     }
 
-    public function getUserContact(): ?User
-    {
-        return $this->user_contact;
-    }
-
-    public function setUserContact(?User $user_contact): self
-    {
-        $this->user_contact = $user_contact;
-
-        return $this;
-    }
-
     /**
      * Get the value of image
      *
@@ -300,6 +287,26 @@ class Formation
         if ($deleteImage){
             $this->image = null;
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_contact
+     */ 
+    public function getUser_contact()
+    {
+        return $this->user_contact;
+    }
+
+    /**
+     * Set the value of user_contact
+     *
+     * @return  self
+     */ 
+    public function setUser_contact($user_contact)
+    {
+        $this->user_contact = $user_contact;
 
         return $this;
     }
