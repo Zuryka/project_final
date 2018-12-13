@@ -66,6 +66,9 @@
                 {% if is_granted('edit', entity) %}
                     <div class="row">
                         <div class="col mt-3">
+                            <a href="{{ path('evenement_index') }}"><button class="btn">Retour</button></a>
+                        </div>
+                        <div class="col mt-3">
                             <a href="{{ path('evenement_edit', {'id': entity.id }) }}"><button class="btn">Modifier</button></a>
                         </div>
                         <div class="col mt-3">
@@ -73,8 +76,6 @@
                         </div>
                 </div>
                 {% endif %}
-
-
             </div>
         </div>
     </div>
