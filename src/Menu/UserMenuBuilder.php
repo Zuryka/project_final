@@ -24,7 +24,7 @@ class UserMenuBuilder
         $menu = $this->factory->createItem('root');
 
         if (is_object($user)) {
-            $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
+            $parent = $menu->addChild('<i class="fas fa-user"></i>    ' . $user->getUsername(), ['uri' => '#']);
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             
             $parent->addChild('Mon Compte', ['route' => 'user_show', 'routeParameters' => ['username' => $user->getUsername()]]);
@@ -41,8 +41,9 @@ class UserMenuBuilder
             $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
 
         } else {
-            $menu->addChild('register', ['route' => 'fos_user_registration_register']);
-            $menu->addChild('login', ['route' => 'fos_user_security_login']);
+            $parent = $menu->addChild('<i class="fas fa-user"></i>', ['uri' => '#'] );
+            $parent->addChild('S\'enregistrer', ['route' => 'fos_user_registration_register']);
+            $parent->addChild('Se connecter', ['route' => 'fos_user_security_login']);
         }
 
         $menu->setChildrenAttribute('class', 'col-2');

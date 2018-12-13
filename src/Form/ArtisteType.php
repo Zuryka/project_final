@@ -35,7 +35,7 @@ class ArtisteType extends AbstractType
                 'required' => false,
             ))
             ->add('styles', Type\ChoiceType::class, array(
-                    'label' => 'user.styles',
+                    'label' => 'user.styles.liste',
                     'choices' => array(
                         'Rock' => 'user.styles.rock',
                         'Pop' => 'user.styles.pop',
