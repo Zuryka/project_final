@@ -1,8 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block page_content %}
+
+
 {% if entity.getMediaWithPhotoIdent() is not empty %}
     <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+{% elseif entity.image is not empty %}
+    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
 {% else %}
     <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
 {% endif %}
@@ -23,4 +27,6 @@
         <a href="{{ path('lieu_edit', {'id': entity.id }) }}">Modifier</a>
         {{ include('lieu/_delete_form.html.twig') }}
     {% endif %}
+
+
 {% endblock %}

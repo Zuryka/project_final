@@ -27,8 +27,7 @@ class UserMenuBuilder
             $parent = $menu->addChild($user->getUsername(), ['uri' => '#']);
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             
-            $parent->addChild('mon_compte', ['route' => 'user_show', 'routeParameters' => ['username' => $user->getUsername()]]);
-            $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
+            $parent->addChild('Mon Compte', ['route' => 'user_show', 'routeParameters' => ['username' => $user->getUsername()]]);
 
             if ($user->hasRole('ROLE_SUPER_ADMIN')) {
                 // Ajout menu SUPER ADMIN
@@ -36,16 +35,17 @@ class UserMenuBuilder
             }
             if ($user->hasRole('ROLE_ADMIN')) {
                 // Ajout menu ADMIN
-                $parent->addChild('Gerer utilisateur', ['route' => 'admin_user_index']);
+                $parent->addChild('Gerer Utilisateur', ['route' => 'admin_user_index']);
             }
             
             $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
+
         } else {
             $menu->addChild('register', ['route' => 'fos_user_registration_register']);
             $menu->addChild('login', ['route' => 'fos_user_security_login']);
         }
 
-       
+        $menu->setChildrenAttribute('class', 'col-2');
 
         return $menu;
     }
