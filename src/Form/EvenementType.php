@@ -26,30 +26,45 @@ class EvenementType extends AbstractType
             'required' => true,
         ))
 
-        // ->add('styles', Type\ChoiceType::class, array(
-        //     'label' => 'evenement.styles',
-        //     'choices' => array(
-        //         'Rock' => 'evenement.styles.rock',
-        //         'Pop' => 'evenement.styles.pop',
-        //         'Indie' => 'evenement.styles.indie',
-        //         'Classique' => 'evenement.styles.classique',
-        //     ),
-        //     'required' => true,
-        // ))
+        ->add('styles', Type\ChoiceType::class, array(
+            'label' => 'evenement.styles',
+            'choices' => array(
+                'Blues' => 'Blues',
+                'Classique' => 'Classique',
+                'Country' => 'Country',
+                'Electro' => 'Electro',
+                'Folk & Acoustic' => 'Folk & Acoustic',
+                'Funk' => 'Funk',
+                'Hip-hop' => 'Hip-hop',
+                'Indie' => 'Indie',
+                'K-Pop/J-Pop' => 'K-Pop/J-Pop',
+                'Latino' => 'Latino',
+                'Metal' => 'Metal',
+                'Pop' => 'Pop',
+                'Punk' => 'Punk',
+                'Reggae/Dancehall' => 'Reggae/Dancehall',
+                'RnB' => 'RnB',
+                'Rock' => 'Rock',
+                'Soul' => 'Soul',
+                'Autre...' => 'Autre',
+            ),
+            'required' => true,
+            'multiple' => true,
+        ))
 
-        ->add('presentation', Type\TextType::class, array(
+        ->add('presentation', Type\TextareaType::class, array(
             'label' => 'evenement.presentation',
             'required' => true,
         ))
 
         ->add('adresse', Type\TextType::class, array(
             'label' => 'evenement.adresse',
-            'required' => true,
+            'required' => false,
         ))
         
         ->add('code_postal', Type\IntegerType::class, array(
             'label' => 'evenement.code_postal',
-            'required' => true,
+            'required' => false,
         ))
             ->add('ville', Type\TextType::class, array(
                 'label' => 'evenement.ville',
@@ -65,19 +80,19 @@ class EvenementType extends AbstractType
                 'required' => false,
                 'scale' => 5
             ))
-            ->add('numTelephone', Type\IntegerType::class, array(
+            ->add('numTelephone', Type\TelType::class, array(
                 'label' => 'evenement.numTelephone',
                 'required' => false,
             ))
-            ->add('tarif', Type\NumberType::class, array(
+            ->add('tarif', Type\MoneyType::class, array(
                 'label' => 'evenement.tarif',
-                'required' => true,
+                'required' => false,
                 'scale' => 2
             ))
             ->add('date', Type\DateType::class, array(
                 'label' => 'evenement.date',
                 'placeholder' => array(
-                    'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ),
                 'required' => true,
             ))
@@ -87,10 +102,21 @@ class EvenementType extends AbstractType
             ))
             ->add('heureFin', Type\TimeType::class, array(
                 'label' => 'evenement.heureFin',
-                'required' => true,
+                'required' => false,
             ))
-            ->add('type', Type\TextType::class, array(
+            ->add('type', Type\ChoiceType::class, array(
                 'label' => 'evenement.type',
+                'choices' => array(
+                    'Bal' => 'Bal',
+                    'Concert' => 'Concert',
+                    'Festival' => 'Festival',
+                    'Jam Session' => 'Jam Session',
+                    'Karaoke' => 'Karaoke',
+                    'Récital' => 'Recital',
+                    'Répétition' => 'Répétition',
+                    'Show Case' => 'Show Case',
+                    'Autre ...' => 'Autre',
+                ),
                 'required' => true,
             ))
         ;
