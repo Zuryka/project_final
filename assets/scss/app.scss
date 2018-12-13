@@ -1,3 +1,5 @@
+$light: #BDBEAF;
+
 @import "~bootstrap/scss/bootstrap";
 
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
@@ -14,6 +16,11 @@ body {
     height: 150px;
 }
 
+.lateral-column {
+    border-bottom: #BDBEAF 1px solid;
+    padding-right: -1px !important;
+    padding-left: -1px !important;
+}
 
 .nav-item {
     border-bottom: #BDBEAF 1px solid;
