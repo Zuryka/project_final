@@ -6,7 +6,7 @@
 {{ form_start(form) }}
     {% embed 'decorator/_card.html.twig' %}
     {% block header %}
-    <h1>Créer un nouveau formation</h1>
+    <h1> {{ 'formation.new.title'|trans }} </h1>
     {% endblock %}
 
     {% block body %}

@@ -125,7 +125,7 @@ class EvenementType extends AbstractType
             $entity = $event->getData(); // Entité envoyée au formulaire
             $form = $event->getForm(); // Récupère le formulaire
 
-            if (!is_null($entity->getImage())) { // S'il y a une image dans mon article
+            if (!is_null($entity->getImage())) { // S'il y a une image dans mon évènement
                 // Ajout du champ "deleteImage" seulement s'il y a une image
                 $form->add('deleteImage', Type\CheckboxType::class, array(
                     'label' => 'image.delete',

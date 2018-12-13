@@ -45,13 +45,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/artiste_show/{username}", name="artiste_show")
+     * @Route("/artisteshow/{username}", name="artiste_show")
      */
     public function artisteshow($username)
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository(User::class)->findOneByUsername($username);
-        return $this->render('/user/show.html.twig', array(
+        return $this->render('/user/artiste_show.html.twig', array(
             'entity' => $entity,
         ));
     }
@@ -85,7 +85,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/artiste_edit/{username}", name="artiste_edit")
+     * @Route("/artisteedit/{username}", name="artiste_edit")
      */
     public function artisteedit(Request $request, User $entity, TranslatorInterface $translator)
     {
@@ -103,10 +103,11 @@ class UserController extends AbstractController
 
             $this->addFlash('success', $translator->trans('user.edit.success'));
 
-            return $this->redirectToRoute('user_show', ['username' => $entity->getUsername()]);    // retour à la fiche de l'utilisateur
+            return $this->redirectToRoute('user_index'); // Retour sur la liste des lieux
+            // return $this->redirectToRoute('user_show', ['username' => $entity->getUsername()]);    // retour à la fiche de l'utilisateur
         }
         //$entity = $em->getRepository(User::class)->findOneByUsername($username);
-        return $this->render('/user/edit.html.twig', array(
+        return $this->render('/user/artiste_edit.html.twig', array(
             'form' => $form->createView(),
             'entity' => $entity,
         ));
