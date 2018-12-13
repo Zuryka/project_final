@@ -43,6 +43,29 @@ user:
   numtelephone: Numéro de Telephone
   nivau: Status profesionnel
   adresse: Adresse
+  artistename: Nom D'artiste
+  presentation: Présentation
+  niveau: Status professionnel
+  styles:
+    rock: Rock
+    pop: Pop
+    indie: Indie
+    classique: Classique
+    autre: Autre
+  instruments:
+    liste: Instruments joués
+    guitare: Guitare
+    violon: Violon
+    batterie: Batterie
+    contrebasse: Contrebasse
+    triangle: Triangle
+    autre: Autre
+  chants:
+    liste: Type de chants
+    coeur: Coeur
+    lead: Lead
+
+
 
 date:
   create: Date d'ajout

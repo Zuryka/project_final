@@ -105,6 +105,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", mappedBy="artistes")
+     * @var string
      */
     private $evenements;
 
@@ -132,6 +133,7 @@ class User extends BaseUser
         $this->dateInscription = new \Datetime;
 
     }
+
 
     //================== Mutateur ============================
 
