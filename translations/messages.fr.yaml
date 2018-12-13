@@ -30,6 +30,15 @@ evenement:
   heureFin: Heure de fin
   type: Type
 
+formation:
+  photo: Photo de la formation
+  nom: Nom
+  type: Type
+  localisation: Localisation
+  presentation: Présentation
+  styles: Styles joués ou chantés
+  niveau: Niveau
+
 user:
   edit:
     title: Modification du profil

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Formation
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -66,7 +67,6 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user_contact;
 
@@ -247,6 +247,30 @@ class Formation
     public function setUserContact(?User $user_contact): self
     {
         $this->user_contact = $user_contact;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
 
         return $this;
     }

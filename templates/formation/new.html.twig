@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un formation{% endblock %}
+
+{% block page_content %}
+{{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+    {% block header %}
+    <h1>Créer un nouveau formation</h1>
+    {% endblock %}
+
+    {% block body %}
+    {{ include('formation/_form.html.twig', {'button_label': 'Créer'}) }}
+    {% endblock %}
+
+    {% block footer %}
+    <a class="btn btn-secondary" href="{{ path('formation_index') }}">Retour vers la liste</a>
+    <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+    {% endblock %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock %}
