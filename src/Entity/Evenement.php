@@ -139,6 +139,13 @@ class Evenement
         $this->deleteImage = false;
     }
 
+    public function __toString()
+    {
+        return $this->artistes;
+        return $this->formations;
+        return $this->lieu;
+    }
+
     //============= Mutateur ==========================
 
     public function getId(): ?int
