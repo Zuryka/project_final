@@ -27,7 +27,7 @@ class MainMenuBuilder
 
         $menu->addChild('EVENEMENTS', ['route' => 'evenement_index'], array('attributes' => array('class' => 'col-2 text-center')));
         $menu->addChild('ARTISTES', ['route' => 'user_index'], array('attributes' => array('class' => 'col-2 text-center')));
-        $menu->addChild('FORMATIONS', ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
+        $menu->addChild('FORMATIONS', ['route' => 'formation_index'], array('attributes' => array('class' => 'col-2 text-center')));
         $menu->addChild('LIEUX', ['route' => 'lieu_index'], array('attributes' => array('class' => 'col-2 text-center')));
         
         $menu['EVENEMENTS']->setAttributes(array('class' => 'col-2 text-center'));
@@ -55,7 +55,7 @@ class MainMenuBuilder
             // if ($this->autorisationChecker->isGranted('create', $lieu))
             // {
 
-                $parent->addChild('Nouvelle formation', ['uri' => '#']);
+                $parent->addChild('Nouvelle formation', ['route' => 'formation_new']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Evenement))
             {
