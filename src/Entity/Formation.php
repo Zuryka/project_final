@@ -70,6 +70,12 @@ class Formation
      */
     private $user_contact;
 
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="formation")
+     */
+    private $medias;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();

@@ -3,6 +3,7 @@ menu:
     users: .icon-users Utilisateurs
 
 lieu:
+  photo: Photo du lieu
   nom: Nom
   type: Type
   presentation: Présentation
@@ -14,6 +15,7 @@ lieu:
   num_telephone: Numéro de téléphone de la structure
 
 evenement:
+  photo: Photo de présentation de l'évènement
   nom: Nom
   presentation: Présentation
   adresse: Adresse

@@ -46,7 +46,7 @@ class UserMenuBuilder
             $menu->addChild('login', ['route' => 'fos_user_security_login']);
         }
 
-       
+        $menu->setChildrenAttribute('class', 'col-2');
 
         return $menu;
     }
