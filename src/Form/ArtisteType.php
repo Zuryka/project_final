@@ -7,24 +7,30 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
+use App\Form\ImageType;
 
 class ArtisteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', Type\TextType::class, array(
-                'label' => 'user.username',
-                'required' => false,
+            ->add('image', ImageType::class, array(
+                'label' => 'user.artiste.photo',
             ))
+
             ->add('nomArtiste', Type\TextType::class, array(
                 'label' => 'user.artistename',
                 'required' => false,
             ))
+
             ->add('presentation', Type\TextareaType::class, array(
                 'label' => 'user.presentation',
                 'required' => false,
             ))
+
             ->add('niveau', Type\ChoiceType::class, array(
                 'label' => 'user.niveau',
                 'choices'  => array(
@@ -34,6 +40,7 @@ class ArtisteType extends AbstractType
                 ),
                 'required' => false,
             ))
+
             ->add('styles', Type\ChoiceType::class, array(
                     'label' => 'user.styles.liste',
                     'choices' => array(
@@ -46,6 +53,7 @@ class ArtisteType extends AbstractType
                     'required' => false,
                     'multiple' => true,
                 ))
+
             ->add('instruments', Type\ChoiceType::class, array(
                 'label' => 'user.instruments.liste',
                 'choices' => array(
@@ -59,10 +67,11 @@ class ArtisteType extends AbstractType
                 'required' => false,
                 'multiple' => true,
             ))
+
             ->add('chants', Type\ChoiceType::class, array(
                 'label' => 'user.chants.liste',
                 'choices' => array(
-                    'coeur' => 'user.chants.coeur',
+                    'choeur' => 'user.chants.choeur',
                     'lead' => 'user.chants.lead',
                     
                 ),
@@ -71,6 +80,20 @@ class ArtisteType extends AbstractType
             ))
             //->add('formations')
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
+            $entity = $event->getData(); // Entité envoyée au formulaire
+            $form = $event->getForm(); // Récupère le formulaire
+
+            if (!is_null($entity->getImage())) { // S'il y a une image dans mon artiste
+                // Ajout du champ "deleteImage" seulement s'il y a une image
+                $form->add('deleteImage', Type\CheckboxType::class, array(
+                    'label' => 'image.delete',
+                    'required' => false, // Désactive le required
+                ));
+            }
+
+        });        
     }
 
     public function configureOptions(OptionsResolver $resolver)

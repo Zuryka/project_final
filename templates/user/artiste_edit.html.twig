@@ -6,18 +6,29 @@
     {% embed 'decorator/_card.html.twig' %}
 
         {% block header %}
-            {{ 'user.edit.title'|trans }}
+            <h1> {{ 'user.artiste.edit.title'|trans }} </h1>
         {% endblock %}
 
         {% block body %}
-        
-                  {{ form(form) }}
+            <div class="row">
+                <div class="col-md-8">
+                    {{ form_row(form.image) }}
+                </div>
+                <div class="col-md-4 col-lg-2">
+                {% if entity is defined and entity.image is not empty %}
+                    <img class="w-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}" />
+                    {{ form_row(form.deleteImage) }}
+                {% endif %}
+                </div>
+            </div>     
+             
+            {{ form(form) }}
 
         {% endblock body %}
 
         {% block footer %}
-            <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <a href="{{ path('user_index') }}" class="btn btn-secondary">Retour vers la liste</a>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
         {% endblock footer %}
 
     {% endembed %}
