@@ -14,6 +14,7 @@ body {
     height: 150px;
 }
 
+
 .nav-item {
     border-bottom: #BDBEAF 1px solid;
 }
@@ -30,6 +31,9 @@ body {
     color: rgba(189, 190, 175, 1);
 }
 
-.active a, .nav-item a:hover {
+
+
+.nav-item a:hover {
+
     color: rgba(203, 180, 26, 1);
 }

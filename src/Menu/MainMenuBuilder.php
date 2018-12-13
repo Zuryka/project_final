@@ -40,12 +40,21 @@ class MainMenuBuilder
         if (is_object($user)) {
             // Ajout menu edition
             $parent = $menu->addChild('EDITION', ['uri' => '#']);
+
             if ($this->autorisationChecker->isGranted('editArtiste', $user))
             {
                 $parent->addChild('Mon profil artiste', ['uri' => '#']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Formation))
             {
+
+            // if ($this->autorisationChecker->isGranted('createArtiste', $user))
+            // {
+                $parent->addChild('Mon profil artiste', ['route' => 'user_artiste_edit', 'routeParameters' => ['username' => $user->getUsername()]]);
+            // }
+            // if ($this->autorisationChecker->isGranted('create', $lieu))
+            // {
+
                 $parent->addChild('Nouvelle formation', ['uri' => '#']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Evenement))
