@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+    
+    {{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+
+        {% block header %}
+            {{ 'user.edit.title'|trans }}
+        {% endblock %}
+
+        {% block body %}
+        
+                  {{ form(form) }}
+
+        {% endblock body %}
+
+        {% block footer %}
+            <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        {% endblock footer %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+
+{% endblock page_content %}
