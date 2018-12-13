@@ -66,7 +66,6 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user_contact;
 
