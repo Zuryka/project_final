@@ -49,7 +49,7 @@ class UserType extends AbstractType
                 'label' => 'user.ville',
                 'required' => false,
             ))
-            ->add('numTelephone', Type\NumberType::class, array(
+            ->add('numTelephone', Type\TelType::class, array(
                 'label' => 'user.numtelephone',
                 'required' => false,
             ))

@@ -21,15 +21,15 @@ class LieuType extends AbstractType
             ->add('type', Type\ChoiceType::class, array(
                 'label' => 'lieu.type',
                 'choices' => array(
-                    'Bar' => 'lieu.type.bar',
-                    'Maison de la Jeunesse et de la Culture' => 'lieu.type.mjc',
-                    'Plein air' => 'lieu.type.plein_air',
-                    'Salle des fêtes' => 'lieu.type.salle_des_fetes',
+                    'Bar' => 'Bar',
+                    'Maison de la Jeunesse et de la Culture' => 'MJC',
+                    'Plein air' => 'Plein air',
+                    'Salle des fêtes' => 'Salle des fêtes',
                 ),
                 'required' => true,
             ))
 
-            ->add('presentation', Type\TextType::class, array(
+            ->add('presentation', Type\TextareaType::class, array(
                 'label' => 'lieu.presentation',
                 'required' => true,
             ))
@@ -61,7 +61,7 @@ class LieuType extends AbstractType
                 'scale' => 5
             ))
             
-            ->add('num_telephone', Type\IntegerType::class, array(
+            ->add('num_telephone', Type\TelType::class, array(
                 'label' => 'lieu.num_telephone',
                 'required' => false,
             ))
