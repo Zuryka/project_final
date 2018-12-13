@@ -131,7 +131,7 @@ class Image
 
     public function getPublicRootDir()
     {
-        return __DIR__ . '/../../public/uploads/';
+        return __DIR__ . '/../../public/uploads/img/';
     }
 
     /**

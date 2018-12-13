@@ -43,7 +43,7 @@ class MainMenuBuilder
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Evenement))
             {
-                $parent->addChild('Nouvel évènement', ['uri' => '#']);
+                $parent->addChild('Nouvel évènement', ['route' => 'evenement_new']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Lieu))
             {

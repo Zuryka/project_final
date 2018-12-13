@@ -118,6 +118,12 @@ class User extends BaseUser
      */
     private $type = [];
 
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="user")
+     */
+    private $medias;
+
     public function __construct()
     {
         parent::__construct();
