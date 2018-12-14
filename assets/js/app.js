@@ -40,4 +40,50 @@ $(function() {
         columnWidth: 200
     });
 
+    $.typeahead({
+        input: '.js-typeahead-keyword',
+        minLength: 1,
+        maxItem: 15,
+        order: "asc",
+        hint: true,
+        delay: 500,
+        accent: true,
+        dynamic: true, // requète ajax
+        // template: //function (query, item) { return 'code html' } 
+        maxItemPerGroup: 5,
+        backdrop: {
+            "background-color": "#fff"
+        },
+        emptyTemplate: 'Pas de résultat pour "{{query}}"',
+        source: {
+            artiste: {
+                display: "name",
+                href: "/user/artisteshow/{{ username }}",
+                ajax: {
+                    url: "/ajax",
+                    path: "data.keyword",
+                    data: {
+                        keyword: '{{ query }}'
+                    }
+                }
+            },
+        },
+        callback: {
+            onClick: function (node, a, item, event) {
+     
+                window.location.href = "/user/artisteshow/" + item.username;
+     
+                // href key gets added inside item from options.href configuration
+                // alert(item.href);
+     
+            }
+        },
+        debug: true
+    });
+    
+
+
+
+
+
 }); //loading....
