@@ -42,20 +42,12 @@ class MainMenuBuilder
             $parent = $menu->addChild('EDITION', ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
             $parent->setAttributes(array('class' => 'col-2 text-center'));
 
-            if ($this->autorisationChecker->isGranted('editArtiste', $user))
+            if ($this->autorisationChecker->isGranted('createArtiste', $user))
             {
-                $parent->addChild('Mon profil artiste', ['uri' => '#']);
+                $parent->addChild('Mon profil artiste', ['route' => 'user_artiste_edit', 'routeParameters' => ['username' => $user->getUsername()]]);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Formation))
             {
-
-            // if ($this->autorisationChecker->isGranted('createArtiste', $user))
-            // {
-                $parent->addChild('Mon profil artiste', ['route' => 'user_artiste_edit', 'routeParameters' => ['username' => $user->getUsername()]]);
-            // }
-            // if ($this->autorisationChecker->isGranted('create', $lieu))
-            // {
-
                 $parent->addChild('Nouvelle formation', ['route' => 'formation_new']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Evenement))
