@@ -48,10 +48,7 @@
                     {% endif %}
                 </ul>
 
-
-
-
-                {% if is_granted('edit', entity) %}
+                {% if is_granted('editArtiste', entity) %}
                     <div class="row">
                         <div class="col mt-3">
                             <a href="{{ path('user_index') }}"><button class="btn">Retour</button></a>
