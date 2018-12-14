@@ -67,7 +67,7 @@ class MainMenuBuilder
                 $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
             }
 
-            $parent = $menu->addChild($user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
+            $parent = $menu->addChild('<i class="fas fa-user"></i>' . '     ' . $user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             $parent->setAttributes(array('class' => 'col-2 text-center'));
             
@@ -85,11 +85,11 @@ class MainMenuBuilder
             $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
 
         } else {
-            $menu->addChild('register', ['route' => 'fos_user_registration_register'], array('attributes' => array('class' => 'col-2 text-center')));
-            $menu->addChild('login', ['route' => 'fos_user_security_login'], array('attributes' => array('class' => 'col-2 text-center')));
+            $menu->addChild('S\'enregistrer', ['route' => 'fos_user_registration_register'], array('attributes' => array('class' => 'col-2 text-center')));
+            $menu->addChild('Se connecter', ['route' => 'fos_user_security_login'], array('attributes' => array('class' => 'col-2 text-center')));
 
-            $menu['register']->setAttributes(array('class' => 'col-2 text-center'));
-            $menu['login']->setAttributes(array('class' => 'col-2 text-center'));
+            $menu['S\'enregistrer']->setAttributes(array('class' => 'col-2 text-center'));
+            $menu['Se connecter']->setAttributes(array('class' => 'col-2 text-center'));
         }
 
         return $menu;
