@@ -33,7 +33,7 @@
 
         {% block footer %}
             <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
-            <h4>Vous avez déjà un compte ? <a href="#">Se connecter</a></h4>
+            <h4>Vous avez déjà un compte ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></h4>
         {% endblock %}
 
     {% endembed %}
