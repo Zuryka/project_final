@@ -90,17 +90,16 @@ user:
     choeur: Choeur
     lead: Lead
 
-
-
 date:
   create: Date d'ajout
 registration:
   type: Type d'utilisateur
   adresse: Adresse
   policy: Acceptez les droits d'utilisation
-  name: nom
-  lastname: prenom
+  name: Nom
+  lastname: Prenom
 
 user_artiste: Artiste
 
+login: Se connecter
 logout: .icon-door-open Se déconnecter
