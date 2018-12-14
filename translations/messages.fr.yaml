@@ -95,11 +95,12 @@ date:
 registration:
   type: Type d'utilisateur
   adresse: Adresse
-  policy: Acceptez les droits d'utilisation
+  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.,
   name: Nom
   lastname: Prenom
 
 user_artiste: Artiste
 
+register: S'inscrire
 login: Se connecter
 logout: .icon-door-open Se déconnecter
