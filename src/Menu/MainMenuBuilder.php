@@ -35,7 +35,7 @@ class MainMenuBuilder
         $menu['FORMATIONS']->setAttributes(array('class' => 'col-2 text-center'));
         $menu['LIEUX']->setAttributes(array('class' => 'col-2 text-center'));
         
-        $menu->setChildrenAttribute('class', 'col-12');
+        $menu->setChildrenAttribute('class', 'col-12 px-0');
 
         if (is_object($user)) {
             // Ajout menu edition
