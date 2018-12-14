@@ -66,59 +66,59 @@ class EvenementType extends AbstractType
             'label' => 'evenement.code_postal',
             'required' => false,
         ))
-            ->add('ville', Type\TextType::class, array(
-                'label' => 'evenement.ville',
-                'required' => true,
-            ))
-            ->add('latitude', Type\NumberType::class, array(
-                'label' => 'evenement.latitude',
-                'required' => false,
-                'scale' => 5
-            ))
-            ->add('longitude', Type\NumberType::class, array(
-                'label' => 'evenement.longitude',
-                'required' => false,
-                'scale' => 5
-            ))
-            ->add('numTelephone', Type\TelType::class, array(
-                'label' => 'evenement.numTelephone',
-                'required' => false,
-            ))
-            ->add('tarif', Type\MoneyType::class, array(
-                'label' => 'evenement.tarif',
-                'required' => false,
-                'scale' => 2
-            ))
-            ->add('date', Type\DateType::class, array(
-                'label' => 'evenement.date',
-                'placeholder' => array(
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                ),
-                'required' => true,
-            ))
-            ->add('heureDebut', Type\TimeType::class, array(
-                'label' => 'evenement.heureDebut',
-                'required' => true,
-            ))
-            ->add('heureFin', Type\TimeType::class, array(
-                'label' => 'evenement.heureFin',
-                'required' => false,
-            ))
-            ->add('type', Type\ChoiceType::class, array(
-                'label' => 'evenement.type',
-                'choices' => array(
-                    'Bal' => 'Bal',
-                    'Concert' => 'Concert',
-                    'Festival' => 'Festival',
-                    'Jam Session' => 'Jam Session',
-                    'Karaoke' => 'Karaoke',
-                    'Récital' => 'Recital',
-                    'Répétition' => 'Répétition',
-                    'Show Case' => 'Show Case',
-                    'Autre ...' => 'Autre',
-                ),
-                'required' => true,
-            ))
+        ->add('ville', Type\TextType::class, array(
+            'label' => 'evenement.ville',
+            'required' => true,
+        ))
+        ->add('latitude', Type\NumberType::class, array(
+            'label' => 'evenement.latitude',
+            'required' => false,
+            'scale' => 5
+        ))
+        ->add('longitude', Type\NumberType::class, array(
+            'label' => 'evenement.longitude',
+            'required' => false,
+            'scale' => 5
+        ))
+        ->add('numTelephone', Type\TelType::class, array(
+            'label' => 'evenement.numTelephone',
+            'required' => false,
+        ))
+        ->add('tarif', Type\MoneyType::class, array(
+            'label' => 'evenement.tarif',
+            'required' => false,
+            'scale' => 2
+        ))
+        ->add('date', Type\DateType::class, array(
+            'label' => 'evenement.date',
+            'placeholder' => array(
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+            ),
+            'required' => true,
+        ))
+        ->add('heureDebut', Type\TimeType::class, array(
+            'label' => 'evenement.heureDebut',
+            'required' => true,
+        ))
+        ->add('heureFin', Type\TimeType::class, array(
+            'label' => 'evenement.heureFin',
+            'required' => false,
+        ))
+        ->add('type', Type\ChoiceType::class, array(
+            'label' => 'evenement.type',
+            'choices' => array(
+                'Bal' => 'Bal',
+                'Concert' => 'Concert',
+                'Festival' => 'Festival',
+                'Jam Session' => 'Jam Session',
+                'Karaoke' => 'Karaoke',
+                'Récital' => 'Recital',
+                'Répétition' => 'Répétition',
+                'Show Case' => 'Show Case',
+                'Autre ...' => 'Autre',
+            ),
+            'required' => true,
+        ))
         ;
         
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
