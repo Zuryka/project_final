@@ -138,6 +138,7 @@ class User extends BaseUser
      * @var bool
      */
     private $deleteImage;
+    
 
     public function __construct()
     {

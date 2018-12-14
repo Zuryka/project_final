@@ -60,7 +60,7 @@ user:
   username: Pseudo
   email: Adresse Mail
   password: Mot des passes
-  name: nom
+  name: Nom
   userlastname: Prenom
   codepostal: Code Postal
   ville: Ville
@@ -95,7 +95,7 @@ date:
 registration:
   type: Type d'utilisateur
   adresse: Adresse
-  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.,
+  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.
   name: Nom
   lastname: Prenom
 
@@ -104,3 +104,7 @@ user_artiste: Artiste
 register: S'inscrire
 login: Se connecter
 logout: .icon-door-open Se déconnecter
+
+security:
+  login:
+    submit: Se connecter
