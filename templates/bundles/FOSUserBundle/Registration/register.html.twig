@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}S'inscrire{% endblock %}
+
 {% block page_content %}
 
 
@@ -10,19 +12,19 @@
         {% block body %}
 
         {#============================================================#}
-    <div class="row">
-        <div class="col">
-            {{ form_row(form.username) }}
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.username) }}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            {{ form_row(form.nom) }}
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.prenom) }}
+            </div>
         </div>
-        <div class="col-md-4">
-            {{ form_row(form.prenom) }}
-        </div>
-    </div>
 
         {#============================================================#}
 
@@ -31,6 +33,7 @@
 
         {% block footer %}
             <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+            <h4>Vous avez déjà un compte ? <a href="#">Se connecter</a></h4>
         {% endblock %}
 
     {% endembed %}

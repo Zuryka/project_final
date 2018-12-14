@@ -29,10 +29,6 @@ class RegistrationType extends AbstractType
                 'label' => 'registration.lastname',
                 'required' => false,
             ))
-            ->add('adresse', Type\TextType::class, array(
-                'label' => 'registration.adresse',
-                'required' => true,
-            ))
             ->add('policy', Type\CheckboxType::class, array(
                 'label' => 'registration.policy',
                 'required' => true,
