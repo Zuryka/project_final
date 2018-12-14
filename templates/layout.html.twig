@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="entete container-fluid fixed-top">
         <div class="row justify-content-center">
             <div class="col-1 lateral-column"></div>
                 <div class="col-10 px-0">
@@ -16,20 +16,20 @@
                             </div>
                             <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
                             <div class="col-2 align-self-center">
-                                    <form id="form-beer_v1" name="form-beer_v1" class="navbar-form">
-                                            <div class="typeahead__container">
-                                                <div class="typeahead__field">
-                                                    <div class="typeahead__query">
-                                                        <input class="js-typeahead-beer_v1" name="beer_v1[query]" type="search" placeholder="Search" autocomplete="off">
-                                                    </div>
-                                                    <div class="typeahead__button">
-                                                        <button type="submit">
-                                                                <i class="fas fa-search"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                <form id="form-beer_v1" name="form-beer_v1" class="navbar-form">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <div class="typeahead__query">
+                                                <input class="js-typeahead-beer_v1" name="beer_v1[query]" type="search" placeholder="Search" autocomplete="off">
                                             </div>
-                                        </form>
+                                            <div class="typeahead__button">
+                                                <button type="submit">
+                                                        <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="container-fluid mt-5">
+    <div class="contenu container-fluid mt-5">
 
         <div class="row justify-content-center">
             <div class="col-10 px-0">

@@ -1,40 +1,51 @@
 {% extends 'layout.html.twig' %}
 
 {% block page_content %}
+<div class="events row justify-content-between">
+    {% for entity in entities %}
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3">
+            <div class="event">
+                <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link" data-toggle="modal" data-target="#evenementModal">
+                    <div class="event-image">
+                        {% if entity.getMediaWithPhotoIdent() is not empty %}
+                            <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img h-100" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
+                        {% endif %}
+                    </div>
+                    <div class="event-infos text-center">
+                        <p class="lead text-primary">{{ entity.nom }}</p>
+                        <p class="text-light"><small>{{ entity.type }} | {{ entity.styles ? entity.styles|join(', ') : '' }}</small></p>
+                        <p class="text-secondary">{{ entity.date|date("d/m/Y") }} - {{ entity.heureDebut|date('H:i') }}</p>
+                    </div>
+                </a>
 
-<div class="row justify-content-center">
-{% for entity in entities %}
-    <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
-        <div class="card  bg-light border-dark text-center">
-            <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link">
-                {% if entity.getMediaWithPhotoIdent() is not empty %}
-                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                {% elseif entity.image is not empty %}
-                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                {% else %}
-                    <img class="card-img-top" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
-                {% endif %}
-
-                <div class="card-body">
-                    <h2 class="card-title">{{ entity.nom }}</h2>
-                    <h4 class="card-text">
-                        {{ entity.type }} 
-                        {{ entity.styles ? entity.styles|join(', ') : '' }}
-                    </h4>
-                    <h5 class="card-text">
-                        {{ entity.date|date("d/m/Y") }} - 
-                        {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
-                        {{ entity.tarif }} €
-                    </h5>
+                <!-- Modal -->
+                <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="evenementModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </a>
-        </div>
-    </div>
-{% endfor %}
-</div>
 
-{# {% if is_granted('create', newEntity) %}
-    <a href="{{ path('evenement_new') }}">Créer un événement</a>    
-{% endif %} #}
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
