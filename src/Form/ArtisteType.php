@@ -34,9 +34,9 @@ class ArtisteType extends AbstractType
             ->add('niveau', Type\ChoiceType::class, array(
                 'label' => 'user.niveau',
                 'choices'  => array(
-                    'amateur' => 'user_amateur',
-                    'semi-pro' => 'user_semi-pro',
-                    'pro' => 'user_pro',
+                    'amateur' => 'amateur',
+                    'semi-pro' => 'semi-pro',
+                    'pro' => 'pro',
                 ),
                 'required' => false,
             ))
@@ -44,11 +44,25 @@ class ArtisteType extends AbstractType
             ->add('styles', Type\ChoiceType::class, array(
                     'label' => 'user.styles.liste',
                     'choices' => array(
-                        'Rock' => 'user.styles.rock',
-                        'Pop' => 'user.styles.pop',
-                        'Indie' => 'user.styles.indie',
-                        'Classique' => 'user.styles.classique',
-                        'autres' => 'user.styles.autres'
+                        'Blues' => 'Blues',
+                        'Classique' => 'Classique',
+                        'Country' => 'Country',
+                        'Electro' => 'Electro',
+                        'Folk & Acoustic' => 'Folk & Acoustic',
+                        'Funk' => 'Funk',
+                        'Hip-hop' => 'Hip-hop',
+                        'Indie' => 'Indie',
+                        'K-Pop/J-Pop' => 'K-Pop/J-Pop',
+                        'Latino' => 'Latino',
+                        'Metal' => 'Metal',
+                        'Pop' => 'Pop',
+                        'Punk' => 'Punk',
+                        'Reggae/Dancehall' => 'Reggae/Dancehall',
+                        'RnB' => 'RnB',
+                        'Rock' => 'Rock',
+                        'Soul' => 'Soul',
+                        'Autre...' => 'Autre',
+
                     ),
                     'required' => false,
                     'multiple' => true,
@@ -57,12 +71,12 @@ class ArtisteType extends AbstractType
             ->add('instruments', Type\ChoiceType::class, array(
                 'label' => 'user.instruments.liste',
                 'choices' => array(
-                    'guitare' => 'user.instruments.guitare',
-                    'violon' => 'user.instruments.violon',
-                    'batterie' => 'user.instruments.batterie',
-                    'contrebasse' => 'user.instruments.contrebasse',
-                    'triangle' => 'user.instruments.triangle',
-                    'autre' => 'user.instruments.autre',
+                    'guitare' => 'guitare',
+                    'violon' => 'violon',
+                    'batterie' => 'batterie',
+                    'contrebasse' => 'contrebasse',
+                    'triangle' => 'triangle',
+                    'autre...' => 'autre',
                 ),
                 'required' => false,
                 'multiple' => true,
@@ -71,8 +85,8 @@ class ArtisteType extends AbstractType
             ->add('chants', Type\ChoiceType::class, array(
                 'label' => 'user.chants.liste',
                 'choices' => array(
-                    'choeur' => 'user.chants.choeur',
-                    'lead' => 'user.chants.lead',
+                    'choeur' => 'choeur',
+                    'lead' => 'lead',
                     
                 ),
                 'required' => false,
