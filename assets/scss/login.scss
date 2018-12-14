@@ -5,19 +5,40 @@ $dark: #222222;
 $light: #BDBEAF;
 $white: #EBEBEB;
 
-body {
-    background-image: none;
-    background-color: $white;
+.lateral-column {
+    border-bottom: none;
+}
+
+.divider {
+    border-top: 1px solid #b3b3b3;
+    padding-left: 15%;
+    display: block;
+    line-height: 1px;
+    margin: 15px 0;
+    position: relative;
+    text-align: center;
 }
 
 h4 {
     font-size: 16px;
-    color: $dark;
+    color: $white;
+    margin-top: 12px;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    font-weight: 700;
 }
 
-.facebook {
+form {
+    margin-top: 30px;
+}
+
+a {
+    color: #CBB41A;
+}
+
+.btn-block {
     text-align: center;
-    background-color: #3b5998;
+    background-color: $secondary;
     color: #fff;
     font-size: 14px;
     line-height: 1;
@@ -27,17 +48,66 @@ h4 {
     min-width: 160px;
     text-transform: uppercase;
     white-space: normal;
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 0.6s;
 }
 
-.divider {
-    border-top: 1px solid #d9dadc;
-    display: block;
-    line-height: 1px;
-    margin: 15px 0;
-    position: relative;
+.btn-block:hover {
+    background-color: #E3CA26;
+}
+
+.mdp {
+    margin: 10px 0% 20px 0%;
+}
+
+.mdp a:hover {
+    color: #E3CA26;
+    text-decoration: none;
+}
+
+h5 {
+    font-size: 17px;
+    color: $white;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.register {
     text-align: center;
+    background-color: transparent;
+    color: $secondary;
+    border: 3px solid $secondary;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 16px 45px 18px;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 10px;
+    transition-duration: 0.6s;
+    cursor: pointer;
 }
 
-a {
-    color: #CBB41A;
+.register:hover {
+    opacity: 0.7;
+}
+
+.register a:hover {
+    text-decoration: none;
+}
+
+p {
+    font-size: .7em;
+    color: #c1c3c6;
+}
+
+label {
+    color: $white;
 }

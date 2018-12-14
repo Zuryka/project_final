@@ -1,41 +1,96 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}S'inscrire{% endblock %}
+{% block title %}S'enregistrer{% endblock %}
 
-{% block page_content %}
-
-
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {% embed 'decorator/_card.html.twig' %}
-        {% trans_default_domain 'FOSUserBundle' %}
-        
-        {% block body %}
-
-        {#============================================================#}
-        <div class="row">
-            <div class="col">
-                {{ form_row(form.username) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                {{ form_row(form.nom) }}
-            </div>
-            <div class="col-md-4">
-                {{ form_row(form.prenom) }}
-            </div>
-        </div>
-
-        {#============================================================#}
-
-        {{ form_widget(form) }}
-        {% endblock %}
-
-        {% block footer %}
-            <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
-            <h4>Vous avez déjà un compte ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></h4>
-        {% endblock %}
-
-    {% endembed %}
-{{ form_end(form) }}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/register.css') }}">
 {% endblock %}
+
+{% block body %}
+    {% block page_content %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-1 lateral-column"></div>
+                <div class="col-10 px-0">
+                    {% block header %}
+                    <div class="logo text-center">
+                        <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+                    </div>
+                    {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
+                    {% endembed %}
+                    {% endblock header %}
+                </div>
+                <div class="col-1 lateral-column"></div>
+            </div>
+        </div>
+        <div class="divider"></div>
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {% trans_default_domain 'FOSUserBundle' %}
+
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h4 class="text-center">Inscrivez-vous avec votre adresse email</h4>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4 username">
+                    {{ form_row(form.username) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    {{ form_row(form.nom) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_row(form.prenom) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    {{ form_row(form.email) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    {{ form_widget(form) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    {{ form_row(form.type) }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="remember_me" value="on" required>
+                            <label class="custom-control-label" for="remember_me">En m'inscrivant, j'accepte les <a href="#">Conditions d'Utilisation</a> et reconnais avoir lu la <a href="#">Politique de Confidentialité</a> de P'tites Scènes.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 robot">
+                    API JE NE SUIS PAS UN ROBOT
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    {% block footer %}
+                        <input type="submit" class="btn btn-block" value="S'enregistrer" />
+                    {% endblock %}
+                </div>
+            </div>
+
+            {{ form_widget(form) }}
+
+        {{ form_end(form) }}
+        <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <h4 class="login">Vous avez déjà un compte ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></h4>
+                </div>
+            </div>
+    {% endblock page_content %}
+{% endblock body %}
