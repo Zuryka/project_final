@@ -2,7 +2,68 @@
 
 {% block page_content %}
 
+
 <div class="row justify-content-center">
+    <div class="col-10 mt-3">
+        <div class="card text-white bg-danger border-dark text-center">
+            {% if entity.getMediaWithPhotoIdent() is not empty %}
+                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+            {% elseif entity.image is not empty %}
+                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+            {% else %}
+                <img class="card-img-top" src="{{ asset('/img/artiste_def.jpg') }}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title">
+                    {% if entity.nomArtiste is not empty %}
+                        {{ entity.nomArtiste }}
+                    {% else %}
+                        {{ entity.username }}
+                    {% endif %}
+                </h2>
+                {% if entity.niveau is not empty %}
+                    <h4 class="card-text">
+                        {{ 'user.artiste.show.musicien'|trans }} {{ entity.niveau }} 
+                    </h4>
+                {% endif %}
+                {% if entity.styles is not empty %}
+                    <h5 class="card-text">
+                        {{ 'user.artiste.show.style'|trans }} : {{ entity.styles ? entity.styles|join(', ') : '' }}                
+                    </h5>
+                {% endif %}
+                {% if entity.presentation is not empty %}
+                    <p class="card-text"> {{ entity.presentation }} </p>
+                {% endif %}
+
+                <ul class="list-group list-group-flush">
+                    {% if entity.instruments is not empty %}
+                        <li class="list-group-item bg-dark">
+                            {{ 'user.artiste.show.instrument'|trans }} : {{ entity.instruments ? entity.instruments|join(', ') : '' }}                
+                        </li>
+                    {% endif %}
+                    {% if entity.chants is not empty %}
+                        <li class="list-group-item bg-secondary">
+                            {{ 'user.artiste.show.chant'|trans }} : {{ entity.chants ? entity.chants|join(', ') : '' }}                
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {% if is_granted('editArtiste', entity) %}
+                    <div class="row">
+                        <div class="col mt-3">
+                            <a href="{{ path('user_index') }}"><button class="btn">Retour</button></a>
+                        </div>
+                        <div class="col mt-3">
+                            <a href="{{ path('user_artiste_edit', {'username': entity.getUsername()}) }}"><button class="btn">Modifier</button></a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{# <div class="row justify-content-center">
     <div class="col-10 mt-3">
            
 
@@ -14,5 +75,5 @@
             </div>
         {% endif %}
     </div>
-</div>
+</div> #}
 {% endblock page_content %}

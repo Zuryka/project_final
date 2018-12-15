@@ -3,7 +3,9 @@ menu:
     users: .icon-users Utilisateurs
 
 lieu:
-  photo: Photo du lieu
+  new:
+    title: Edition d'un nouveau lieu
+  photo: Photo du présentation du lieu
   nom: Nom
   type: Type
   presentation: Présentation
@@ -15,6 +17,8 @@ lieu:
   num_telephone: Numéro de téléphone de la structure
 
 evenement:
+  new:
+    title: Edition d'un nouvel évènement
   photo: Photo de présentation de l'évènement
   nom: Nom
   presentation: Présentation
@@ -31,7 +35,9 @@ evenement:
   type: Type
 
 formation:
-  photo: Photo de la formation
+  new:
+    title: Edition d'une nouvelle formation
+  photo: Photo de présentation de la formation
   nom: Nom
   type: Type
   localisation: Localisation
@@ -42,10 +48,19 @@ formation:
 user:
   edit:
     title: Modification du profil
+  artiste:
+    photo: Photo de présentation de l'artiste
+    edit:
+      title: Edition de mon profil artiste
+    show:
+      musicien: Musicien
+      style: Style
+      instrument: Instrument
+      chant: Chant
   username: Pseudo
   email: Adresse Mail
   password: Mot des passes
-  name: nom
+  name: Nom
   userlastname: Prenom
   codepostal: Code Postal
   ville: Ville
@@ -72,20 +87,24 @@ user:
     autre: Autre
   chants:
     liste: Type de chants
-    coeur: Coeur
+    choeur: Choeur
     lead: Lead
-
-
 
 date:
   create: Date d'ajout
 registration:
   type: Type d'utilisateur
   adresse: Adresse
-  policy: Acceptez les droits d'utilisation
-  name: nom
-  lastname: prenom
+  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.
+  name: Nom
+  lastname: Prenom
 
 user_artiste: Artiste
 
+register: S'inscrire
+login: Se connecter
 logout: .icon-door-open Se déconnecter
+
+security:
+  login:
+    submit: Se connecter

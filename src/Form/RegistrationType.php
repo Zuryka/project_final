@@ -28,16 +28,7 @@ class RegistrationType extends AbstractType
             ->add('prenom', Type\TextType::class, array(
                 'label' => 'registration.lastname',
                 'required' => false,
-            ))
-            ->add('adresse', Type\TextType::class, array(
-                'label' => 'registration.adresse',
-                'required' => true,
-            ))
-            ->add('policy', Type\CheckboxType::class, array(
-                'label' => 'registration.policy',
-                'required' => true,
-                'mapped' => false, // Ce champ n'est pas dans l'entité User (pas d'enregistrement en db)
-            ))           
+            ))          
         ;
     }
 

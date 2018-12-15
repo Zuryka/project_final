@@ -35,27 +35,19 @@ class MainMenuBuilder
         $menu['FORMATIONS']->setAttributes(array('class' => 'col-2 text-center'));
         $menu['LIEUX']->setAttributes(array('class' => 'col-2 text-center'));
         
-        $menu->setChildrenAttribute('class', 'col-12');
+        $menu->setChildrenAttribute('class', 'col-12 px-0');
 
         if (is_object($user)) {
             // Ajout menu edition
             $parent = $menu->addChild('EDITION', ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
             $parent->setAttributes(array('class' => 'col-2 text-center'));
 
-            if ($this->autorisationChecker->isGranted('editArtiste', $user))
+            if ($this->autorisationChecker->isGranted('createArtiste', $user))
             {
-                $parent->addChild('Mon profil artiste', ['uri' => '#']);
+                $parent->addChild('Mon profil artiste', ['route' => 'user_artiste_edit', 'routeParameters' => ['username' => $user->getUsername()]]);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Formation))
             {
-
-            // if ($this->autorisationChecker->isGranted('createArtiste', $user))
-            // {
-                $parent->addChild('Mon profil artiste', ['route' => 'user_artiste_edit', 'routeParameters' => ['username' => $user->getUsername()]]);
-            // }
-            // if ($this->autorisationChecker->isGranted('create', $lieu))
-            // {
-
                 $parent->addChild('Nouvelle formation', ['route' => 'formation_new']);
             }
             if ($this->autorisationChecker->isGranted('create', new Entity\Evenement))
@@ -67,7 +59,7 @@ class MainMenuBuilder
                 $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
             }
 
-            $parent = $menu->addChild($user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
+            $parent = $menu->addChild('<i class="fas fa-user"></i>' . '     ' . $user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
             $parent->setAttributes(array('class' => 'col-2 text-center'));
             
@@ -85,11 +77,11 @@ class MainMenuBuilder
             $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
 
         } else {
-            $menu->addChild('register', ['route' => 'fos_user_registration_register'], array('attributes' => array('class' => 'col-2 text-center')));
-            $menu->addChild('login', ['route' => 'fos_user_security_login'], array('attributes' => array('class' => 'col-2 text-center')));
+            $parent = $menu->addChild('<i class="fas fa-user"></i>', ['uri' => '#'], array('attributes' => array('class' => 'col-4 text-center')));
+            $parent->setAttributes(array('class' => 'col-4 text-center'));
 
-            $menu['register']->setAttributes(array('class' => 'col-2 text-center'));
-            $menu['login']->setAttributes(array('class' => 'col-2 text-center'));
+            $parent->addChild('S\'enregistrer', ['route' => 'fos_user_registration_register']);
+            $parent->addChild('Se connecter', ['route' => 'fos_user_security_login']);
         }
 
         return $menu;

@@ -28,8 +28,8 @@ class UserVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             
-            case 'editArtiste':
             case 'createArtiste':
+
             // Vérifier que l'utilisateur est connecté
             if (!$user instanceof UserInterface) {
                 return false;
@@ -40,8 +40,30 @@ class UserVoter extends Voter
                 return true;
             }
             
+            // Vérifier que l'utilisateur connecté est un artiste
             return in_array(User::TYPE_ARTISTE, $user->getType());
             break;
+
+            case 'editArtiste':
+            // Vérifier que l'utilisateur est connecté
+            if (!$user instanceof UserInterface) {
+                return false;
+            }
+            
+            // Si on est SUPER_ADMIN
+            if ($user->hasRole('ROLE_SUPER_ADMIN')) {
+                return true;
+            }
+            
+            // Vérifier que l'utilisateur connecté est un artiste
+            if (!in_array(User::TYPE_ARTISTE, $user->getType())) {
+                return false;
+            }
+
+            // Vérifier que l'utilisateur connecté correspond à l'artiste qu'iol souhaîte modifier
+            return $subject->getId() == $user->getId();
+            break;
+
 
             case 'viewArtiste':
                 // logic to determine if the user can VIEW
