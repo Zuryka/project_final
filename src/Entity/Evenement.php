@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Evenement
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -41,7 +42,7 @@ class Evenement
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-    private $code_postal;
+    private $codePostal; // code_postal
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
@@ -61,7 +62,7 @@ class Evenement
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $num_telephone;
+    private $numTelephone;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -76,12 +77,12 @@ class Evenement
     /**
      * @ORM\Column(type="time")
      */
-    private $heure_debut;
+    private $heureDebut;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $heure_fin;
+    private $heureFin;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -92,12 +93,12 @@ class Evenement
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user_createur;
+    private $userCreateur;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
-    private $user_contact;
+    private $userContact;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Lieu")
@@ -114,16 +115,36 @@ class Evenement
      */
     private $formations;
 
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="evenement")
+     */
+    private $medias;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"all"}, orphanRemoval=true)
+     * @var ?\App\Entity\Image
+     */
+    private $image;
+
+    /**
+     * @var bool
+     */
+    private $deleteImage;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
         $this->formations = new ArrayCollection();
+        $this->deleteImage = false;
     }
 
-    
-
-
-
+    public function __toString()
+    {
+        return $this->artistes;
+        return $this->formations;
+        return $this->lieu;
+    }
 
     //============= Mutateur ==========================
 
@@ -144,12 +165,12 @@ class Evenement
         return $this;
     }
 
-    public function getStyles(): ?string
+    public function getStyles(): ?array
     {
         return $this->styles;
     }
 
-    public function setStyles(string $styles): self
+    public function setStyles(array $styles): self
     {
         $this->styles = $styles;
 
@@ -182,12 +203,12 @@ class Evenement
 
     public function getCodePostal(): ?string
     {
-        return $this->code_postal;
+        return $this->codePostal;
     }
 
-    public function setCodePostal(?string $code_postal): self
+    public function setCodePostal(?string $codePostal): self
     {
-        $this->code_postal = $code_postal;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -230,12 +251,12 @@ class Evenement
 
     public function getNumTelephone(): ?string
     {
-        return $this->num_telephone;
+        return $this->numTelephone;
     }
 
-    public function setNumTelephone(?string $num_telephone): self
+    public function setNumTelephone(?string $numTelephone): self
     {
-        $this->num_telephone = $num_telephone;
+        $this->numTelephone = $numTelephone;
 
         return $this;
     }
@@ -266,24 +287,24 @@ class Evenement
 
     public function getHeureDebut(): ?\DateTimeInterface
     {
-        return $this->heure_debut;
+        return $this->heureDebut;
     }
 
-    public function setHeureDebut(\DateTimeInterface $heure_debut): self
+    public function setHeureDebut(\DateTimeInterface $heureDebut): self
     {
-        $this->heure_debut = $heure_debut;
+        $this->heureDebut = $heureDebut;
 
         return $this;
     }
 
     public function getHeureFin(): ?\DateTimeInterface
     {
-        return $this->heure_fin;
+        return $this->heureFin;
     }
 
-    public function setHeureFin(\DateTimeInterface $heure_fin): self
+    public function setHeureFin(\DateTimeInterface $heureFin): self
     {
-        $this->heure_fin = $heure_fin;
+        $this->heureFin = $heureFin;
 
         return $this;
     }
@@ -302,24 +323,24 @@ class Evenement
 
     public function getIdUserCreateur(): ?User
     {
-        return $this->user_createur;
+        return $this->userCreateur;
     }
 
-    public function setIdUserCreateur(?User $user_createur): self
+    public function setIdUserCreateur(?User $userCreateur): self
     {
-        $this->user_createur = $user_createur;
+        $this->userCreateur = $userCreateur;
 
         return $this;
     }
 
     public function getUserContact(): ?User
     {
-        return $this->user_contact;
+        return $this->userContact;
     }
 
-    public function setUserContact(?User $user_contact): self
+    public function setUserContact(?User $userContact): self
     {
-        $this->user_contact = $user_contact;
+        $this->userContact = $userContact;
 
         return $this;
     }
@@ -383,6 +404,83 @@ class Evenement
     {
         if ($this->formations->contains($formation)) {
             $this->formations->removeElement($formation);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+    
+    /**
+     * Get the value of image
+     *
+     * @return  ?\App\Entity\Image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @param  ?\App\Entity\Image  $image
+     *
+     * @return  self
+     */ 
+    public function setImage(?\App\Entity\Image $image)
+    {
+        if ($image instanceof Image && !is_null($image->getFile())){ // Test si une image est envoyéee
+            $this->image = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of deleteImage
+     *
+     * @return  bool
+     */ 
+    public function getDeleteImage()
+    {
+        return $this->deleteImage;
+    }
+
+    /**
+     * Set the value of deleteImage
+     *
+     * @param  bool  $deleteImage
+     *
+     * @return  self
+     */ 
+    public function setDeleteImage(bool $deleteImage)
+    {
+        $this->deleteImage = $deleteImage;
+        if ($deleteImage){
+            $this->image = null;
         }
 
         return $this;

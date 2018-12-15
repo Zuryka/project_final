@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+    {# <h2>Les artistes</h2> #}
+
+
+<div class="row justify-content-center">
+{% for entity in entities %}
+    {% for i in 0..(entity.type|length - 1) %}
+        {% if entity.type[i] == "user_artiste" %}
+
+            <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
+                <div class="card text-white bg-danger border-dark text-center">
+                    <a href="{{ path('user_artiste_show', {'username': entity.username}) }}" class="card-link">
+                        {% if entity.getMediaWithPhotoIdent() is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('/img/artiste_def.jpg') }}" alt="Card image cap">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                {% if entity.nomArtiste is not empty %}
+                                    {{ entity.nomArtiste }}
+                                {% else %}
+                                    {{ entity.username }}
+                                {% endif %}
+                            </h2>
+                            <h4 class="card-text">{{ entity.presentation }}</h4>
+                            <h5 class="card-text"> {{ entity.dateInscription|date('d/m/Y H:i') }} </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</div>
+
+    {# <div class="card-group mt-5">
+        <div class="row justify-content-center">
+            {% for entity in entities %}
+                {% for i in 0..(entity.type|length - 1) %}
+                    {% if entity.type[i] == "user_artiste" %}
+                        <div class="card m-1 p-2 col">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary"><a href="{{ path('user_show', {'username': entity.username}) }}">{{ entity.username }}</a></h5>
+                                <p class="card-text">{{ entity.presentation }}</p>
+                                <p class="card-text"><small class="text-muted">{{ entity.dateInscription|date('d/m/Y H:i') }}</small></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div> #}
+{% endblock page_content %}

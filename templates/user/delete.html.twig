@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+    
+    {{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+
+        {% block header %}
+            {{ 'user.delete.title'|trans }}
+        {% endblock %}
+
+        {% block body %}
+            {# Formulaire #}
+            <div class="alert alert-primary">{{ 'user.delete.message'|trans }}</div>
+            {{ form(form) }}
+        {% endblock %}
+
+        {% block footer %}
+            <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-trash"></i> Supprimer</button>
+        {% endblock %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+
+{% endblock page_content %}

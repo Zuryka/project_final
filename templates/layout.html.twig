@@ -5,13 +5,38 @@
 {% endblock %}
 
 {% block body %}
-{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
-    {% block brand %}
-    Blog WebForce3
-    {% endblock %}
-{% endembed %}
-<div class="container">
-    {% block page_content %}
-    {% endblock %}
-</div>
-{% endblock %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-1 lateral-column"></div>
+            <div class="col-10 px-0">
+                {% block header %}
+                <div class="logo text-center">
+                    <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+                </div>
+                {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
+                {% block menu %}
+                {{ knp_menu_render('main', {'style': 'horizontal'}) }}
+                
+                {# {{ knp_menu_render('user', {'style': 'horizontal-right'}) }} #}
+                {% endblock menu %}
+                {% endembed %}
+                {% endblock header %}
+            </div>
+            <div class="col-1 lateral-column"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-8 px-0">
+            
+                <div class="container">
+                    {% block page_content %}
+                    {% endblock page_content %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock body %}

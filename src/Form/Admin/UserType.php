@@ -22,7 +22,6 @@ class UserType extends AbstractType
     {
         $roles = array(
             'role.admin' => 'ROLE_ADMIN',
-            'role.fournisseur' => 'ROLE_FOURNISSEUR',
             'role.user' => 'ROLE_USER',
         );
 
@@ -33,14 +32,25 @@ class UserType extends AbstractType
 
         $builder
             ->add('username')
+            ->add('nom')
+            ->add('prenom')
             ->add('email')
             ->add('enabled')
-            ->add('plainPassword')
+            ->add('password', Type\PasswordType::class, array(
+                'required' => false,
+            ))
             ->add('roles', Type\ChoiceType::class, array(
                 'multiple' => true,
                 'choices' => $roles
             ))
-            ->add('type')
+            ->add('type', Type\ChoiceType::class, array(
+                'multiple' => true,
+                'choices'  => array(
+                    'artiste' => 'user_artiste',
+                    'organisateur_evenement' => 'user_event',
+                    'gerant_local' => 'user_local',
+                ),
+            ))
         ;
     }
 

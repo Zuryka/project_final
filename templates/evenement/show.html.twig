@@ -1,0 +1,83 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_content %}
+
+<div class="row justify-content-center">
+    <div class="col-10 mt-3">
+        {# {{ dump(entity) }} #}
+        <div class="card text-white bg-danger border-dark text-center">
+            {% if mediaWithPhotoIdent is not empty %}
+                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ mediaWithPhotoIdent.lien) }}" alt="{{ mediaWithPhotoIdent.titre }}">
+            {% elseif entity.image is not empty %}
+                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+            {% else %}
+                <img class="card-img-top" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title">{{ entity.nom }}</h2>
+                <h4 class="card-text">
+                    {{ entity.type }} 
+                    {{ entity.styles ? entity.styles|join(', ') : '' }}
+                </h4>
+                <h5 class="card-text">
+                    {{ entity.date|date("d/m/Y") }} - 
+                    {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
+                    {{ entity.tarif }} €
+                </h5>
+                <p class="card-text"> {{ entity.presentation }} </p>
+                <ul class="list-group list-group-flush">
+                    {% if entity.artistes is not empty or entity.formations is not empty %}
+                    <li class="list-group-item bg-dark">
+                        <p>Participants :
+                            {% for artiste in entity.artistes %}
+                                <a href="#" class="card-link">
+                                    {% if artiste.nomArtiste is not empty %}
+                                        {{ artiste.nomArtiste }}
+                                    {% else %}
+                                        {{ artiste.prenom }} {{ artiste.nom }}
+                                    {% endif %}
+                                </a>    
+                            {% endfor %}
+
+                            {% for formation in entity.formations %}
+                                <a href="#" class="card-link"> {{ formation.nom }} </a>    
+                            {% endfor %}
+                        </p>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item bg-secondary">Lieu : 
+                        {% if entity.lieu is not empty %}
+                            <a href="#" class="card-link"> {{ entity.lieu.nom }} </a>                         
+                        {% else %}
+                            {{ entity.adresse }} - 
+                            {{ entity.codepostal }} - 
+                            {{ entity.ville }}
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item bg-dark">Contact :
+                        {% if entity.userContact is not empty %}
+                            <a href="#" class="card-link"> {{ entity.userContact.prenom }} {{ entity.userContact.nom }} </a>    
+                        {% else %}
+                            {{ entity.numTelephone }}
+                        {% endif %}
+                    </li>
+                </ul>
+
+                {% if is_granted('edit', entity) %}
+                    <div class="row">
+                        <div class="col mt-3">
+                            <a href="{{ path('evenement_index') }}"><button class="btn">Retour</button></a>
+                        </div>
+                        <div class="col mt-3">
+                            <a href="{{ path('evenement_edit', {'id': entity.id }) }}"><button class="btn">Modifier</button></a>
+                        </div>
+                        <div class="col mt-3">
+                            {{ include('evenement/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

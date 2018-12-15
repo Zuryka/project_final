@@ -2,13 +2,105 @@ menu:
   admin:
     users: .icon-users Utilisateurs
 
+lieu:
+  new:
+    title: Edition d'un nouveau lieu
+  photo: Photo du présentation du lieu
+  nom: Nom
+  type: Type
+  presentation: Présentation
+  adresse: Adresse
+  code_postal: Code Postal
+  ville: Ville
+  latitude: Latitude
+  longitude: Longitude
+  num_telephone: Numéro de téléphone de la structure
+
+evenement:
+  new:
+    title: Edition d'un nouvel évènement
+  photo: Photo de présentation de l'évènement
+  nom: Nom
+  presentation: Présentation
+  adresse: Adresse
+  code_postal: Code Postal
+  ville: Ville
+  latitude: Latitude
+  longitude: Longitude
+  numTelephone: Numéro de téléphone
+  tarif: Tarif
+  date: Date
+  heureDebut: Heure de début
+  heureFin: Heure de fin
+  type: Type
+
+formation:
+  new:
+    title: Edition d'une nouvelle formation
+  photo: Photo de présentation de la formation
+  nom: Nom
+  type: Type
+  localisation: Localisation
+  presentation: Présentation
+  styles: Styles joués ou chantés
+  niveau: Niveau
+
+user:
+  edit:
+    title: Modification du profil
+  artiste:
+    photo: Photo de présentation de l'artiste
+    edit:
+      title: Edition de mon profil artiste
+    show:
+      musicien: Musicien
+      style: Style
+      instrument: Instrument
+      chant: Chant
+  username: Pseudo
+  email: Adresse Mail
+  password: Mot des passes
+  name: nom
+  userlastname: Prenom
+  codepostal: Code Postal
+  ville: Ville
+  numtelephone: Numéro de Telephone
+  nivau: Status profesionnel
+  adresse: Adresse
+  artistename: Nom D'artiste
+  presentation: Présentation
+  niveau: Status professionnel
+  styles:
+    liste: Liste de Styles
+    rock: Rock
+    pop: Pop
+    indie: Indie
+    classique: Classique
+    autre: Autre
+  instruments:
+    liste: Instruments joués
+    guitare: Guitare
+    violon: Violon
+    batterie: Batterie
+    contrebasse: Contrebasse
+    triangle: Triangle
+    autre: Autre
+  chants:
+    liste: Type de chants
+    choeur: Choeur
+    lead: Lead
+
+
 
 date:
   create: Date d'ajout
+registration:
+  type: Type d'utilisateur
+  adresse: Adresse
+  policy: Acceptez les droits d'utilisation
+  name: nom
+  lastname: prenom
 
-user:
-  type:
-    client: Client
-    fournisseur: Fournisseur
+user_artiste: Artiste
 
 logout: .icon-door-open Se déconnecter

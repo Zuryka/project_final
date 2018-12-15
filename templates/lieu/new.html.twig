@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un lieu{% endblock %}
+
+{% block page_content %}
+{{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+    {% block header %}
+    <h1> {{ 'lieu.new.title'|trans }} </h1>
+    {% endblock %}
+
+    {% block body %}
+    {{ include('lieu/_form.html.twig', {'button_label': 'Créer'}) }}
+    {% endblock %}
+
+    {% block footer %}
+    <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Retour vers la liste</a>
+    <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+    {% endblock %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock %}

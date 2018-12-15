@@ -19,6 +19,17 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
+    public function findAll()
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f, u, uc')
+            ->leftJoin('f.user_createur', 'u')
+            ->leftJoin('f.user_contact', 'uc')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Formation[] Returns an array of Formation objects
     //  */

@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Le blog du développeur{% endblock %}</title>
+        <title>{% block title %}P'TITES SCENES{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -11,6 +12,5 @@
         <script src="{{ asset('build/runtime.js') }}"></script>
         <script src="{{ asset('build/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
-        
     </body>
 </html>

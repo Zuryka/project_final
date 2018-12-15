@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un évènement{% endblock %}
+
+{% block page_content %}
+{{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+    {% block header %}
+    <h1> {{ 'evenement.new.title'|trans }} </h1>
+    {% endblock %}
+
+    {% block body %}
+    {{ include('evenement/_form.html.twig', {'button_label': 'Créer'}) }}
+    {% endblock %}
+
+    {% block footer %}
+    <a class="btn btn-secondary" href="{{ path('evenement_index') }}">Retour vers la liste</a>
+    <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+    {% endblock %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock %}

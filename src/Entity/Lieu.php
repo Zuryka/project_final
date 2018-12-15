@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Lieu
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -70,8 +71,29 @@ class Lieu
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
-    private $id_user_contact;
+    private $user_contact;
 
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="lieu")
+     */
+    private $medias;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"all"}, orphanRemoval=true)
+     * @var ?\App\Entity\Image
+     */
+    private $image;
+
+    /**
+     * @var bool
+     */
+    private $deleteImage;
+
+    public function __construct()
+    {
+        $this->deleteImage = false;
+    }
     
     public function getId(): ?int
     {
@@ -198,14 +220,101 @@ class Lieu
         return $this;
     }
 
-    public function getIdUserContact(): ?User
+    public function getUserContact(): ?User
     {
-        return $this->id_user_contact;
+        return $this->user_contact;
     }
 
-    public function setIdUserContact(?User $id_user_contact): self
+    public function setUserContact(?User $user_contact): self
     {
-        $this->id_user_contact = $id_user_contact;
+        $this->user_contact = $user_contact;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Set one value of medias
+     */
+    public function addMedia($media)
+    {
+        $this->medias[] = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     *
+     * @return  ?\App\Entity\Image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @param  ?\App\Entity\Image  $image
+     *
+     * @return  self
+     */ 
+    public function setImage(?\App\Entity\Image $image)
+    {
+        if ($image instanceof Image && !is_null($image->getFile())){ // Test si une image est envoyéee
+            $this->image = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of deleteImage
+     *
+     * @return  bool
+     */ 
+    public function getDeleteImage()
+    {
+        return $this->deleteImage;
+    }
+
+    /**
+     * Set the value of deleteImage
+     *
+     * @param  bool  $deleteImage
+     *
+     * @return  self
+     */ 
+    public function setDeleteImage(bool $deleteImage)
+    {
+        $this->deleteImage = $deleteImage;
+        if ($deleteImage){
+            $this->image = null;
+        }
 
         return $this;
     }
