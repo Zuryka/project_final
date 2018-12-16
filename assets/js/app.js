@@ -40,30 +40,29 @@ $(function() {
 
 
     /* **************************************************************
-     * ***** adaptation de la hauteur en fonction de la largeur *****
+     * ***** Adaptation de la hauteur en fonction de la largeur *****
      * **************************************************************/
 
     var $width_event = $('.event').width();
-    console.log($width_event);
     $('.event').css({height: $width_event + "px"});
     
     $(window).resize(function() {
         $width_event = $('.event').width();
         $('.event').css({height: $width_event + "px"});
-        console.log($width_event);
     });
 
-  
-  /*
-  function height_section($var) {
-    $var.css({ minHeight: $width_window + "px"});
-  }
-  
-  // si la fenêtre est redimensionnée, la hauteur de l'accueil de .agency s'adapte automatiquement
-  $(window).resize(function() {
-    $width_window = ($(document).width() / 16)*9;
-    height_section($(".home_agency"));
-  });
-  */
-  
+
+    /* *********************************************************
+     * ***** Gestion des filtres dans la page "événements" *****
+     * *********************************************************/
+
+    $('#stylesChoice').submit(function(event) {
+        if (!$('.allEvents').hasClass(event)) {
+            $('.allEvents').addClass('desactive');
+        } else {
+            $('.allEvents').removeClass('desactive');
+        }
+    });
+    
 }); //loading....
+
