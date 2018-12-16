@@ -12,31 +12,26 @@
                     {% block header %}
                         <div class="logo text-center row justify-content-around">
                             <div class="col-2">
-
                             </div>
-                            <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
-                            <div class="col-2 align-self-center">
 
-                                <form id="form-keyword" name="form-keyword" class="navbar-form">
+                            <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+
+                            <div class="col-lg-4 col-md-6 col-sm-10 align-self-center">
+                                {# Formulaire de recherche d'un évènement, artiste, formation ou lieu #}
+                                <form id="form-search" name="form-search">
                                     <div class="typeahead__container">
                                         <div class="typeahead__field">
                                             <div class="typeahead__query">
-                                                <input class="js-typeahead-keyword" name="keyword[query]" type="search" placeholder="Search" autocomplete="off">
-                                {# <form id="form-beer_v1" name="form-beer_v1" class="navbar-form">
-                                    <div class="typeahead__container">
-                                        <div class="typeahead__field">
-                                            <div class="typeahead__query">
-                                                <input class="js-typeahead-beer_v1" name="beer_v1[query]" type="search" placeholder="Search" autocomplete="off"> #}
+                                                <input class="js-typeahead-search" name="search[query]" type="search" placeholder="Recherche" autocomplete="off">
                                             </div>
                                             <div class="typeahead__button">
                                                 <button type="submit">
-                                                        <i class="fas fa-search"></i>
+                                                    <i class="typeahead__search-icon"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-
+                                </form>                     
                             </div>
                         </div>
                         
