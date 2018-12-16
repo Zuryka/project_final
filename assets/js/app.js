@@ -51,11 +51,42 @@ $(function() {
         $('.event').css({height: $width_event + "px"});
     });
 
+    
+
+    /* ****************
+     * ***** MENU *****
+     * ****************/
+
+    if ($('#events').hasClass('active')) {
+        $('#events').addClass('events_bg');
+    } else {
+        $('#events').removeClass('events_bg');
+    }
+
+    if ($('#artists').hasClass('active')) {
+        $('#artists').addClass('artists_bg');
+    } else {
+        $('#artists').removeClass('artists_bg');
+    }
+    
+    if ($('#formations').hasClass('active')) {
+        $('#formations').addClass('formations_bg');
+    } else {
+        $('#formations').removeClass('formations_bg');
+    }
+    
+    if ($('#lieux').hasClass('active')) {
+        $('#lieux').addClass('lieux_bg');
+    } else {
+        $('#lieux').removeClass('lieux_bg');
+    }
+
 
     /* *********************************************************
      * ***** Gestion des filtres dans la page "événements" *****
      * *********************************************************/
 
+    
     $('#stylesChoice').submit(function(event) {
         if (!$('.allEvents').hasClass(event)) {
             $('.allEvents').addClass('desactive');
