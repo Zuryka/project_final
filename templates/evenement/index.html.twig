@@ -8,11 +8,11 @@
                 <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link" data-toggle="modal" data-target="#evenementModal">
                     <div class="event-image">
                         {% if entity.getMediaWithPhotoIdent() is not empty %}
-                            <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                            <img class="card-img" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
                         {% elseif entity.image is not empty %}
-                            <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                            <img class="card-img" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
                         {% else %}
-                            <img class="card-img h-100" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
+                            <img class="card-img" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
                         {% endif %}
                     </div>
                     <div class="event-infos text-center">
@@ -23,6 +23,7 @@
                 </a>
 
                 <!-- Modal -->
+                <!--
                 <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-
+                -->
             </div>
         </div>
     {% endfor %}
