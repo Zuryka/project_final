@@ -132,6 +132,11 @@ class Evenement
      */
     private $deleteImage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom_lieu;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
@@ -482,6 +487,18 @@ class Evenement
         if ($deleteImage){
             $this->image = null;
         }
+
+        return $this;
+    }
+
+    public function getNomLieu(): ?string
+    {
+        return $this->nom_lieu;
+    }
+
+    public function setNomLieu(string $nom_lieu): self
+    {
+        $this->nom_lieu = $nom_lieu;
 
         return $this;
     }

@@ -21,6 +21,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "jquery-typeahead": "^2.10.6"
+        "bootstrap-select": "^1.13.5",
+        "jquery-typeahead": "^2.10.6",
+        "mdbootstrap": "^4.5.16"
     }
 }

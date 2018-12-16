@@ -1,9 +1,43 @@
 {% extends 'layout.html.twig' %}
 
 {% block page_content %}
+
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <button type="text" class="btn btn-secondary">Choisissez un style</button>
+    <div class="btn-group" role="group">
+      <select id="stylesChoice" type="submit" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <option selected>---</option>
+        <option>Blues</li>
+        <option>Chanson française</li>
+        <option>Chorale</li>
+        <option>Classique</li>
+        <option>Country</li>
+        <option>Electro</li>
+        <option>Folk & Acoustic</li>
+        <option>Funk</li>
+        <option>Hip-Hop</li>
+        <option>Indie</li>
+        <option>Jazz</li>
+        <option>K-Pop/J-Pop</li>
+        <option>Latino</li>
+        <option>Metal</li>
+        <option>Pop</li>
+        <option>Punk</li>
+        <option>Rap</li>
+        <option>Reggae</li>
+        <option>RnB</li>
+        <option>Rock</li>
+        <option>Soul</li>
+      </select>
+    </div>
+</div>
+
 <div class="events row justify-content-between">
     {% for entity in entities %}
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3">
+        <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
+        {% if entity.styles is not empty %}
+        {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
+        {% endif %}">
             <div class="event">
                 <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link" data-toggle="modal" data-target="#evenementModal">
                     <div class="event-image">
@@ -18,7 +52,7 @@
                     <div class="event-infos text-center">
                         <p class="lead text-primary">{{ entity.nom }}</p>
                         <p class="text-light"><small>{{ entity.type }} | {{ entity.styles ? entity.styles|join(', ') : '' }}</small></p>
-                        <p class="text-secondary">{{ entity.date|date("d/m/Y") }} - {{ entity.heureDebut|date('H:i') }}</p>
+                        <p class="text-secondary">{{ entity.date|date("d/m/Y") }} - {{ entity.heureDebut|date('H:i') }} | {{ entity.ville }}</p>
                     </div>
                 </a>
 
