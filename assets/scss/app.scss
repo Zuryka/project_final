@@ -23,7 +23,7 @@ body {
 }
 
 .contenu {
-    padding-top: 250px;
+    padding-top: 240px;
 }
 
 
@@ -61,9 +61,38 @@ body {
     color: rgba(203, 180, 26, 1);
 }
 
+.events_bg {
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.artists_bg {
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.formations_bg {
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.lieux_bg {
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+
 /* *************************** *
  * ***** PAGE EVENEMENTS ***** *
  * *************************** */
+
+.evenement {
+    padding-top: 20px;
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.bordure_top_evt {
+    width: 100%;
+    height: 48px;
+    margin-top: 201px;
+    background-color: rgba(203, 180, 26, 0.2);
+}
 
 .event {
     position: relative;
@@ -86,3 +115,11 @@ body {
 .desactive {
     display: none;
 }
+
+
+/* *************************
+ * ***** PAGE ARTISTES *****
+ * *************************/
+
+ 
+
