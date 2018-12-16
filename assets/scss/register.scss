@@ -19,14 +19,13 @@ $white: #EBEBEB;
     text-align: center;
 }
 
-body {
-    background-color: #EBEBEB;
-    background-image: none;
+label {
+    color: $white;
 }
 
 h4 {
     font-size: 19px;
-    color: $dark;
+    color: $white;
     margin-top: 12px;
     margin-bottom: 25px;
     line-height: 1.1;
