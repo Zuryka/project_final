@@ -4,8 +4,8 @@ menu:
 
 lieu:
   new:
-    title: Edition d'un nouveau lieu
-  photo: Photo du présentation du lieu
+    title: Création d'un nouveau lieu
+  photo: Photo de présentation du lieu
   nom: Nom
   type: Type
   presentation: Présentation
@@ -18,10 +18,11 @@ lieu:
 
 evenement:
   new:
-    title: Edition d'un nouvel évènement
-  photo: Photo de présentation de l'évènement
+    title: Création d'un nouvel évènement
+  photo: Photo de présentation
   nom: Nom
   presentation: Présentation
+  lieu: Nom du lieu
   adresse: Adresse
   code_postal: Code Postal
   ville: Ville
@@ -32,11 +33,12 @@ evenement:
   date: Date
   heureDebut: Heure de début
   heureFin: Heure de fin
+  styles: Styles musicaux
   type: Type
 
 formation:
   new:
-    title: Edition d'une nouvelle formation
+    title: Création d'une nouvelle formation
   photo: Photo de présentation de la formation
   nom: Nom
   type: Type
@@ -60,7 +62,7 @@ user:
   username: Pseudo
   email: Adresse Mail
   password: Mot des passes
-  name: nom
+  name: Nom
   userlastname: Prenom
   codepostal: Code Postal
   ville: Ville
@@ -95,7 +97,7 @@ date:
 registration:
   type: Type d'utilisateur
   adresse: Adresse
-  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.,
+  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.
   name: Nom
   lastname: Prenom
 
@@ -104,3 +106,7 @@ user_artiste: Artiste
 register: S'inscrire
 login: Se connecter
 logout: .icon-door-open Se déconnecter
+
+security:
+  login:
+    submit: Se connecter

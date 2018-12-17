@@ -6,10 +6,14 @@
  */
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-//var $ = require('jquery');
+// var $ = require('jquery');
 import 'bootstrap';
-import 'masonry-layout';
+// import 'masonry-layout';
 
+
+/* **********************************
+ * ***** FONCTIONS PERSONNELLES *****
+ * **********************************/
 $(function() {
 
     var $followLink = $('.follow-link');
@@ -34,12 +38,61 @@ $(function() {
         });
     });
 
+    /* **************************************************************
+     * ***** Adaptation de la hauteur en fonction de la largeur *****
+     * **************************************************************/
 
-    /* ***** MASONRY ***** */
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 200
+    var $width_event = $('.event').width();
+    $('.event').css({height: $width_event + "px"});
+    
+    $(window).resize(function() {
+        $width_event = $('.event').width();
+        $('.event').css({height: $width_event + "px"});
     });
 
     
+
+    /* ****************
+     * ***** MENU *****
+     * ****************/
+
+    if ($('#events').hasClass('active')) {
+        $('#events').addClass('events_bg');
+    } else {
+        $('#events').removeClass('events_bg');
+    }
+
+    if ($('#artists').hasClass('active')) {
+        $('#artists').addClass('artists_bg');
+    } else {
+        $('#artists').removeClass('artists_bg');
+    }
+    
+    if ($('#formations').hasClass('active')) {
+        $('#formations').addClass('formations_bg');
+    } else {
+        $('#formations').removeClass('formations_bg');
+    }
+    
+    if ($('#lieux').hasClass('active')) {
+        $('#lieux').addClass('lieux_bg');
+    } else {
+        $('#lieux').removeClass('lieux_bg');
+    }
+
+
+    /* *********************************************************
+     * ***** Gestion des filtres dans la page "événements" *****
+     * *********************************************************/
+
+    
+    $('#stylesChoice').submit(function(event) {
+        if (!$('.allEvents').hasClass(event)) {
+            $('.allEvents').addClass('desactive');
+        } else {
+            $('.allEvents').removeClass('desactive');
+        }
+    });
+    
 }); //loading....
+
