@@ -6,7 +6,7 @@
 
 <div class="row-12  mt-3 mb-3 justify-content-center">
     <div class="card-group">
-        <div class="card col-4 offset-1 text-white bg-secondary border-dark text-center">
+        <div class="card col-3 offset-1 text-white bg-secondary border-dark text-center">
             {% if mediaWithPhotoIdent is not empty %}
                 <img class="card-img-top" src="{{ asset('/uploads/img/' ~ mediaWithPhotoIdent.lien) }}" alt="{{ mediaWithPhotoIdent.titre }}">
             {% elseif entity.image is not empty %}
@@ -78,9 +78,9 @@
             </div>
         </div>
 
-        <div class="card col-3 text-dark bg-secondary border-dark text-center">
+        <div class="card col-4 text-dark bg-secondary border-dark text-center">
             <div class="card-body">
-                <h2 class="card-text"> {{ entity.presentation }} </h2>
+                <h5 class="card-text"> {{ entity.presentation }} </h5>
             </div>
         </div>
     </div>
