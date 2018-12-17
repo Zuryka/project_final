@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}{{ entity.nom }} | P'tites Scènes{% endblock %}
+
 {% block page_content %}
 
 <div class="row justify-content-center">
@@ -8,12 +10,14 @@
         <div class="card text-white bg-danger border-dark text-center">
             {% if mediaWithPhotoIdent is not empty %}
                 <img class="card-img-top" src="{{ asset('/uploads/img/' ~ mediaWithPhotoIdent.lien) }}" alt="{{ mediaWithPhotoIdent.titre }}">
+            {% elseif entity.image is not empty %}
+                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
             {% else %}
                 <img class="card-img-top" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title">{{ entity.nom }}</h2>
-                <h4 class="card-title">
+                <h4 class="card-text">
                     {{ entity.type }} 
                     {{ entity.styles ? entity.styles|join(', ') : '' }}
                 </h4>
@@ -59,13 +63,21 @@
                             {{ entity.numTelephone }}
                         {% endif %}
                     </li>
-                    <li class="list-group-item bg-dark">Gérer :
-                        {% if is_granted('edit', entity) %}
-                            <a href="{{ path('evenement_edit', {'id': entity.id }) }}">Modifier</a>
-                            {{ include('evenement/_delete_form.html.twig') }}
-                        {% endif %}
-                    </li>
                 </ul>
+
+                {% if is_granted('edit', entity) %}
+                    <div class="row">
+                        <div class="col mt-3">
+                            <a href="{{ path('evenement_index') }}"><button class="btn">Retour</button></a>
+                        </div>
+                        <div class="col mt-3">
+                            <a href="{{ path('evenement_edit', {'id': entity.id }) }}"><button class="btn">Modifier</button></a>
+                        </div>
+                        <div class="col mt-3">
+                            {{ include('evenement/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

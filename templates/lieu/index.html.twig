@@ -1,21 +1,36 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Lieux | P'tites Scènes{% endblock %}
+
 {% block page_content %}
-<div class="card-group mt-5">
-    {% for entity in entities %}
-        {% if entity.getMediaWithPhotoIdent() is not empty %}
-            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-        {% else %}
-            <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title"><a href="{{ path('lieu_show', {'id': entity.id }) }}">{{ entity.nom }}</a></h5>
-            <p class="card-text">{{ entity.type }}</p>
-            <p class="card-text">{{ entity.presentation }}</p>
+
+<div class="bordure_top_evt fixed-top"></div>
+<div class="formation row justify-content-center">
+    <div class="col-10 px-0">
+        <div class="formats row justify-content-between">
+            {% for entity in entities %}
+                <div class="allformats col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3" >
+                    <div class="format">
+                        <a href="{{ path('lieu_show', {'id': entity.id}) }}">
+                            <div class="format-image">
+                                {% if entity.getMediaWithPhotoIdent() is not empty %}
+                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                                {% elseif entity.image is not empty %}
+                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                                {% else %}
+                                    <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+                                {% endif %}
+                            </div>
+                            <div class="format-infos text-center">
+                                <p class="lead text-primary">{{ entity.nom }}</p>
+                                <p class="text-light"><small>{{ entity.type }}</small></p>
+                                <p class="text-secondary">{{ entity.presentation|slice(0,50) }}...</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 </div>
-{% if is_granted('create', newEntity) %}
-    <a href="{{ path('lieu_new') }}">Créer un lieu</a>    
-{% endif %}
 {% endblock %}

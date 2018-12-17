@@ -14,6 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     const TYPE_GERANT_SALLE = 'user_local';
+    const TYPE_ARTISTE = 'user_artiste';
+    const TYPE_ORGANISTEUR_EVENEMENT = 'user_evenement';
+
+    use MediaContainerTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -103,6 +108,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Evenement", mappedBy="artistes")
+     * @var string
      */
     private $evenements;
 
@@ -116,14 +122,33 @@ class User extends BaseUser
      */
     private $type = [];
 
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="user")
+     */
+    private $medias;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"all"}, orphanRemoval=true)
+     * @var ?\App\Entity\Image
+     */
+    private $image;
+
+    /**
+     * @var bool
+     */
+    private $deleteImage;
+    
+
     public function __construct()
     {
         parent::__construct();
         $this->evenements = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->dateInscription = new \Datetime;
-
+        $this->deleteImage = false;
     }
+
 
     //================== Mutateur ============================
 
@@ -381,6 +406,68 @@ class User extends BaseUser
     public function setType(array $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function setPlainPassword($password)
+    {
+        if (!empty($password)) {
+            $this->plainPassword = $password;
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * Get the value of image
+     *
+     * @return  ?\App\Entity\Image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @param  ?\App\Entity\Image  $image
+     *
+     * @return  self
+     */ 
+    public function setImage(?\App\Entity\Image $image)
+    {
+        if ($image instanceof Image && !is_null($image->getFile())){ // Test si une image est envoyéee
+            $this->image = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of deleteImage
+     *
+     * @return  bool
+     */ 
+    public function getDeleteImage()
+    {
+        return $this->deleteImage;
+    }
+
+    /**
+     * Set the value of deleteImage
+     *
+     * @param  bool  $deleteImage
+     *
+     * @return  self
+     */ 
+    public function setDeleteImage(bool $deleteImage)
+    {
+        $this->deleteImage = $deleteImage;
+        if ($deleteImage){
+            $this->image = null;
+        }
 
         return $this;
     }
