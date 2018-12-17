@@ -1,0 +1,43 @@
+$primary: #E3CA26;
+$secondary: #CBB41A;
+$muted: #877812;
+$dark: #222222;
+$light: #BDBEAF;
+$white: #EBEBEB;
+
+body {
+    background-image: none;
+    background-color: $white;
+}
+
+h4 {
+    font-size: 16px;
+    color: $dark;
+}
+
+.facebook {
+    text-align: center;
+    background-color: #3b5998;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 16px 48px 18px;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+}
+
+.divider {
+    border-top: 1px solid #d9dadc;
+    display: block;
+    line-height: 1px;
+    margin: 15px 0;
+    position: relative;
+    text-align: center;
+}
+
+a {
+    color: #CBB41A;
+}
