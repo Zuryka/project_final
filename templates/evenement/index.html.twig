@@ -46,7 +46,7 @@
                 {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
                 {% endif %}">
                     {% if is_granted('edit', entity) %}
-                    <div class="border-createur event">
+                    <div class="border-createur-evt event">
                     {% else %}
                     <div class="border-standard event">
                     {% endif %}
