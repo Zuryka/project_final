@@ -77,11 +77,11 @@ class MainMenuBuilder
             $parent->addChild('logout', ['route' => 'fos_user_security_logout']);
 
         } else {
-            $menu->addChild('S\'enregistrer', ['route' => 'fos_user_registration_register'], array('attributes' => array('class' => 'col-2 text-center')));
-            $menu->addChild('Se connecter', ['route' => 'fos_user_security_login'], array('attributes' => array('class' => 'col-2 text-center')));
+            $parent = $menu->addChild('<i class="fas fa-user"></i>', ['uri' => '#'], array('attributes' => array('class' => 'col-4 text-center')));
+            $parent->setAttributes(array('class' => 'col-4 text-center'));
 
-            $menu['S\'enregistrer']->setAttributes(array('class' => 'col-2 text-center'));
-            $menu['Se connecter']->setAttributes(array('class' => 'col-2 text-center'));
+            $parent->addChild('S\'enregistrer', ['route' => 'fos_user_registration_register']);
+            $parent->addChild('Se connecter', ['route' => 'fos_user_security_login']);
         }
 
         return $menu;

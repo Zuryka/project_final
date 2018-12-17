@@ -23,11 +23,11 @@ class RegistrationType extends AbstractType
             ))
             ->add('nom', Type\TextType::class, array(
                 'label' => 'registration.name',
-                'required' => false,
+                'required' => true,
             ))
             ->add('prenom', Type\TextType::class, array(
                 'label' => 'registration.lastname',
-                'required' => false,
+                'required' => true,
             ))          
         ;
     }
