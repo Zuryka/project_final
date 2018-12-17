@@ -17,7 +17,7 @@
             {% elseif entity.image is not empty %}
                 <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
             {% else %}
-                <img class="card-img-top" src="{{ asset('/img/artiste_def.jpg') }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title">

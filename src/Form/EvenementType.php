@@ -82,7 +82,7 @@ class EvenementType extends AbstractType
         ))
         ->add('nom_lieu', Type\TextType::class, array(
             'label' => 'evenement.lieu',
-            'required' => false,
+            'required' => true,
         ))
         ->add('adresse', Type\TextType::class, array(
             'label' => 'evenement.adresse',
