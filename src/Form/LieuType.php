@@ -39,6 +39,7 @@ class LieuType extends AbstractType
                     'Maison de la Jeunesse et de la Culture' => 'MJC',
                     'Plein air' => 'Plein air',
                     'Salle des fêtes' => 'Salle des fêtes',
+                    'Salle de concert' => 'Salle de concert',
                 ),
                 'required' => true,
             ))
@@ -62,7 +63,7 @@ class LieuType extends AbstractType
                 'label' => 'lieu.ville',
                 'required' => true,
             ))
-            
+            /*
             ->add('latitude', Type\NumberType::class, array(
                 'label' => 'lieu.latitude',
                 'required' => false,
@@ -74,7 +75,7 @@ class LieuType extends AbstractType
                 'required' => false,
                 'scale' => 5
             ))
-            
+            */
             ->add('num_telephone', Type\TelType::class, array(
                 'label' => 'lieu.num_telephone',
                 'required' => false,
