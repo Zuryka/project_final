@@ -36,10 +36,14 @@
                     </h4>
                 {% endif %}
                 {% if entity.styles is not empty %}
-                        <p>{{ 'user.artiste.show.style'|trans }} : </p>
-                        <span class="badge-artiste ml-2">
+                    <div class="btn-group">
+                        <div class="btn btn-dark disabled">
+                            {{ 'user.artiste.show.style'|trans }} : 
+                        </div>
+                        <div class="btn btn-artiste disabled">
                             {{ entity.styles ? entity.styles|join(', ') : '' }}
-                        </span>
+                        </div>
+                    </div>
                 {% endif %}
                 {% if entity.presentation is not empty %}
                     <p class="card-text mt-3"> {{ entity.presentation }} </p>
