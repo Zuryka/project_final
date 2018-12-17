@@ -58,26 +58,34 @@ $(function() {
 
     if ($('#events').hasClass('active')) {
         $('#events').addClass('events_bg');
+        $('#bordure_top').addClass('bordure_top_evt');
     } else {
         $('#events').removeClass('events_bg');
+        $('#bordure_top').removeClass('bordure_top_evt');
     }
-
+    
     if ($('#artists').hasClass('active')) {
         $('#artists').addClass('artists_bg');
+        $('#bordure_top').addClass('bordure_top_artist');
     } else {
         $('#artists').removeClass('artists_bg');
+        $('#bordure_top').removeClass('bordure_top_artist');
     }
     
     if ($('#formations').hasClass('active')) {
         $('#formations').addClass('formations_bg');
+        $('#bordure_top').addClass('bordure_top_formation');
     } else {
         $('#formations').removeClass('formations_bg');
+        $('#bordure_top').removeClass('bordure_top_formation');
     }
     
     if ($('#lieux').hasClass('active')) {
         $('#lieux').addClass('lieux_bg');
+        $('#bordure_top').addClass('bordure_top_lieu');
     } else {
         $('#lieux').removeClass('lieux_bg');
+        $('#bordure_top').removeClass('bordure_top_lieu');
     }
 
 
