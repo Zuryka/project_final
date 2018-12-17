@@ -39,7 +39,6 @@
                 {% else %}
                     <div class="card-group mb-3 border-standard ">
                 {% endif %}
-                <!--<div class="card-group mb-3">-->
                     <div class="card col-2 bg-light px-0">
                         {% if entity.getMediaWithPhotoIdent() is not empty %}
                             <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">

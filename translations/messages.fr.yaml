@@ -56,7 +56,7 @@ user:
       title: Edition de mon profil artiste
     show:
       musicien: Musicien
-      style: Style
+      style: Styles
       instrument: Instrument
       chant: Chant
   username: Pseudo

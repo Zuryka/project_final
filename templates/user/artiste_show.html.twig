@@ -9,18 +9,21 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="row justify-content-center">
+<div class="artistes row justify-content-center">
     <div class="col-10 mt-3">
-        <div class="card text-white bg-danger border-dark text-center">
-            {% if entity.getMediaWithPhotoIdent() is not empty %}
-                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-            {% elseif entity.image is not empty %}
-                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-            {% else %}
-                <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
-            {% endif %}
-            <div class="card-body">
-                <h2 class="card-title">
+
+        <div class="card-group">
+            <div class="card col-4 bg-light px-0">
+                {% if entity.getMediaWithPhotoIdent() is not empty %}
+                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                {% elseif entity.image is not empty %}
+                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                {% else %}
+                    <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
+                {% endif %}
+            </div>
+            <div class="card col-8 bg-light p-3">
+                <h2 class="card-title text_artiste">
                     {% if entity.nomArtiste is not empty %}
                         {{ entity.nomArtiste }}
                     {% else %}
@@ -33,12 +36,13 @@
                     </h4>
                 {% endif %}
                 {% if entity.styles is not empty %}
-                    <h5 class="card-text">
-                        {{ 'user.artiste.show.style'|trans }} : {{ entity.styles ? entity.styles|join(', ') : '' }}                
-                    </h5>
+                        <p>{{ 'user.artiste.show.style'|trans }} : </p>
+                        <span class="badge-artiste ml-2">
+                            {{ entity.styles ? entity.styles|join(', ') : '' }}
+                        </span>
                 {% endif %}
                 {% if entity.presentation is not empty %}
-                    <p class="card-text"> {{ entity.presentation }} </p>
+                    <p class="card-text mt-3"> {{ entity.presentation }} </p>
                 {% endif %}
 
                 <ul class="list-group list-group-flush">
@@ -66,20 +70,9 @@
                 {% endif %}
             </div>
         </div>
+
     </div>
 </div>
 
-{# <div class="row justify-content-center">
-    <div class="col-10 mt-3">
-           
 
-        <a href="{{ path('user_index') }}" class="btn btn-secondary">Retour</a>
-        {% if entity.username == app.user.username %}
-            <a href="{{ path('user_edit', {'username': entity.username}) }}" class="btn btn-dark"><i class="fa fa-pencil-alt"></i></a>
-            <div class="float-right">
-                <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn btn-primary"><i class="text-dark fa fa-trash"></i></a>
-            </div>
-        {% endif %}
-    </div>
-</div> #}
 {% endblock page_content %}
