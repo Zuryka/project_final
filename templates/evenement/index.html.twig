@@ -2,35 +2,92 @@
 
 {% block page_content %}
 
-{% for entity in entities %}
+<div class="bordure_top_evt fixed-top"></div>
+<div class="evenement row justify-content-center">
+    <div class="col-10 px-0">
 
-<div class="row justify-content-center">
-    <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
-        <div class="card text-white bg-danger border-dark text-center">
-            <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link">
-                {% if entity.getMediaWithPhotoIdent() is not empty %}
-                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                {% else %}
-                    <img class="card-img-top" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
-                {% endif %}
-
-                <div class="card-body">
-                    <h2 class="card-title">{{ entity.nom }}</h2>
-                    <h4 class="card-title">
-                        {{ entity.type }} 
-                        {{ entity.styles ? entity.styles|join(', ') : '' }}
-                    </h4>
-                    <h5 class="card-text">
-                        {{ entity.date|date("d/m/Y") }} - 
-                        {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
-                        {{ entity.tarif }} €
-                    </h5>
-                </div>
-            </a>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="text" class="btn btn-secondary">Choisissez un style</button>
+            <div class="btn-group" role="group">
+            <select id="stylesChoice" type="submit" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <option selected>---</option>
+                <option>Blues</li>
+                <option>Chanson française</li>
+                <option>Chorale</li>
+                <option>Classique</li>
+                <option>Country</li>
+                <option>Electro</li>
+                <option>Folk & Acoustic</li>
+                <option>Funk</li>
+                <option>Hip-Hop</li>
+                <option>Indie</li>
+                <option>Jazz</li>
+                <option>K-Pop/J-Pop</li>
+                <option>Latino</li>
+                <option>Metal</li>
+                <option>Pop</li>
+                <option>Punk</li>
+                <option>Rap</li>
+                <option>Reggae</li>
+                <option>RnB</li>
+                <option>Rock</li>
+                <option>Soul</li>
+            </select>
+            </div>
         </div>
+
+        <div class="events row justify-content-between">
+            {% for entity in entities %}
+                <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
+                {% if entity.styles is not empty %}
+                {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
+                {% endif %}">
+                    <div class="event">
+                        <a href="{{ path('evenement_show', {'id': entity.id}) }}">
+                            <div class="event-image">
+                                {% if entity.getMediaWithPhotoIdent() is not empty %}
+                                    <img class="card-img" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                                {% elseif entity.image is not empty %}
+                                    <img class="card-img" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                                {% else %}
+                                    <img class="card-img" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
+                                {% endif %}
+                            </div>
+                            <div class="event-infos text-center">
+                                <p class="lead text-primary">{{ entity.nom }}</p>
+                                <p class="text-light"><small>{{ entity.type }} | {{ entity.styles ? entity.styles|join(', ') : '' }}</small></p>
+                                <p class="text-secondary">{{ entity.date|date("d/m/Y") }} - {{ entity.heureDebut|date('H:i') }} | {{ entity.ville }}</p>
+                            </div>
+                        </a>
+
+                        <!-- Modal -->
+                        <!--
+                        <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="evenementModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 </div>
-{% endfor %}
-<a href="{{ path('evenement_new') }}">Créer un évenement</a> 
 
 {% endblock %}

@@ -1,6 +1,16 @@
 index:
+    ### (partie à décommenter pour retrouver annuler la redirection) ###
+    #path: /
+    #controller: App\Controller\DefaultController::index
+    ###
+    
+
+    ### Redirection vers la page "Evenement" ###
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: evenement_index
+    ### (partie à supprimer pour retrouver le chemin de l'index) ###
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

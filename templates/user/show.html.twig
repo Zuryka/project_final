@@ -1,48 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block page_content %}
-    <ul class="list-group">
-        {% if entity.nomArtiste %}
-            <li class="list-group-item">{{ entity.nomArtiste }}</li>
-        {% endif %}
-        {% if entity.styles %}
-            {% for i in 0..(entity.styles|length - 1) %}
-                <li class="list-group-item">{{ entity.styles[i] }}</li>
-            {% endfor %}
-        {% endif %}
-        <li class="list-group-item">{{ entity.nom }}</li>
-        <li class="list-group-item">{{ entity.prenom }}</li>
-        <li class="list-group-item">{{ entity.dateInscription|date('d-m-Y H:i:s') }}</li>
-        {% if entity.presentation %}
-            <li class="list-group-item">{{ entity.presentation }}</li>
-        {% endif %}
-        {% if entity.niveau %}
-            <li class="list-group-item">{{ entity.niveau }}</li>
-        {% endif %}
-        {% if entity.instruments %}
-            {% for i in 0..(entity.instruments|length - 1) %}
-                <li class="list-group-item">{{ entity.instruments[i] }}</li>
-            {% endfor %}
-        {% endif %}
-        {% if entity.instrumentsComments %}
-            <li class="list-group-item">{{ entity.instrumentsComments }}</li>
-        {% endif %}
-        {% if entity.chants %}
-            {% for i in 0..(entity.chants|length - 1) %}
-                <li class="list-group-item">{{ entity.chants[i] }}</li>
-            {% endfor %}
-        {% endif %}
-        {% if entity.chantsComments %}
-            <li class="list-group-item">{{ entity.chantsComments }}</li>
-        {% endif %}
-    </ul>
 
-    <a href="{{ path('user_index') }}" class="btn btn-secondary">Retour</a>
-    {% if entity.username == app.user.username %}
-        <a href="{{ path('user_edit', {'username': entity.username}) }}" class="btn btn-dark"><i class="fa fa-pencil-alt"></i></a>
-        <div class="float-right">
-            <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn btn-primary"><i class="text-dark fa fa-trash"></i></a>
+<div class="row justify-content-center">
+    <div class="col-10 mt-3">
+        <div class="card text-white bg-danger border-dark text-center">
+            <h2 class="card-title"> Mon compte </h2>
+            <div class="card-body">
+            <p class="card-text">Pseudo : {{ entity.username }}</p>
+            <p class="card-text">Nom :{{ entity.nom }}, Prenom : {{ entity.prenom }}</p>
+            <p class="card-text">Email : {{ entity.email }} </p>
+            <p class="card-text">Adresse : {{ entity.adresse }}
+            Code Postal : {{ entity.codePostal }}
+            Ville : {{ entity.ville }}</p>
+            <p class="card-text">Numéro de telephone : {{ entity.numTelephone }}</p>
+            <p class="card-text">Status Professionnel : {{ entity.niveau }}<p/>
+            </div>
         </div>
-    {% endif %}
+        <a href="{{ path('user_index') }}" class="btn btn-secondary">Retour</a>
+        {% if entity.username == app.user.username %}
+            <a href="{{ path('user_edit', {'username': entity.username}) }}" class="btn btn-dark"><i class="fa fa-pencil-alt"></i></a>
+            <div class="float-right">
+                <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn btn-primary"><i class="text-dark fa fa-trash"></i></a>
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock page_content %}
-

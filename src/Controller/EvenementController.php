@@ -28,7 +28,8 @@ class EvenementController extends AbstractController
         $entities = $em->getRepository(Evenement::class)->findAll(); 
 
         return $this->render('evenement/index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
+            'newEntity' => new Evenement,
         ));
     }
 

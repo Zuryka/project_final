@@ -1,10 +1,36 @@
 {% extends 'layout.html.twig' %}
 
 {% block page_content %}
-<div class="card-group mt-5">
+
+<div class="row justify-content-center">
+{% for entity in entities %}
+    <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
+        <div class="card text-white bg-danger border-dark text-center">
+            <a href="{{ path('lieu_show', {'id': entity.id}) }}" class="card-link">
+                {% if entity.getMediaWithPhotoIdent() is not empty %}
+                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                {% elseif entity.image is not empty %}
+                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                {% else %}
+                    <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title"> {{ entity.nom }} </h2>
+                    <h4 class="card-text">{{ entity.type }}</h4>
+                    <h4 class="card-text">{{ entity.presentation }}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{# <div class="card-group mt-5">
     {% for entity in entities %}
         {% if entity.getMediaWithPhotoIdent() is not empty %}
             <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+        {% elseif entity.image is not empty %}
+            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
         {% else %}
             <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
         {% endif %}
@@ -14,8 +40,10 @@
             <p class="card-text">{{ entity.presentation }}</p>
         </div>
     {% endfor %}
-</div>
-{% if is_granted('create', newEntity) %}
+</div> #}
+
+{# {% if is_granted('create', newEntity) %}
     <a href="{{ path('lieu_new') }}">Créer un lieu</a>    
-{% endif %}
+{% endif %} #}
+
 {% endblock %}

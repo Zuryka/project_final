@@ -7,12 +7,26 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
+use App\Form\ImageType;
+
 
 class LieuType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            // ->add('photoIdent', MediaType::class, array(
+            //     'label' => 'lieu.photo',
+            //     'mapped' => false,
+            // ))
+
+            ->add('image', ImageType::class, array(
+                'label' => 'lieu.photo',
+            ))
+
             ->add('nom', Type\TextType::class, array(
                 'label' => 'lieu.nom',
                 'required' => true,
@@ -21,15 +35,15 @@ class LieuType extends AbstractType
             ->add('type', Type\ChoiceType::class, array(
                 'label' => 'lieu.type',
                 'choices' => array(
-                    'Bar' => 'lieu.type.bar',
-                    'Maison de la Jeunesse et de la Culture' => 'lieu.type.mjc',
-                    'Plein air' => 'lieu.type.plein_air',
-                    'Salle des fêtes' => 'lieu.type.salle_des_fetes',
+                    'Bar' => 'Bar',
+                    'Maison de la Jeunesse et de la Culture' => 'MJC',
+                    'Plein air' => 'Plein air',
+                    'Salle des fêtes' => 'Salle des fêtes',
                 ),
                 'required' => true,
             ))
 
-            ->add('presentation', Type\TextType::class, array(
+            ->add('presentation', Type\TextareaType::class, array(
                 'label' => 'lieu.presentation',
                 'required' => true,
             ))
@@ -61,11 +75,25 @@ class LieuType extends AbstractType
                 'scale' => 5
             ))
             
-            ->add('num_telephone', Type\IntegerType::class, array(
+            ->add('num_telephone', Type\TelType::class, array(
                 'label' => 'lieu.num_telephone',
                 'required' => false,
             ))
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
+            $entity = $event->getData(); // Entité envoyée au formulaire
+            $form = $event->getForm(); // Récupère le formulaire
+
+            if (!is_null($entity->getImage())) { // S'il y a une image dans mon lieu
+                // Ajout du champ "deleteImage" seulement s'il y a une image
+                $form->add('deleteImage', Type\CheckboxType::class, array(
+                    'label' => 'image.delete',
+                    'required' => false, // Désactive le required
+                ));
+            }
+
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

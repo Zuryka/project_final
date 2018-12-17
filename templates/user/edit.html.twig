@@ -6,12 +6,13 @@
     {% embed 'decorator/_card.html.twig' %}
 
         {% block header %}
-            {{ 'user.edit.title'|trans }}
+            {{ 'user.artiste.edit.title'|trans }}
         {% endblock %}
 
         {% block body %}
-            {# Formulaire #}
-            {# {% include 'admin/article/_form.html.twig' %} #}
+        
+                  {{ form(form) }}
+
         {% endblock body %}
 
         {% block footer %}

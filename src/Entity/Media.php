@@ -40,17 +40,20 @@ class Media
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="medias")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Formation")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Formation", inversedBy="medias")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $formation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="medias")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $lieu;
 
@@ -70,9 +73,9 @@ class Media
 
     /**
      * @var ?string
-     * Chemin de l'ancien fichier
+     * Ancien lien
      */
-    private $oldPath;
+    private $oldLien;
 
     public function getId(): ?int
     {
@@ -194,10 +197,10 @@ class Media
      */ 
     public function setFile(UploadedFile $file)
     {
-        // Sauvegarde le chemin de l'ancien fichier pour le supprimer lors de l'upload du nouveau
-        $this->oldPath = $this->path; 
+        // Sauvegarde ancien lien pour supprimer le fichier correpondant lors de l'upload du nouveau
+        $this->oldLien = $this->lien; 
         // Modifie cette valeur pour activer la modif Doctrine
-        $this->path = ''; 
+        $this->lien = ''; 
         
         $this->file = $file;
 
@@ -208,11 +211,11 @@ class Media
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
-    public function generatePath()
+    public function generateLien()
     {
         if ($this->file instanceof UploadedFile){
-            // Génére le chemin du fichier à uploader
-            $this->path = uniqid('img_') . '.' . $this->file->guessExtension();
+            // Génére le lien du fichier à uploader
+            $this->lien = uniqid('img_') . '.' . $this->file->guessExtension();
         }
     }
 
@@ -222,19 +225,19 @@ class Media
      */
     public function upload()
     {
-        if (is_file($this->getPublicRootDirImg() . $this->oldPath)) {
-            unlink($this->getPublicRootDirImg() . $this->oldPath);
+        if (is_file($this->getPublicRootDirImg() . $this->oldLien)) {
+            unlink($this->getPublicRootDirImg() . $this->oldLien);
         }
 
         if ($this->file instanceof UploadedFile){
             $this->file->move(
                 $this->getPublicRootDirImg(), // Vers le dossier public/uploads
-                $this->path
+                $this->lien
             );
         }
     }
 
-    public function getPublicRootDirImgImg()
+    public function getPublicRootDirImg()
     {
         return __DIR__ . '/../../public/uploads/img/';
     }
@@ -245,8 +248,8 @@ class Media
     public function remove()
     {
         // Test si le fichier existe
-        if (is_file($this->getPublicRootDirImg() . $this->path)) {
-            unlink($this->getPublicRootDirImg() . $this->path);
+        if (is_file($this->getPublicRootDirImg() . $this->lien)) {
+            unlink($this->getPublicRootDirImg() . $this->lien);
         }
     }
 }
