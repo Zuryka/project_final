@@ -1,31 +1,73 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ entity.prenom }} | P'tites Scènes{% endblock %}
+{% block title %}Présentation | P'tites Scènes{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/profil.css') }}">
+{% endblock %}
 
 {% block page_content %}
 
-<div class="row justify-content-center">
-    <div class="col-10 mt-3">
-        <div class="card text-white bg-danger border-dark text-center">
-            <h2 class="card-title"> Mon compte </h2>
-            <div class="card-body">
-            <p class="card-text">Pseudo : {{ entity.username }}</p>
-            <p class="card-text">Nom :{{ entity.nom }}, Prenom : {{ entity.prenom }}</p>
-            <p class="card-text">Email : {{ entity.email }} </p>
-            <p class="card-text">Adresse : {{ entity.adresse }}
-            Code Postal : {{ entity.codePostal }}
-            Ville : {{ entity.ville }}</p>
-            <p class="card-text">Numéro de telephone : {{ entity.numTelephone }}</p>
-            <p class="card-text">Status Professionnel : {{ entity.niveau }}<p/>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="row">
+                <div class="col-12 image">
+                    {% if entity.getMediaWithPhotoIdent() is not empty %}
+                        <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                    {% elseif entity.image is not empty %}
+                        <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                    {% else %}
+                        <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
+                    {% endif %}
+                </div>
+                <div class="col-12" style="color: rgb(180, 180, 180);font-size: 17px;">
+                    <a href="{{ path('user_show', {'username': entity.username}) }}">Vue d'ensemble du compte</a>
+                </div>
+                {% if entity.username == app.user.username %}
+                    <div class="col-12">
+                        <a href="{{ path('user_edit', {'username': entity.username}) }}">Modifier son profil</i></a>
+                    </div>
+                    {# <div class="col-12" style="background-color: gainsboro;">
+                        <a href="{{ path('user_edit', {'username': entity.username}) }}><i class="text-dark fa fa-user-lock"> Modifier son mot de passe</i></a>
+                    </div> #}
+                    <div class="col-12">
+                        <a href="{{ path('evenement_index') }}"> Retour vers l'accueil</i></a>
+                    </div>
+                {% endif %}
+            </div>  
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Présentation</h2>
+                    <hr>
+                    <div class="profil">
+                        <h1>Profil</h1>
+                        <p>Nom d'utilisateur : {{ entity.username }}</p>
+                        <p>Nom : {{ entity.nom}}</p>
+                        <p>Prenom : {{ entity.prenom }}</p>
+                        <p>Email : {{ entity.email }} </p>
+                        <!-- Ajouter condition que apparait seulement si existe -->
+                        {% if entity.adresse and entity.codePostal and entity.ville is not empty %}
+                            <p>Adresse : {{ entity.adresse }}<br><span>{{ entity.codePostal }}</span><br><span>{{ entity.ville }}</span></p>
+                        {% endif %}
+                        {% if entity.numTelephone is not empty %}
+                            <p>Numéro de telephone : {{ entity.numTelephone }}</p>    
+                        {% endif %}
+                        {% if entity.niveau is not empty %}
+                            <p>Status Professionnel : {{ entity.niveau }}<p/>
+                        {% endif %}
+                        <button class="btn"><a href="{{ path('user_edit', {'username': entity.username}) }}">Modifier</a></button>
+                    </div>
+                </div>
+                <div class="col-12 news">
+                    <h2>Newsletter</h2>
+                    <hr>
+                    <p>Prochainement disponible, la newsletter qui saura vous apporter les informations que vous désirez sans même se fatiguer à les chercher !</p>
+                </div>
             </div>
         </div>
-        <a href="{{ path('user_index') }}" class="btn btn-secondary">Retour</a>
-        {% if entity.username == app.user.username %}
-            <a href="{{ path('user_edit', {'username': entity.username}) }}" class="btn btn-dark"><i class="fa fa-pencil-alt"></i></a>
-            <div class="float-right">
-                <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn btn-primary"><i class="text-dark fa fa-trash"></i></a>
-            </div>
-        {% endif %}
     </div>
 </div>
 {% endblock page_content %}
