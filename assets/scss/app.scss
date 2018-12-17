@@ -24,6 +24,7 @@ body {
 
 .contenu {
     padding-top: 240px;
+    height: 100vh;
 }
 
 .text_evt {
@@ -42,6 +43,10 @@ body {
     color: #FF3E3E; 
 }
 
+.bg-artiste {
+    background-color: #006A80;
+}
+
 .btn-artiste {
     color: #EBEBEB;
     background-color: #006A80;
@@ -50,6 +55,14 @@ body {
 .btn-artiste:hover {
     color: #EBEBEB;
     background-color: #0088A3;
+}
+
+.btn-formation {
+    background-color: #843E8E;
+}
+
+.btn-formation:hover {
+    background-color: #A956B5;
 }
 
 
@@ -98,7 +111,7 @@ body {
 }
 
 .artists_bg {
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
     height: 100%;
 }
 
@@ -107,7 +120,7 @@ body {
 }
 
 .formations_bg {
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
     height: 100%;
 }
 
@@ -116,7 +129,7 @@ body {
 }
 
 .lieux_bg {
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
 }
 
 .lieux_bg a {
@@ -132,15 +145,15 @@ body {
 }
 
 .bordure_top_artist {
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
 }
 
 .bordure_top_formation {
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
 }
 
 .bordure_top_lieu {
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
 }
 
 
@@ -169,7 +182,7 @@ body {
 }
 
 .border-standard {
-    border: 2px solid $dark;
+    border: transparent;
     border-radius: 10px;
 }
 
@@ -180,6 +193,7 @@ body {
 .evenement {
     padding-top: 20px;
     background-color: rgba(203, 180, 26, 0.2);
+    min-height: 100%;
 }
 
 .event {
@@ -212,7 +226,8 @@ body {
 
 .artistes {
     padding-top: 20px;
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
+    min-height: 100%;
 }
 
 .artist {
@@ -239,7 +254,12 @@ body {
 
 .formation {
     padding-top: 20px;
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
+    min-height: 100%;
+}
+
+.formation hr {
+    border-top: 1px solid lighten($dark, 10%);
 }
 
 .format {
@@ -267,5 +287,6 @@ body {
 
 .lieu {
     padding-top: 20px;
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
+    min-height: 100%;
 }

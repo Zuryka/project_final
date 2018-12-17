@@ -72,6 +72,9 @@ user:
   artistename: Nom d'artiste
   presentation: Présentation
   niveau: Statut professionnel
+  formation:
+    show:
+      style: Styles
   styles:
     liste: Liste de Styles
     rock: Rock

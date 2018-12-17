@@ -11,10 +11,10 @@
             {% for entity in entities %}
                 <div class="allformats col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
                 {% if entity.styles is not empty %}
-                {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
+                    {{ entity.styles ? entity.styles|join(' | ') : '' }}
                 {% endif %}">
                     {% if is_granted('edit', entity) %}
-                    <div class="border-createur format">
+                    <div class="border-createur-formation format">
                     {% else %}
                     <div class="border-standard format">
                     {% endif %}
@@ -29,9 +29,9 @@
                                 {% endif %}
                             </div>
                             <div class="format-infos text-center">
-                                <p class="lead text-primary">{{ entity.nom }}</p>
+                                <p class="lead text_formation">{{ entity.nom }}</p>
                                 <p class="text-light"><small>{{ entity.type }}</small></p>
-                                <p class="text-secondary">{{ entity.styles ? entity.styles|join(', ') : '' }}</p>
+                                <p class="text_formation">{{ entity.styles ? entity.styles|join(' | ') : '' }}</p>
                             </div>
                         </a>
                     </div>
