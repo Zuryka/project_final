@@ -57,7 +57,7 @@ user:
     show:
       musicien: Musicien
       style: Styles
-      instrument: Instrument
+      instrument: Instruments
       chant: Chant
   username: Pseudo
   email: Adresse Mail
