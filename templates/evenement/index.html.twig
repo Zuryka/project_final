@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Evenements | P'tites Scènes{% endblock %}
+
 {% block page_content %}
 
 <div class="bordure_top_evt fixed-top"></div>
@@ -47,7 +49,7 @@
                     {% else %}
                     <div class="border-standard event">
                     {% endif %}
-                        <a href="{{ path('evenement_show', {'id': entity.id}) }}" class="card-link" data-toggle="modal" data-target="#evenementModal">
+                        <a href="{{ path('evenement_show', {'id': entity.id}) }}">
                             <div class="event-image">
                                 {% if entity.getMediaWithPhotoIdent() is not empty %}
                                     <img class="card-img" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
