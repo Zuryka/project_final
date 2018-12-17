@@ -7,79 +7,79 @@
 {% endblock %}
 
 {% block body %}
-    {% block page_content %}
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-1 lateral-column"></div>
-                <div class="col-10 px-0">
-                    {% block header %}
-                    <div class="logo text-center">
-                        <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
-                    </div>
-                    {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
-                    {% endembed %}
-                    {% endblock header %}
-                </div>
-                <div class="col-1 lateral-column"></div>
+{% block page_content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-1 lateral-column"></div>
+        <div class="col-10 px-0">
+            {% block header %}
+            <div class="logo text-center">
+                <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
             </div>
+            {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
+            {% endembed %}
+            {% endblock header %}
         </div>
-        <div class="divider"></div>
+        <div class="col-1 lateral-column"></div>
+    </div>
+</div>
 
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('build/css/login.css') }}">
+{% endblock %}
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-6">
-                    <h4 class="text-center">Pour continuer, connectez-vous à P'tites Scènes</h4>
-
-                    {# Division connexion #}
-                    <div class="divider"></div>
-                    {# Formulaire de connexion (username + password) #}
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
-                        {% trans_default_domain 'FOSUserBundle' %}
-                        
-                        {% if csrf_token %}
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        {% endif %}
-                        <div class="form-group">        
-                            <label for="username">{{ 'security.login.username'|trans }}</label>
-                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">{{ 'security.login.password'|trans }}</label>
-                            <input type="password" class="form-control" id="password" name="_password" required="required" autocomplete="current-password" />
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on">
-                                <label class="custom-control-label" for="remember_me">Rester connecté</label>
-                            </div>
-                        </div>
-
-                        {% block footer %}
-                            <input type="submit" class="btn btn-block" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-                        {% endblock %}
-                    </form>
-                </div>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h4>Pour continuer, connectez-vous à P'tites Scènes.</h4>
+            {# Connexion par facebook #}
+            <button class="btn facebook">
+                    connexion avec facebook <span class="badge badge-primary"></span>
+            </button>
+            {# Division entre les deux parties de connexion #}
+            <div class="divider">
+                <p class="text-center">ou</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-6 text-center">
-                    <div  class="mdp">
-                        <a href="#">Mot de passe oublié ?</a>
+            {# Formulaire de connexion (username + password) #}
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% trans_default_domain 'FOSUserBundle' %}
+                
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="form-group">        
+                    <label for="username">{{ 'security.login.username'|trans }}</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                </div>
+                <div class="form-group">
+                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                    <input type="password" class="form-control" id="password" name="_password" required="required" autocomplete="current-password" />
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on">
+                        <label class="custom-control-label" for="remember_me">Rester connecté</label>
                     </div>
-                    <div class="divider"></div>
-
-                    <h5>Vous n'avez pas encore de compte ?</h5>
-                    <button class="btn register">
-                        <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous dès maintenant</a>
-                    </button>
-                    <div class="divider"></div>
-
-                    <p>En me connectant ou en continuant, j'accepte les <a href="#">Conditions d'Utilisation</a> et reconnais avoir lu la <a href="#">Politique de Confidentialité</a> de P'tites Scènes. </p>
                 </div>
-            </div>
+
+                {% block footer %}
+                    <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                {% endblock %}
+            </form>
         </div>
-    {% endblock page_content %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6 text-center">
+            <a href="#">Nom d'utilisateur ou mot de passe oublié ?</a>
+
+            <h5>Vous n'avez pas encore de compte ? <a href="{{ path('fos_user_registration_register') }}">Inscrivez-vous dès maintenant</a></h5>
+
+            <p>En m'inscrivant, en me connectant ou en continuant, j'accepte les <a href="#">Conditions d'Utilisation</a> et reconnais avoir lu la <a href="#">Politique de Confidentialité</a> de P'tites Scènes. J'autorise le groupe P'tites Scènes à m'envoyer des messages promotionnels et des notifications Push relatifs à des services pour lequels j'ai souscrit dans Mon compte. Je peux désactiver ces alertes à tout moment dans mes paramètres.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock page_content %}
 {% endblock body %}

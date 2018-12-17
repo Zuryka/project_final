@@ -89,6 +89,16 @@ class EvenementType extends AbstractType
             'label' => 'evenement.ville',
             'required' => true,
         ))
+        ->add('latitude', Type\NumberType::class, array(
+            'label' => 'evenement.latitude',
+            'required' => false,
+            'scale' => 5
+        ))
+        ->add('longitude', Type\NumberType::class, array(
+            'label' => 'evenement.longitude',
+            'required' => false,
+            'scale' => 5
+        ))
         ->add('numTelephone', Type\TelType::class, array(
             'label' => 'evenement.numTelephone',
             'required' => false,
@@ -101,9 +111,7 @@ class EvenementType extends AbstractType
         ->add('date', Type\DateType::class, array(
             'label' => 'evenement.date',
             'placeholder' => array(
-                'year' => 'Année',
-                'month' => 'Mois',
-                'day' => 'Jour',
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
             ),
             'required' => true,
         ))
@@ -114,6 +122,21 @@ class EvenementType extends AbstractType
         ->add('heureFin', Type\TimeType::class, array(
             'label' => 'evenement.heureFin',
             'required' => false,
+        ))
+        ->add('type', Type\ChoiceType::class, array(
+            'label' => 'evenement.type',
+            'choices' => array(
+                'Bal' => 'Bal',
+                'Concert' => 'Concert',
+                'Festival' => 'Festival',
+                'Jam Session' => 'Jam Session',
+                'Karaoke' => 'Karaoke',
+                'Récital' => 'Recital',
+                'Répétition' => 'Répétition',
+                'Show Case' => 'Show Case',
+                'Autre ...' => 'Autre',
+            ),
+            'required' => true,
         ))
         ;
         

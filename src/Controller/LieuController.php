@@ -26,7 +26,6 @@ class LieuController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository(Lieu::class)->findAll();
-
         return $this->render('lieu/index.html.twig', [
             'entities' => $entities,
             'newEntity' => new Lieu, // Pour tester avec le voter

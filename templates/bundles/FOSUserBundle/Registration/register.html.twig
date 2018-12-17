@@ -1,29 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}S'enregistrer{% endblock %}
+{% block title %}S'inscrire{% endblock %}
+
+{% block page_content %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/css/register.css') }}">
 {% endblock %}
 
-{% block body %}
-    {% block page_content %}
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-1 lateral-column"></div>
-                <div class="col-10 px-0">
-                    {% block header %}
-                    <div class="logo text-center">
-                        <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
-                    </div>
-                    {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
-                    {% endembed %}
-                    {% endblock header %}
-                </div>
-                <div class="col-1 lateral-column"></div>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {% embed 'decorator/_card.html.twig' %}
+        {% trans_default_domain 'FOSUserBundle' %}
+        
+        {% block body %}
+
+        {#============================================================#}
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.username) }}
             </div>
         </div>
-        <div class="divider"></div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.prenom) }}
+            </div>
+        </div>
 
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
             {% trans_default_domain 'FOSUserBundle' %}
@@ -84,7 +88,10 @@
                 </div>
             </div>
 
-            {{ form_widget(form) }}
+        {% block footer %}
+            <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+            <h4>Vous avez déjà un compte ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></h4>
+        {% endblock %}
 
         {{ form_end(form) }}
         <div class="row justify-content-center">

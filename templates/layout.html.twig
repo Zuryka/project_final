@@ -12,31 +12,32 @@
                     {% block header %}
                         <div class="logo text-center row justify-content-around">
                             <div class="col-2">
-                            </div>
 
+                            </div>
                             <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
-                            
-                            <div class="col-lg-4 col-md-6 col-sm-10 align-self-center">
-                                {# Formulaire de recherche d'un évènement, artiste, formation ou lieu #}
-                                <form id="form-search" name="form-search">
-                                    <div class="typeahead__container">
-                                        <div class="typeahead__field">
-                                            <div class="typeahead__query">
-                                                <input class="js-typeahead-search" name="search[query]" type="search" placeholder="Recherche" autocomplete="off">
+                            <div class="col-2 align-self-center">
+                                    <form id="form-beer_v1" name="form-beer_v1" class="navbar-form">
+                                            <div class="typeahead__container">
+                                                <div class="typeahead__field">
+                                                    <div class="typeahead__query">
+                                                        <input class="js-typeahead-beer_v1" name="beer_v1[query]" type="search" placeholder="Search" autocomplete="off">
+                                                    </div>
+                                                    <div class="typeahead__button">
+                                                        <button type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="typeahead__button">
-                                                <button type="submit">
-                                                    <i class="typeahead__search-icon"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>                     
+                                        </form>
                             </div>
                         </div>
-                        {% embed 'decorator/_navbar.html.twig' %}
+                        
+                        {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
                             {% block menu %}
                                 {{ knp_menu_render('main', {'style': 'horizontal'}) }}
+                                
+                                {# {{ knp_menu_render('user', {'style': 'horizontal-right'}) }} #}
                             {% endblock menu %}
                         {% endembed %}
                     {% endblock header %}
@@ -45,8 +46,21 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="contenu container-fluid">
         {% block page_content %}
         {% endblock page_content %}
+=======
+    <div class="container-fluid mt-5">
+
+        <div class="row justify-content-center">
+            <div class="col-10 px-0">
+            
+                    {% block page_content %}
+                    {% endblock page_content %}
+                
+            </div>
+        </div>
+>>>>>>> 675f059a029eb3db7e6a6b405051f847be8d3d25
     </div>
 {% endblock body %}
