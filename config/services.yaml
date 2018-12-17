@@ -57,3 +57,9 @@ services:
     #App\EventListener\NotificationListener:
     #    tags:
     #        - { name: kernel.event_listener, event: article.add, method: onArticleAdd }
+
+    rs_user.registration_completed:
+        class: App\EventListener\RegistrationConfirmListener
+        arguments: ["@router"]
+        tags:
+            - { name: kernel.event_subscriber }
