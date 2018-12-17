@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}P'TITES SCENES{% endblock %}</title>
+        <title>{% block title %}P'tites Scènes | Grand talent !{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates" rel="stylesheet">
 
@@ -140,7 +140,7 @@
                             if (item.group == "Evenement") {  
                                 for (var i = 0 ; i < memDataEvenement.data.evenement.nom.length ; i++) {
                                     if (memDataEvenement.data.evenement.nom[i]["display"] == item.display) {
-                                        window.location.href = "/evenement/show/" + memDataEvenement.data.evenement.id;
+                                        window.location.href = "/evenement/show/" + memDataEvenement.data.evenement.id[i];
                                         break;
                                     }
                                 }
@@ -149,7 +149,7 @@
                             if (item.group == "Formation") {  
                                 for (var i = 0 ; i < memDataFormation.data.formation.nom.length ; i++) {
                                     if (memDataFormation.data.formation.nom[i]["display"] == item.display) {
-                                        window.location.href = "/formation/show/" + memDataFormation.data.formation.id;
+                                        window.location.href = "/formation/show/" + memDataFormation.data.formation.id[i];
                                         break;
                                     }
                                 }

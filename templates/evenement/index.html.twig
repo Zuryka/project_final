@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Evenements | P'tites Scènes{% endblock %}
+
 {% block page_content %}
 
 <div class="evenement row justify-content-center">
@@ -34,14 +36,19 @@
             </select>
             </div>
         </div>
-        -->
-        <div class="events row justify-content-between">
+
+        <div class="events row">
+
             {% for entity in entities %}
                 <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
                 {% if entity.styles is not empty %}
                 {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
                 {% endif %}">
-                    <div class="event">
+                    {% if is_granted('edit', entity) %}
+                    <div class="border-createur event">
+                    {% else %}
+                    <div class="border-standard event">
+                    {% endif %}
                         <a href="{{ path('evenement_show', {'id': entity.id}) }}">
                             <div class="event-image">
                                 {% if entity.getMediaWithPhotoIdent() is not empty %}

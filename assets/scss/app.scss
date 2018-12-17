@@ -127,12 +127,10 @@ body {
     background-color: rgba(203, 180, 26, 0.2);
 }
 
-
 .event {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
-
 }
 
 .event-image {
@@ -152,21 +150,66 @@ body {
 }
 
 
-/* *************************
- * ***** PAGE ARTISTES *****
- * *************************/
+.border-createur {
+    border: 5px solid $primary;
+    border-radius: 10px;
+}
+
+.border-standard {
+    border: 2px solid $dark;
+    border-radius: 8px;
+}
+
+/* *************************** *
+ * ***** PAGE ARTISTES ***** *
+ * *************************** */
 
 .artistes {
     padding-top: 20px;
-    background-color: rgba(0, 136, 163, 0.2);
-} 
+    background-color: rgba(203, 180, 26, 0.2);
+}
 
+.artist {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
 
-/* *************************
- * ***** PAGE FORMATIONS *****
- * *************************/
+.artist-image {
+    width: 100%;
+}
 
-.FORMATIONS {
+.artist-infos {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+}
+
+/* *************************** *
+ * ***** PAGE FORMATIONS ***** *
+ * *************************** */
+
+.formation {
     padding-top: 20px;
     background-color: rgba(169, 86, 181, 0.2);
-} 
+}
+
+.format {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.format-image {
+    width: 100%;
+}
+
+.format-infos {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+}

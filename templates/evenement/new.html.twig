@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Créer un évènement{% endblock %}
+{% block title %}Créer un événement | P'tites Scènes{% endblock %}
 
 {% block page_content %}
     {{ form_start(form) }}
@@ -14,8 +14,8 @@
             {% endblock body %}
 
             {% block footer %}
-                <a class="btn btn-secondary" href="{{ path('evenement_index') }}">Retour vers la liste</a>
-                <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+                <a class="btn btn-secondary" href="{{ path('evenement_index') }}">Annuler</a>
+                <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
             {% endblock footer %}
         {% endembed %}
     {{ form_end(form) }}
