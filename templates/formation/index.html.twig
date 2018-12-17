@@ -13,7 +13,11 @@
                 {% if entity.styles is not empty %}
                 {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
                 {% endif %}">
-                    <div class="format">
+                    {% if is_granted('edit', entity) %}
+                    <div class="border-createur format">
+                    {% else %}
+                    <div class="border-standard format">
+                    {% endif %}
                         <a href="{{ path('formation_show', {'id': entity.id}) }}">
                             <div class="format-image">
                                 {% if entity.getMediaWithPhotoIdent() is not empty %}

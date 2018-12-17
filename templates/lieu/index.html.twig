@@ -4,13 +4,16 @@
 
 {% block page_content %}
 
-<div class="bordure_top_evt fixed-top"></div>
-<div class="formation row justify-content-center">
+<div class="lieu row justify-content-center">
     <div class="col-10 px-0">
         <div class="formats row justify-content-between">
             {% for entity in entities %}
                 <div class="allformats col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3" >
-                    <div class="format">
+                    {% if is_granted('edit', entity) %}
+                    <div class="border-createur format">
+                    {% else %}
+                    <div class="border-standard format">
+                     {% endif %}
                         <a href="{{ path('lieu_show', {'id': entity.id}) }}">
                             <div class="format-image">
                                 {% if entity.getMediaWithPhotoIdent() is not empty %}
@@ -28,6 +31,7 @@
                             </div>
                         </a>
                     </div>
+
                 </div>
             {% endfor %}
         </div>
