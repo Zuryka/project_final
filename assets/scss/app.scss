@@ -98,6 +98,7 @@ body {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
+    background-color: rgba(0,0,0,0.9);
 }
 
 .event-image {
@@ -116,9 +117,16 @@ body {
     display: none;
 }
 
-// .createur {
-//     border : 
-// }
+.border-createur {
+    border: 5px solid $primary;
+    border-radius: 10px;
+}
+
+.border-standard {
+    border: 2px solid $dark;
+    border-radius: 8px;
+}
+
 
 /* *************************
  * ***** PAGE ARTISTES *****

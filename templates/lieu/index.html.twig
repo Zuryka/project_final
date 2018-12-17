@@ -5,7 +5,11 @@
 <div class="row justify-content-center">
 {% for entity in entities %}
     <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
-        <div class="card text-white bg-danger border-dark text-center">
+        {% if is_granted('edit', entity) %}
+        <div class="text-white bg-danger border-createur text-center">
+        {% else %}
+        <div class="text-white bg-danger border-standard text-center">
+        {% endif %}
             <a href="{{ path('lieu_show', {'id': entity.id}) }}" class="card-link">
                 {% if entity.getMediaWithPhotoIdent() is not empty %}
                     <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">

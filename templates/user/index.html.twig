@@ -10,7 +10,11 @@
         {% if entity.type[i] == "user_artiste" %}
 
             <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
-                <div class="card text-white bg-danger border-dark text-center">
+                {% if is_granted('editArtiste', entity) %}
+                <div class="text-white bg-danger border-createur text-center">
+                {% else %}
+                <div class="text-white bg-danger border-standard text-center">
+                {% endif %}
                     <a href="{{ path('user_artiste_show', {'username': entity.username}) }}" class="card-link">
                         {% if entity.getMediaWithPhotoIdent() is not empty %}
                             <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
