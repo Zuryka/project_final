@@ -1,8 +1,14 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+    {% if entity.nomArtiste is not empty %}
+        {{ entity.nomArtiste }}
+    {% else %}
+        {{ entity.nom }} {{ entity.prenom }}
+    {% endif %} | P'tites Scènes
+{% endblock %}
+
 {% block page_content %}
-
-
 <div class="row justify-content-center">
     <div class="col-10 mt-3">
         <div class="card text-white bg-danger border-dark text-center">
@@ -18,7 +24,7 @@
                     {% if entity.nomArtiste is not empty %}
                         {{ entity.nomArtiste }}
                     {% else %}
-                        {{ entity.username }}
+                        {{ entity.nom }} {{ entity.prenom }}
                     {% endif %}
                 </h2>
                 {% if entity.niveau is not empty %}
