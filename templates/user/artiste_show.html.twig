@@ -11,74 +11,79 @@
 {% block page_content %}
 <div class="artistes row justify-content-center">
     <div class="col-10 mt-3">
-
-        <div class="card-group">
-            <div class="card col-5 bg-light px-0">
-                {% if entity.getMediaWithPhotoIdent() is not empty %}
-                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                {% elseif entity.image is not empty %}
-                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                {% else %}
-                    <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
-                {% endif %}
-            </div>
-            <div class="card col-7 bg-light p-3">
-                <h2 class="card-title text_artiste text-center">
-                    {% if entity.nomArtiste is not empty %}
-                        {{ entity.nomArtiste }}
-                    {% else %}
-                        {{ entity.nom }} {{ entity.prenom }}
-                    {% endif %}
-                </h2>
-                {% if entity.niveau is not empty %}
-                    <h4 class="card-text">
-                        {{ 'user.artiste.show.musicien'|trans }} {{ entity.niveau }} 
-                    </h4>
-                {% endif %}
-                {% if entity.styles is not empty %}
-                    <div class="btn-group mt-3">
-                        <div class="btn btn-dark disabled">
-                            {{ 'user.artiste.show.style'|trans }} : 
-                        </div>
-                        <div class="btn btn-artiste disabled">
-                            {{ entity.styles ? entity.styles|join(', ') : '' }}
-                        </div>
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="card-group">
+                    <div class="card col-5 bg-dark px-0 border-0">
+                        {% if entity.getMediaWithPhotoIdent() is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
+                        {% endif %}
                     </div>
-                {% endif %}
-                <hr>
-                {% if entity.presentation is not empty %}
-                    <p class="card-text mt-3"> {{ entity.presentation }} </p>
-                {% endif %}
-                <hr>
-                {% if entity.instruments is not empty %}
-                    <div class="btn-group">
-                        <div class="btn btn-dark disabled">
-                            {{ 'user.artiste.show.instrument'|trans }} : 
-                        </div>
-                        <div class="btn btn-artiste disabled">
-                            {{ entity.instruments ? entity.instruments|join(' | ') : '' }}   
-                        </div>             
-                    </div>
-                    {% endif %}
-                    {% if entity.chants is not empty %}
-                        <div class="btn-group mt-2">
-                            <div class="btn btn-dark disabled">
-                                {{ 'user.artiste.show.chant'|trans }} : 
+                    <div class="card col-7 bg-dark text-light p-3">
+                        <h2 class="card-title text_artiste text-center">
+                            {% if entity.nomArtiste is not empty %}
+                                {{ entity.nomArtiste }}
+                            {% else %}
+                                {{ entity.nom }} {{ entity.prenom }}
+                            {% endif %}
+                        </h2>
+                        {% if entity.niveau is not empty %}
+                            <h4 class="card-text">
+                                {{ 'user.artiste.show.musicien'|trans }} {{ entity.niveau }} 
+                            </h4>
+                        {% endif %}
+                        {% if entity.styles is not empty %}
+                            <div class="btn-group mt-3">
+                                <div class="btn btn-dark disabled">
+                                    {{ 'user.artiste.show.style'|trans }} : 
+                                </div>
+                                <div class="btn btn-artiste disabled">
+                                    {{ entity.styles ? entity.styles|join(', ') : '' }}
+                                </div>
                             </div>
-                            <div class="btn btn-artiste disabled">
-                                {{ entity.chants ? entity.chants|join(' | ') : '' }}   
-                            </div>             
-                        </div>
-                {% endif %}
-                <hr>
-                <p>Contact : </p>
-                <hr>
-                {% if is_granted('editArtiste', entity) %}
-                    <div class="btn-group ml-auto">
-                            <a href="{{ path('user_index') }}" class="btn btn-dark">Retour</a>
-                            <a href="{{ path('user_artiste_edit', {'username': entity.getUsername()}) }}" class="btn btn-artiste">Modifier</a>
+                        {% endif %}
+                        <hr>
+                        {% if entity.presentation is not empty %}
+                            <p class="card-text mt-3"> {{ entity.presentation }} </p>
+                        {% endif %}
+                        <hr>
+                        {% if entity.instruments is not empty %}
+                            <div class="btn-group">
+                                <div class="btn btn-dark disabled">
+                                    {{ 'user.artiste.show.instrument'|trans }} : 
+                                </div>
+                                <div class="btn btn-artiste disabled">
+                                    {{ entity.instruments ? entity.instruments|join(' | ') : '' }}   
+                                </div>             
+                            </div>
+                            {% endif %}
+                            {% if entity.chants is not empty %}
+                                <div class="btn-group mt-2">
+                                    <div class="btn btn-dark disabled">
+                                        {{ 'user.artiste.show.chant'|trans }} : 
+                                    </div>
+                                    <div class="btn btn-artiste disabled">
+                                        {{ entity.chants ? entity.chants|join(' | ') : '' }}   
+                                    </div>             
+                                </div>
+                        {% endif %}
+                        <hr>
+                        <p>Contact : </p>
                     </div>
-                {% endif %}
+                </div>
+            </div>
+            
+            <div class="card-footer text-right bg-light">
+                <div class="btn-group">
+                    <a href="{{ path('user_index') }}" class="btn btn-artiste">Retour</a>
+                    {% if is_granted('editArtiste', entity) %}
+                        <a href="{{ path('user_artiste_edit', {'username': entity.getUsername()}) }}" class="btn btn-dark">Modifier</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

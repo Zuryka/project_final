@@ -4,104 +4,103 @@
 
 {% block page_content %}
 
-<div class="evenement pb-4">
-    <div class="row-12 mt-3 mb-3 justify-content-center">
-        <div class="card-group">
-            <div class="card col-3 offset-1 text-white bg-secondary border-dark text-center">
-                {% if mediaWithPhotoIdent is not empty %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/uploads/img/' ~ mediaWithPhotoIdent.lien) }}" alt="{{ mediaWithPhotoIdent.titre }}">
-                {% elseif entity.image is not empty %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                {% else %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
-                {% endif %}
-            </div>
-
-            <div class="card col-3 text-dark bg-secondary border-dark text-center">
-                <div class="card-body">
-                    <h2 class="card-title">{{ entity.nom }}</h2>
-                    <h3 class="card-text mt-5">
-                        {{ entity.type }} 
-                        {{ entity.styles ? entity.styles|join(', ') : '' }}
-                    </h3>
-                    <h4 class="card-text mt-3">
-                        {{ entity.date|date("d/m/Y") }} - 
-                        {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
-                        {{ entity.tarif }} €
-                    </h4>
-                    <ul class="list-group list-group-flush mt-5">
-                        {% if entity.artistes is not empty or entity.formations is not empty %}
-                        <li class="list-group-item bg-secondary">
-                            <h5>Participants :
-                                {% for artiste in entity.artistes %}
-                                    {# <a href="#" class="card-link"> #}
-                                        {% if artiste.nomArtiste is not empty %}
-                                            {{ artiste.nomArtiste }}
-                                        {% else %}
-                                            {{ artiste.prenom }} {{ artiste.nom }}
-                                        {% endif %}
-                                    {# </a>     #}
-                                {% endfor %}
-
-                                {% for formation in entity.formations %}
-                                    {# <a href="#" class="card-link">  #}
-                                        {{ formation.nom }} 
-                                    {# </a>     #}
-                                {% endfor %}
-                            </h5>
-                        </li>
+<div class="evenement row justify-content-center">
+    <div class="col-10 mt-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="card-group">
+                    <div class="card col-3 bg-secondary">
+                        {% if mediaWithPhotoIdent is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ mediaWithPhotoIdent.lien) }}" alt="{{ mediaWithPhotoIdent.titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img-top mt-3 mb-3" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img-top mt-3 mb-3" src="{{ asset('/img/event_def.jpg') }}" alt="Card image cap">
                         {% endif %}
-                        <li class="list-group-item bg-secondary">
-                            <h5>Lieu : 
-                                {% if entity.lieu is not empty %}
-                                    {# <a href="#" class="card-link">  #}
-                                        {{ entity.lieu.nom }}
-                                    {# </a>                          #}
-                                {% else %}
-                                    {{ entity.adresse }} - 
-                                    {{ entity.codepostal }} - 
-                                    {{ entity.ville }}
+                    </div>
+        
+                    <div class="card col-4 text-dark bg-secondary text-center">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ entity.nom }}</h2>
+                            <h3 class="card-text mt-5">
+                                {{ entity.type }} 
+                                {{ entity.styles ? entity.styles|join(', ') : '' }}
+                            </h3>
+                            <h4 class="card-text mt-3">
+                                {{ entity.date|date("d/m/Y") }} - 
+                                {{ entity.heureDebut|date('H:i') }} à {{ entity.heureFin|date('H:i') }} - 
+                                {{ entity.tarif }} €
+                            </h4>
+                            <ul class="list-group mt-5">
+                                {% if entity.artistes is not empty or entity.formations is not empty %}
+                                <li class="list-group-item bg-secondary">
+                                    <h5>Participants :
+                                        {% for artiste in entity.artistes %}
+                                            {# <a href="#" class="card-link"> #}
+                                                {% if artiste.nomArtiste is not empty %}
+                                                    {{ artiste.nomArtiste }}
+                                                {% else %}
+                                                    {{ artiste.prenom }} {{ artiste.nom }}
+                                                {% endif %}
+                                            {# </a>     #}
+                                        {% endfor %}
+        
+                                        {% for formation in entity.formations %}
+                                            {# <a href="#" class="card-link">  #}
+                                                {{ formation.nom }} 
+                                            {# </a>     #}
+                                        {% endfor %}
+                                    </h5>
+                                </li>
                                 {% endif %}
-                            </h5>
-                        </li>
-                        <li class="list-group-item bg-secondary">
-                            <h5>Contact :
-                                {% if entity.userContact is not empty %}
-                                    {# <a href="#" class="card-link"> #}
-                                        {{ entity.userContact.prenom }} {{ entity.userContact.nom }}
-                                    {# </a>     #}
-                                {% else %}
-                                    {{ entity.numTelephone }}
-                                {% endif %}
-                            </h5>
-                        </li>
-                    </ul>
+                                <li class="list-group-item bg-secondary">
+                                    <h5>Lieu : 
+                                        {% if entity.lieu is not empty %}
+                                            {# <a href="#" class="card-link">  #}
+                                                {{ entity.lieu.nom }}
+                                            {# </a>                          #}
+                                        {% else %}
+                                            {{ entity.adresse }} - 
+                                            {{ entity.codepostal }} - 
+                                            {{ entity.ville }}
+                                        {% endif %}
+                                    </h5>
+                                </li>
+                                <li class="list-group-item bg-secondary">
+                                    <h5>Contact :
+                                        {% if entity.userContact is not empty %}
+                                            {# <a href="#" class="card-link"> #}
+                                                {{ entity.userContact.prenom }} {{ entity.userContact.nom }}
+                                            {# </a>     #}
+                                        {% else %}
+                                            {{ entity.numTelephone }}
+                                        {% endif %}
+                                    </h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="card col-5 text-dark bg-secondary">
+                        <div class="card-body">
+                            <h5> {{ entity.presentation }} </h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card col-4 text-dark bg-secondary border-dark text-center">
-                <div class="card-body">
-                    <h5 class="card-text"> {{ entity.presentation }} </h5>
+            </div>
+            <div class="card-footer text-right bg-light">
+                <div class="btn-group">
+                    <a href="{{ path('evenement_index') }}" class="btn btn-primary">Retour</a>
+                    {% if is_granted('edit', entity) %}
+                            <a href="{{ path('evenement_edit', {'id': entity.id }) }}" class="btn btn-dark">Modifier</a>
+                            {{ include('evenement/_delete_form.html.twig') }}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row mt-4 justify-content-center">
-        {% if is_granted('edit', entity) %}
-            <div class="col-1 justify-content-center">
-                <a href="{{ path('evenement_index') }}"><button class="btn btn-secondary">Retour</button></a>
-            </div>
-            <div class="col-1 justify-content-center">
-                <a href="{{ path('evenement_edit', {'id': entity.id }) }}"><button class="btn btn-secondary">Modifier</button></a>
-            </div>
-            <div class="col-1">
-                {{ include('evenement/_delete_form.html.twig') }}
-            </div>
-        {% else %}
-            <a href="{{ path('evenement_index') }}"><button class="btn btn-secondary">Retour</button></a>
-        {% endif %}
-    </div>
 </div>
+
 
 {% endblock %}

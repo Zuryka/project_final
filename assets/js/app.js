@@ -78,11 +78,13 @@ $(function() {
         $('#bordure_top').removeClass('bordure_top_artist');
     }
     
-    if ($('#formations').hasClass('active')) {
+    if ($('#formations').hasClass('active') || chemin.search(/formation/) > 0) {
         $('#formations').addClass('formations_bg');
+        $('#formations').addClass('active');
         $('#bordure_top').addClass('bordure_top_formation');
     } else {
         $('#formations').removeClass('formations_bg');
+        $('#formations').removeClass('active');
         $('#bordure_top').removeClass('bordure_top_formation');
     }
     
