@@ -8,7 +8,7 @@
 
 {% block page_content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-3">
             <div class="row">
@@ -28,9 +28,6 @@
                     <div class="col-12">
                         <a href="{{ path('user_edit', {'username': entity.username}) }}">Modifier son profil</i></a>
                     </div>
-                    {# <div class="col-12" style="background-color: gainsboro;">
-                        <a href="{{ path('user_edit', {'username': entity.username}) }}><i class="text-dark fa fa-user-lock"> Modifier son mot de passe</i></a>
-                    </div> #}
                     <div class="col-12">
                         <a href="{{ path('evenement_index') }}"> Retour vers l'accueil</i></a>
                     </div>
@@ -58,7 +55,7 @@
                         {% if entity.niveau is not empty %}
                             <p>Status Professionnel : {{ entity.niveau }}<p/>
                         {% endif %}
-                        <button class="btn"><a href="{{ path('user_edit', {'username': entity.username}) }}">Modifier</a></button>
+                        <a href="{{ path('user_edit', {'username': entity.username}) }}"><button class="btn">Modifier</button></a>
                     </div>
                 </div>
                 <div class="col-12 news">

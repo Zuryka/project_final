@@ -39,6 +39,7 @@ $white: #FFF;
 }
 
 .col-9 h2 {
+    margin-top: 50px;
     color: $primary;
 }
 
@@ -65,9 +66,6 @@ $white: #FFF;
     max-width: 290px;
     border-radius: 500px;
     padding: 10px 32px;
-}
-
-.col-9 .profil a {
     color: $white;
     font-size: 15px;
     font-weight: 700;
@@ -75,12 +73,12 @@ $white: #FFF;
     line-height: 1;
 }
 
-.col-9 .profil a {
-    text-decoration: none;
-}
-
 .col-9 .profil button:hover {
     background-color: rgba(0, 0, 0, 0.85);
+}
+
+.col-9 .profil a {
+    text-decoration: none;
 }
 
 .news {
@@ -97,4 +95,110 @@ $white: #FFF;
 
 .news p {
     padding: 0px 15px 10px 0px;
+}
+
+.supp {
+    background-color: $primary;
+    color: $white;
+    width: 95%;
+}
+
+.supp h2 {
+    color: $white;
+    font-size: 25px;
+    margin-top: 20px;
+    padding: 10px 5px 5px 0px;
+}
+
+.supp a {
+    float: right;
+    margin-bottom: 5px;
+}
+
+.col-9 .form {
+    background-color: $white;
+    padding-left: 50px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    margin: 10px 30px 50px 15px;
+}
+
+.col-9 .form label {
+    color: #919496;
+}
+
+.col-9 .form span {
+    padding-left: 70px;
+}
+
+.col-9 .form button {
+    background-color: #000;
+    width: 90%;
+    margin-bottom: 40px;
+    max-width: 290px;
+    border-radius: 500px;
+    padding: 10px 32px;
+}
+
+.col-9 .form a {
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.col-9 .form a {
+    text-decoration: none;
+}
+
+.col-9 .form button:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.supprimer {
+    background-color: $muted;
+}
+
+.supprimer:hover {
+    background-color: #420926c4;
+}
+
+.col-9 .form .btn-primary {
+    background-color: $primary;
+    color: $white;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    max-width: 290px;
+    border-radius: 500px;
+    padding: 10px 32px;
+    float: right;
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    border: 1px solid $primary;
+}
+
+.col-9 .form .btn-primary:hover {
+    background-color: #420926c4;
+    border: 1px solid #420926c4;
+}
+
+.col-9 .form a {
+    margin-left: 30px;
+    letter-spacing: 1px;
+    color: $dark;
+    font-size: 16px;
+    line-height: 50px;
+}
+
+.card-header {
+    padding: 25px;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 1px;
 }

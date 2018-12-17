@@ -2,27 +2,36 @@
 
 {% block title %}Supprimer le profil de {{ entity.prenom }} | P'tites Scènes{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/profil.css') }}">
+{% endblock %}
+
 {% block page_content %}
-    
-    {{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                {{ form_start(form) }}
+                {% embed 'decorator/_card.html.twig' %}
 
-        {% block header %}
-            {{ 'user.delete.title'|trans }}
-        {% endblock %}
+                    {% block header %}
+                        Suppression du profil de {{ entity.nom }} {{ entity.prenom }} :
+                    {% endblock %}
 
-        {% block body %}
-            {# Formulaire #}
-            <div class="alert alert-primary">{{ 'user.delete.message'|trans }}</div>
-            {{ form(form) }}
-        {% endblock %}
+                    {% block body %}
+                        {# Formulaire #}
+                        <div class="alert alert-primary">Si vous pensez ne jamais réutiliser P'tites Scènes et souhaitez effacer complètement votre compte, nous pouvons nous en charger. Rappellez-vous cependant que vous ne pourrez ni réactiver votre compte ni récupérer son contenu ou ses informations. <br><br>Si vous souhaitez tout de même supprimer votre compte, cliquez sur Supprimer mon compte.</div>
+                        {{ form(form) }}
+                    {% endblock %}
 
-        {% block footer %}
-            <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-trash"></i> Supprimer</button>
-        {% endblock %}
+                    {% block footer %}
+                        <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
+                        <button type="submit" class="btn btn-primary float-right"><i class="fa fa-trash"></i> Supprimer mon compte</button>
+                    {% endblock %}
 
-    {% endembed %}
-    {{ form_end(form) }}
+                {% endembed %}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 
 {% endblock page_content %}

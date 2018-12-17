@@ -2,31 +2,61 @@
 
 {% block title %}Modifier le profil de {{ entity.prenom }} | P'tites Scènes{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/profil.css') }}">
+{% endblock %}
+
 {% block page_content %}
-    
-    {{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
 
-        {% block header %}
-            {{ 'user.artiste.edit.title'|trans }}
-        {% endblock %}
-
-        {% block body %}
-        
-                  {{ form(form) }}
-
-        {% endblock body %}
-
-        {% block footer %}
-            <a href="{{ path('user_show', {'username': entity.username}) }}" class="btn btn-secondary">Annuler</a>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        {% endblock footer %}
-
-    {% endembed %}
-    {{ form_end(form) }}
-
-    <div class="float-right">
-        <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn btn-primary"><i class="text-dark fa fa-trash"></i></a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="row">
+                <div class="col-12 image">
+                    {% if entity.getMediaWithPhotoIdent() is not empty %}
+                        <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                    {% elseif entity.image is not empty %}
+                        <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                    {% else %}
+                        <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
+                    {% endif %}
+                </div>
+                <div class="col-12" style="color: rgb(180, 180, 180);font-size: 17px;">
+                    <a href="{{ path('user_show', {'username': entity.username}) }}">Vue d'ensemble du compte</a>
+                </div>
+                {% if entity.username == app.user.username %}
+                    <div class="col-12">
+                        <a href="{{ path('user_edit', {'username': entity.username}) }}">Modifier son profil</i></a>
+                    </div>
+                    {# <div class="col-12" style="background-color: gainsboro;">
+                        <a href="{{ path('user_edit', {'username': entity.username}) }}><i class="text-dark fa fa-user-lock"> Modifier son mot de passe</i></a>
+                    </div> #}
+                    <div class="col-12">
+                        <a href="{{ path('evenement_index') }}"> Retour vers l'accueil</i></a>
+                    </div>
+                {% endif %}
+            </div>  
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Modification</h2>
+                    <hr>
+                    <div class="form">
+                        {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                            <a href="{{ path('user_show', {'username': entity.username}) }}" >Annuler</a>
+                         {{ form_end(form) }}
+                    </div>
+                </div>
+                <div class="col-12 supp">
+                    <h2>Supprimer son compte définitivement</h2>
+                    <hr>
+                    Toutes vos informations seront supprimées et ne pourront plus être récupérées. <a href="{{ path('user_delete', {'username': entity.username}) }}" class="btn supprimer"><i class="text-white fa fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
-
+</div>
 {% endblock page_content %}
