@@ -57,24 +57,64 @@ body {
     color: rgba(189, 190, 175, 1);
 }
 
-.nav-item a:hover, .active a {
-    color: rgba(203, 180, 26, 1);
+.nav-item a:hover {
+    color: rgba(227, 202, 38, 1);
 }
+
 
 .events_bg {
     background-color: rgba(203, 180, 26, 0.2);
+    height: 100%;
+}
+
+.events_bg a {
+    color: rgba(227, 202, 38, 1);
 }
 
 .artists_bg {
-    background-color: rgba(203, 180, 26, 0.2);
+    background-color: rgba(0, 136, 163, 0.2);
+    height: 100%;
+}
+
+.artists_bg a {
+    color: rgba(0, 161, 194, 1);
 }
 
 .formations_bg {
-    background-color: rgba(203, 180, 26, 0.2);
+    background-color: rgba(169, 86, 181, 0.2);
+    height: 100%;
+}
+
+.formations_bg a {
+    color: rgba(210, 136, 221, 1);
 }
 
 .lieux_bg {
+    background-color: rgba(231, 49, 49, 0.2);
+}
+
+.lieuxs_bg a {
+    color: rgba(255, 62, 62, 1);
+}
+
+#bordure_top {
+    height: 48px;
+}
+
+.bordure_top_evt {
     background-color: rgba(203, 180, 26, 0.2);
+}
+
+.bordure_top_artist {
+    background-color: rgba(0, 136, 163, 0.2);
+}
+
+.bordure_top_formation {
+    background-color: rgba(169, 86, 181, 0.2);
+}
+
+.bordure_top_lieu {
+    background-color: rgba(231, 49, 49, 0.2);
 }
 
 
@@ -87,17 +127,12 @@ body {
     background-color: rgba(203, 180, 26, 0.2);
 }
 
-.bordure_top_evt {
-    width: 100%;
-    height: 48px;
-    margin-top: 201px;
-    background-color: rgba(203, 180, 26, 0.2);
-}
 
 .event {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
+
 }
 
 .event-image {
@@ -121,5 +156,17 @@ body {
  * ***** PAGE ARTISTES *****
  * *************************/
 
- 
+.artistes {
+    padding-top: 20px;
+    background-color: rgba(0, 136, 163, 0.2);
+} 
 
+
+/* *************************
+ * ***** PAGE FORMATIONS *****
+ * *************************/
+
+.FORMATIONS {
+    padding-top: 20px;
+    background-color: rgba(169, 86, 181, 0.2);
+} 

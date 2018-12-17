@@ -2,10 +2,9 @@
 
 {% block page_content %}
 
-<div class="bordure_top_evt fixed-top"></div>
 <div class="evenement row justify-content-center">
     <div class="col-10 px-0">
-
+        <!--
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="text" class="btn btn-secondary">Choisissez un style</button>
             <div class="btn-group" role="group">
@@ -35,7 +34,7 @@
             </select>
             </div>
         </div>
-
+        -->
         <div class="events row justify-content-between">
             {% for entity in entities %}
                 <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
@@ -60,28 +59,6 @@
                             </div>
                         </a>
 
-                        <!-- Modal -->
-                        <!--
-                        <div class="modal fade" id="evenementModal" tabindex="-1" role="dialog" aria-labelledby="evenementModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="evenementModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             {% endfor %}
