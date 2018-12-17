@@ -14,7 +14,8 @@
     {% endblock %}
 
     {% block footer %}
-    <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Annuler</a>
+    {# <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Annuler</a> #}
+    <a class="btn btn-secondary" href="{{ path('lieu_show', {'id': entity.id }) }}">Annuler</a>
     <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
     {% endblock %}
 
