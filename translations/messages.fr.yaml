@@ -60,18 +60,18 @@ user:
       instrument: Instrument
       chant: Chant
   username: Pseudo
-  email: Adresse Mail
-  password: Mot des passes
+  email: Adresse email
+  password: Mot de passe
   name: Nom
   userlastname: Prenom
   codepostal: Code Postal
   ville: Ville
   numtelephone: Numéro de Telephone
-  nivau: Status profesionnel
+  nivau: Statut profesionnel
   adresse: Adresse
-  artistename: Nom D'artiste
+  artistename: Nom d'artiste
   presentation: Présentation
-  niveau: Status professionnel
+  niveau: Statut professionnel
   styles:
     liste: Liste de Styles
     rock: Rock
