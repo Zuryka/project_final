@@ -93,7 +93,7 @@ body {
     background-color: rgba(231, 49, 49, 0.2);
 }
 
-.lieuxs_bg a {
+.lieux_bg a {
     color: rgba(255, 62, 62, 1);
 }
 
@@ -166,7 +166,7 @@ body {
 
 .artistes {
     padding-top: 20px;
-    background-color: rgba(203, 180, 26, 0.2);
+    background-color: rgba(0, 136, 163, 0.2);
 }
 
 .artist {
@@ -212,4 +212,14 @@ body {
     z-index: 5;
     background-color: rgba(0,0,0,0.9);
     width: 100%;
+}
+
+
+/* *****************
+ * ***** LIEUX *****
+ * *****************/
+
+.lieu {
+    padding-top: 20px;
+    background-color: rgba(231, 49, 49, 0.2);
 }
