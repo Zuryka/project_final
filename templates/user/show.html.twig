@@ -45,7 +45,6 @@
                         <p>Nom : {{ entity.nom}}</p>
                         <p>Prenom : {{ entity.prenom }}</p>
                         <p>Email : {{ entity.email }} </p>
-                        <!-- Ajouter condition que apparait seulement si existe -->
                         {% if entity.adresse and entity.codePostal and entity.ville is not empty %}
                             <p>Adresse : {{ entity.adresse }}<br><span>{{ entity.codePostal }}</span><br><span>{{ entity.ville }}</span></p>
                         {% endif %}
