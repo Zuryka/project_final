@@ -10,31 +10,31 @@
         {% if entity.type[i] == "user_artiste" %}
 
             <div class="col-md-6 col-sm-12 col-lg-3 mb-3 mt-3">
-                <div class="card text-white bg-danger border-dark text-center">
-                    <a href="{{ path('user_artiste_show', {'username': entity.username}) }}" class="card-link">
-                        {% if entity.getMediaWithPhotoIdent() is not empty %}
-                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                        {% elseif entity.image is not empty %}
-                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                        {% else %}
-                            <img class="card-img-top" src="{{ asset('/img/artiste_def.jpg') }}" alt="Card image cap">
-                        {% endif %}
-
-                        <div class="card-body">
-                            <h2 class="card-title">
+                <div class="artist">
+                    <a href="{{ path('user_artiste_show', {'username': entity.username}) }}" class="link">
+                        <div class="artist-image">
+                            {% if entity.getMediaWithPhotoIdent() is not empty %}
+                                <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                            {% elseif entity.image is not empty %}
+                                <img class="card-img h-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                            {% else %}
+                                <img class="card-img h-100" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
+                            {% endif %}
+                        </div>
+                        <div class="artist-infos text-center">
+                            <p class="lead text-primary">
                                 {% if entity.nomArtiste is not empty %}
                                     {{ entity.nomArtiste }}
                                 {% else %}
-                                    {{ entity.username }}
+                                    {{ entity.nom }} {{ entity.prenom }}
                                 {% endif %}
-                            </h2>
-                            <h4 class="card-text">{{ entity.presentation }}</h4>
-                            <h5 class="card-text"> {{ entity.dateInscription|date('d/m/Y H:i') }} </p>
+                            </p>
+                            <p class="text-light"><small>{{ entity.presentation }}</small></p>
+                            <p class="text-secondary">{{ entity.dateInscription|date('d/m/Y H:i') }}</p>
                         </div>
                     </a>
                 </div>
             </div>
-
         {% endif %}
     {% endfor %}
 {% endfor %}
