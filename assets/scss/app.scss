@@ -24,7 +24,7 @@ body {
 
 .contenu {
     padding-top: 240px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .text_evt {
@@ -32,7 +32,8 @@ body {
 }
 
 .text_artiste {
-    color: #0088A3; 
+    color: #0088A3;
+    margin-top: 10px;
 }
 
 .text_formation {
@@ -331,7 +332,6 @@ body {
     background-color: #000;
     color: whitesmoke;
     padding: 50px;
-    height: 300px;;
 }
 
 .footer h3 {
@@ -375,4 +375,16 @@ body {
 
 .footer i:hover {
     color: $primary;
+}
+
+@media screen and (max-width: 1044px) {
+    .footer i {
+        margin: 50px 0px 10px 20px;
+    }
+} 
+
+@media screen and (max-width: 992px) {
+    .footer .droite {
+        padding-left: 40px;
+    }
 }
