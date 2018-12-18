@@ -32,7 +32,7 @@ class LieuType extends AbstractType
                 'required' => true,
             ))
 
-            ->add('type', Type\ChoiceType::class, array(
+            ->add('type', ChoiceButtonType::class, array(
                 'label' => 'lieu.type',
                 'choices' => array(
                     'Bar' => 'Bar',
@@ -42,6 +42,7 @@ class LieuType extends AbstractType
                     'Salle de concert' => 'Salle de concert',
                 ),
                 'required' => true,
+                'expanded' => true,
             ))
 
             ->add('presentation', Type\TextareaType::class, array(
