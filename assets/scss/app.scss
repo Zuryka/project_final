@@ -39,7 +39,8 @@ body {
 }
 
 .text_artiste {
-    color: #0088A3; 
+    color: #0088A3;
+    margin-top: 10px;
 }
 
 .text_formation {
@@ -320,6 +321,14 @@ body {
     //background-color: rgb(72, 36, 36) !important;
 }
 
+.inline-choice{
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+.custom-control{
+    margin-left: 20px !important;
+}
 /* *****************
  * **** FOOTER *****
  * *****************/
@@ -328,7 +337,6 @@ body {
     background-color: #000;
     color: whitesmoke;
     padding: 50px;
-    height: 300px;;
 }
 
 .footer h3 {
@@ -404,5 +412,17 @@ html {
 @include media-breakpoint-up(xl) {
     html {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1044px) {
+    .footer i {
+        margin: 50px 0px 10px 20px;
+    }
+} 
+
+@media screen and (max-width: 992px) {
+    .footer .droite {
+        padding-left: 40px;
     }
 }

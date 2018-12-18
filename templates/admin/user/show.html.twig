@@ -1,38 +1,38 @@
 {% extends 'admin/admin_layout.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %} {{ 'admin.user.show.titre'|trans }} {% endblock %}
 
 {% block page_content %}
-    <h1>User</h1>
+    <h1> {{ 'admin.user.show.viewuser'|trans }} </h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Username</th>
+                <th>{{ 'admin.user.show.username'|trans }}</th>
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>{{ 'admin.user.show.mail'|trans }}</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>{{ 'admin.user.show.password'|trans }}</th>
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
-                <th>LastLogin</th>
+                <th>{{ 'admin.user.show.lastLogin'|trans }}</th>
                 <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>{{ 'admin.user.show.roles'|trans }}</th>
                 <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('admin_user_index') }}">back to list</a>
+    <a href="{{ path('admin_user_index') }}">{{ 'admin.user.show.backtolist'|trans }}</a>
 
-    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">{{ 'admin.user.show.edit'|trans }}</a>
 
     {{ include('admin/user/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,24 +1,24 @@
 {% extends 'admin/admin_layout.html.twig' %}
 
-{% block title %}event index{% endblock %}
+{% block title %}Evènements{% endblock %}
 
 {% block page_content %}
-    <h1>event index</h1>
+    <h1>Liste des évènements</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>nom</th>
-                <th>styles</th>
-                <th>presentation</th>
-                <th>adresse</th>
-                <th>code_postal</th>
-                <th>ville</th>
-                <th>tarif</th>
-                <th>date</th>
-                <th>heure_debut</th>
-                <th>heure_fin</th>
-                <th>type</th>
+                <th>Nom</th>
+                <th>Styles</th>
+                <th>Presentation</th>
+                <th>Adresse</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>Tarif</th>
+                <th>Date</th>
+                <th>Heure début</th>
+                <th>Heure fin</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="14">no records found</td>
+                <td colspan="14">Aucun évènement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

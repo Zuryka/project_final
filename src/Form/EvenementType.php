@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use App\Form\ChoiceButtonType;
 
 use App\Form\ImageType;
 
@@ -31,7 +32,7 @@ class EvenementType extends AbstractType
         ->add('image', ImageType::class, array(
             'label' => 'evenement.photo',
         ))
-        ->add('type', Type\ChoiceType::class, array(
+        ->add('type', ChoiceButtonType::class, array(
             'label' => 'evenement.type',
             'placeholder' => 'Choisissez le type d\'événement...',
             'choices' => array(
@@ -46,8 +47,10 @@ class EvenementType extends AbstractType
                 'Autre ...' => 'Autre',
             ),
             'required' => true,
+            'expanded' => true,
+            'multiple' => false,
         ))
-        ->add('styles', Type\ChoiceType::class, array(
+        ->add('styles', ChoiceButtonType::class, array(
             'label' => 'evenement.styles',
             'choices' => array(
                 'Blues' => 'Blues',
@@ -75,6 +78,7 @@ class EvenementType extends AbstractType
             ),
             'required' => true,
             'multiple' => true,
+            'expanded' => true,
         ))
         ->add('presentation', Type\TextareaType::class, array(
             'label' => 'evenement.presentation',
