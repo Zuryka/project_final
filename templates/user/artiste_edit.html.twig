@@ -29,7 +29,7 @@
         {% endblock body %}
 
         {% block footer %}
-            <a href="{{ path('user_index') }}" class="btn btn-secondary">Annuler</a>
+            <a class="btn btn-secondary" href="{{ path('user_artiste_show', {'username': entity.username }) }}">Annuler</a>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         {% endblock footer %}
 
