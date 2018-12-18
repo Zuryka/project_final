@@ -10,10 +10,7 @@
         <div class="events row">
 
             {% for entity in entities %}
-                <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
-                {% if entity.styles is not empty %}
-                {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
-                {% endif %}">
+                <div class="allEvents col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3">
                     {% if is_granted('edit', entity) %}
                     <div class="border-createur-evt event">
                     {% else %}
