@@ -38,7 +38,7 @@ class ArtisteType extends AbstractType
                     'semi-pro' => 'semi-pro',
                     'pro' => 'pro',
                 ),
-                'required' => false,
+                'required' => true,
                 'expanded' => true,
             ))
 
