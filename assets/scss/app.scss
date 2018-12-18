@@ -203,6 +203,14 @@ body {
     border-radius: 10px;
 }
 
+.vignette {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: rgba(0,0,0,1);
+}
+
+
 /* *************************** *
  * ***** PAGE EVENEMENTS ***** *
  * *************************** */
@@ -211,13 +219,6 @@ body {
     padding-top: 20px;
     background-color: rgba(203, 180, 26, 0.2);
     min-height: 100vh;
-}
-
-.event {
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-    background-color: rgba(0,0,0,1);
 }
 
 .event-image {
@@ -249,12 +250,6 @@ body {
 
 .artistes hr {
     border-top: 1px solid lighten($dark, 10%);
-}
-
-.artist {
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
 }
 
 .artist-image {

@@ -42,12 +42,12 @@ $(function() {
      * ***** Adaptation de la hauteur en fonction de la largeur *****
      * **************************************************************/
 
-    var $width_event = $('.event').width();
-    $('.event').css({height: $width_event + "px"});
+    var $width_vignette = $('.vignette').width();
+    $('.vignette').css({height: $width_vignette + "px"});
     
     $(window).resize(function() {
-        $width_event = $('.event').width();
-        $('.event').css({height: $width_event + "px"});
+        $width_vignette = $('.vignette').width();
+        $('.vignette').css({height: $width_vignette + "px"});
     });
 
     

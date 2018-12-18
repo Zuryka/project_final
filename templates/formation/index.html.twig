@@ -14,9 +14,9 @@
                     {{ entity.styles ? entity.styles|join(' | ') : '' }}
                 {% endif %}">
                     {% if is_granted('edit', entity) %}
-                    <div class="border-createur-formation format">
+                    <div class="border-createur-formation vignette">
                     {% else %}
-                    <div class="border-standard format">
+                    <div class="border-standard vignette">
                     {% endif %}
                         <a href="{{ path('formation_show', {'id': entity.id}) }}">
                             <div class="format-image">
