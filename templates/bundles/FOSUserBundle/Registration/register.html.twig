@@ -13,11 +13,9 @@
                 <div class="col-1 lateral-column"></div>
                 <div class="col-10 px-0">
                     {% block header %}
-                    <div class="logo text-center">
+                    <div class="text-center">
                         <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
                     </div>
-                    {% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
-                    {% endembed %}
                     {% endblock header %}
                 </div>
                 <div class="col-1 lateral-column"></div>
