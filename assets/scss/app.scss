@@ -241,6 +241,10 @@ body {
     min-height: 100%;
 }
 
+.artistes hr {
+    border-top: 1px solid lighten($dark, 10%);
+}
+
 .artist {
     position: relative;
     box-sizing: border-box;
@@ -300,6 +304,10 @@ body {
     padding-top: 20px;
     background-color: rgba(231, 49, 49, 0.1);
     min-height: 100%;
+}
+
+.lieu a:hover {
+    text-decoration: none;
 }
 
 .bg-lieu {

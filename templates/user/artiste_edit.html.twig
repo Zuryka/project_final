@@ -3,37 +3,36 @@
 {% block title %} Modifier votre profil artiste | P'tites Scènes{% endblock %}
 
 {% block page_content %}
-    
-    {{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
+    <div class="artistes row justify-content-center">
+        <div class="col-10 px-0 mt-3 pb-5">
+            {{ form_start(form) }}
+                {% embed 'decorator/_card.html.twig' %}
+                    {% block header %}
+                        <h1> {{ 'user.artiste.edit.title'|trans }} </h1>
+                    {% endblock header %}
 
-        {% block header %}
-            <h1> {{ 'user.artiste.edit.title'|trans }} </h1>
-        {% endblock %}
+                    {% block body %}
+                        <div class="row">
+                            <div class="col-md-8">
+                                {{ form_row(form.image) }}
+                            </div>
+                            <div class="col-md-4 col-lg-2">
+                            {% if entity is defined and entity.image is not empty %}
+                                <img class="w-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}" />
+                                {{ form_row(form.deleteImage) }}
+                            {% endif %}
+                            </div>
+                        </div>     
+                        {{ form(form) }}
+                    {% endblock body %}
 
-        {% block body %}
-            <div class="row">
-                <div class="col-md-8">
-                    {{ form_row(form.image) }}
-                </div>
-                <div class="col-md-4 col-lg-2">
-                {% if entity is defined and entity.image is not empty %}
-                    <img class="w-100" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}" />
-                    {{ form_row(form.deleteImage) }}
-                {% endif %}
-                </div>
-            </div>     
-             
-            {{ form(form) }}
+                    {% block footer %}
+                        <a class="btn btn-secondary" href="{{ path('user_artiste_show', {'username': entity.username }) }}">Annuler</a>
+                        <button type="submit" class="btn btn-artiste">Enregistrer</button>
+                    {% endblock footer %}
 
-        {% endblock body %}
-
-        {% block footer %}
-            <a class="btn btn-secondary" href="{{ path('user_artiste_show', {'username': entity.username }) }}">Annuler</a>
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-        {% endblock footer %}
-
-    {% endembed %}
-    {{ form_end(form) }}
-
+                {% endembed %}
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock page_content %}

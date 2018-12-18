@@ -16,6 +16,13 @@ class EvenementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // $year = array();
+        // $years = new \DateTime($year. '-01-01');
+        $year = intval(date('Y'));
+        $years = [];
+        for($y = $year; $y < $year + 10; $y++) {
+            $years[] = $y;
+        }
         $builder
         ->add('nom', Type\TextType::class, array(
             'label' => 'evenement.nom',
@@ -105,6 +112,7 @@ class EvenementType extends AbstractType
                 'month' => 'Mois',
                 'day' => 'Jour',
             ),
+            'years' => $years,
             'required' => true,
         ))
         ->add('heureDebut', Type\TimeType::class, array(
@@ -113,7 +121,7 @@ class EvenementType extends AbstractType
         ))
         ->add('heureFin', Type\TimeType::class, array(
             'label' => 'evenement.heureFin',
-            'required' => false,
+            'required' => true,
         ))
         ;
         
