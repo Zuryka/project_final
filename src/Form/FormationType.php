@@ -93,7 +93,7 @@ class FormationType extends AbstractType
                     'Semi-professionnel' => 'Semi-professionnel',
                     'Amateur' => 'Amateur',
                 ),
-                'required' => false,
+                'required' => true,
                 'expanded' => true,
             ))
         ;
