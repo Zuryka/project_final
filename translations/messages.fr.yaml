@@ -120,3 +120,7 @@ security:
 image:
   delete: Supprimer l'image
 File: Insérer une image
+
+artiste: Artiste
+organisateur_evenement: Organisateur d'évènements
+gerant_local: Gérant de locaux

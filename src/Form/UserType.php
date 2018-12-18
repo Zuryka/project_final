@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
+use App\Form\ChoiceButtonType;
 
 
 class UserType extends AbstractType
@@ -62,7 +63,7 @@ class UserType extends AbstractType
                 ),
                 'required' => true,
             ))
-            ->add('type', Type\ChoiceType::class, array(
+            ->add('type', ChoiceButtonType::class, array(
                 'label' => 'registration.type',
                 'choices'  => array(
                     'artiste' => 'user_artiste',
@@ -71,6 +72,7 @@ class UserType extends AbstractType
                 ),
                 'required' => true,
                 'multiple' => true,
+                'expanded' => true,
             ))
         ;
     }

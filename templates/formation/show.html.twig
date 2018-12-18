@@ -33,14 +33,16 @@
                                 </div>
                             </div>
                         {% endif %}
-                        <hr>
                         {% if entity.presentation is not empty %}
+                        <hr>
                             <p class="card-text text-light text-left mt-3"> {{ entity.presentation }} </p>
                         {% endif %}
+                        {% if entity.localisation is not empty%}
                         <hr>
                         <p>{{ entity.localisation }}</p>
+                        {% endif %}
                         <hr>
-                        <p>Contact : </p>
+                        {# <p>Contact : {{ user.nom }}</p> #}
                     </div>
                 </div>
             </div>
