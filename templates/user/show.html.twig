@@ -53,7 +53,7 @@
                             <p>Numéro de telephone : {{ entity.numTelephone }}</p>    
                         {% endif %}
                         {% if entity.niveau is not empty %}
-                            <p>Status Professionnel : {{ entity.niveau }}<p/>
+                            <p>Status Professionnel : {{ entity.niveau|trans }}<p/>
                         {% endif %}
                         <a href="{{ path('user_edit', {'username': entity.username}) }}"><button class="btn">Modifier</button></a>
                     </div>

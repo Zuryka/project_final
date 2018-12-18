@@ -5,64 +5,36 @@
 {% block page_content %}
 
 <div class="lieu row justify-content-center">
-    <div class="col-10 px-0">
-        <div class="formats row justify-content-between">
-            {% for entity in entities %}
-                <!--
-                <div class="allformats col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3" >
-                    {% if is_granted('edit', entity) %}
-                        <div class="border-createur format">
-                    {% else %}
-                        <div class="border-standard format">
-                    {% endif %}
-                        <a href="{{ path('lieu_show', {'id': entity.id}) }}">
-                            <div class="format-image">
-                                {% if entity.getMediaWithPhotoIdent() is not empty %}
-                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                                {% elseif entity.image is not empty %}
-                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                                {% else %}
-                                    <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
-                                {% endif %}
-                            </div>
-                            <div class="format-infos text-center">
-                                <p class="lead text-primary">{{ entity.nom }}</p>
-                                <p class="text-light"><small>{{ entity.type }}</small></p>
-                                <p class="text-secondary">{{ entity.presentation }}</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                -->
+    <div class="col-10 px-0 mt-3 pb-5">
+        {% for entity in entities %}
+            <a href="{{ path('lieu_show', {'id': entity.id}) }}">                
                 {% if is_granted('edit', entity) %}
                     <div class="card-group mb-3 border-createur-lieu">
                 {% else %}
                     <div class="card-group mb-3 border-standard ">
                 {% endif %}
-                    <div class="card col-2 bg-light px-0">
-                        <a href="{{ path('lieu_show', {'id': entity.id}) }}">                
-                            {% if entity.getMediaWithPhotoIdent() is not empty %}
-                                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                            {% elseif entity.image is not empty %}
-                                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                            {% else %}
-                                <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
-                            {% endif %}
-                        </a>                    
+                <div class="card col-2 bg-dark px-0">
+                        {% if entity.getMediaWithPhotoIdent() is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+                        {% endif %}
                     </div>
-                    <div class="card col-7 bg-light p-2">
-                        <h4>{{ entity.nom }}</h4>
-                        <p class="text-light"><small>{{ entity.type }}</small></p>
+                    <div class="card col-7 bg-dark text-light p-2">
+                        <h4 class="text_lieu">{{ entity.nom }}</h4>
+                        <p><small>{{ entity.type }}</small></p>
                         <p>{{ entity.presentation }}</p>
                     </div>
-                    <div class="card col-3 bg-light p-3">
+                    <div class="card col-3 bg-dark text-light p-3">
                         <p class="subtitle">{{ entity.adresse }}</p>
                         <p class="subtitle">{{ entity.codePostal }} - {{ entity.ville }}</p>
                         <p class="subtitle">{{ entity.numTelephone }}</p>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </a>                    
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

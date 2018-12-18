@@ -105,6 +105,9 @@ registration:
   lastname: Prenom
 
 user_artiste: Artiste
+user_amateur: Amateur
+user_semi-pro: Semi-pro
+user_pro: Pro
 
 register: S'inscrire
 login: Se connecter
@@ -113,3 +116,7 @@ logout: .icon-door-open Se déconnecter
 security:
   login:
     submit: Se connecter
+
+image:
+  delete: Supprimer l'image
+File: Insérer une image
