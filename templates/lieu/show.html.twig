@@ -4,102 +4,50 @@
 
 {% block page_content %}
 
-
-
-<div class="lieu pb-4 pl-0">
-    <div class="row-12  mt-3 mb-3 justify-content-center">
-        <div class="card-group">
-            <div class="card col-3 offset-1 text-light bg-lieu border-dark text-center">
-                {% if entity.getMediaWithPhotoIdent() is not empty %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-                {% elseif entity.image is not empty %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-                {% else %}
-                    <img class="card-img-top mt-3 mb-3" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
-                {% endif %}
-            </div>
-
-            <div class="card col-3 text-light bg-lieu border-dark text-center">
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-lieu">{{ entity.nom }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.type }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.adresse }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.CodePostal() }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.ville }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.latitude }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.longitude }}</li>
-                        <li class="list-group-item bg-lieu">{{ entity.NumTelephone() }}</li>
+<div class="lieu row justify-content-center">
+    <div class="col-10 mt-3 px-0 pb-5">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="card-group">
+                    <div class="card col-5 bg-dark px-0 border-0">
+                        {% if entity.getMediaWithPhotoIdent() is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                        {% elseif entity.image is not empty %}
+                            <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                        {% else %}
+                            <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
+                        {% endif %}
+                    </div>
+                    <div class="card col-7 bg-dark text-light text-center p-3">
+                        <h2 class="card-title text_lieu">
+                            {{ entity.nom }}
+                        </h2>
+                        <p class="small mt-3">{{ entity.type }}</p>
+                        <hr>
+                        {% if entity.presentation is not empty %}
+                                <p class="card-text text-light text-left mt-3"> {{ entity.presentation }} </p>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <ul class="list-group list-group-flush bg-dark">
+                        <li class="list-group-item bg-dark text-light">{{ entity.adresse }}</li>
+                        <li class="list-group-item bg-dark text-light">{{ entity.CodePostal() }}</li>
+                        <li class="list-group-item bg-dark text-light">{{ entity.ville }}</li>
+                        <li class="list-group-item bg-dark text-light">{{ entity.NumTelephone() }}</li>
                     </ul>
                 </div>
             </div>
-
-            <div class="card col-4 text-light bg-lieu border-dark text-center">
-                <div class="card-body">
-                    <h5 class="card-text"> {{ entity.presentation }} </h5>
+            <div class="card-footer text-right bg-light">
+                <div class="btn-group">
+                    <a href="{{ path('lieu_index') }}" class="btn btn-lieu text-light">Retour</a>
+                    {% if is_granted('edit', entity) %}
+                        <a href="{{ path('lieu_edit', {'id': entity.id }) }}" class="btn btn-dark">Modifier</a>
+                        {{ include('lieu/_delete_form.html.twig') }}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row mt-4 justify-content-center">
-        {% if is_granted('edit', entity) %}
-            <div class="col-1 justify-content-center">
-                <a href="{{ path('lieu_index') }}"><button class="btn bg-lieu text-light">Retour</button></a>
-            </div>
-            <div class="col-1 justify-content-center">
-                <a href="{{ path('lieu_edit', {'id': entity.id }) }}"><button class="btn bg-lieu text-light">Modifier</button></a>
-            </div>
-            <div class="col-1 justify-content-center">
-                {{ include('lieu/_delete_form.html.twig') }}
-            </div>
-        {% else %}
-            <a href="{{ path('lieu_index') }}"><button class="btn bg-lieu text-light">Retour</button></a>
-        {% endif %}
-    </div>
 </div>
-
-{# <div class="row justify-content-center">
-    <div class="col-10 mt-3">
-        <div class="card text-white bg-danger border-dark text-center">
-            {% if entity.getMediaWithPhotoIdent() is not empty %}
-                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
-            {% elseif entity.image is not empty %}
-                <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
-            {% else %}
-                <img class="card-img-top" src="{{ asset('/img/lieu_def.jpg') }}" alt="Card image cap">
-            {% endif %}
-
-            <div class="card-body">
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-dark">{{ entity.nom }}</li>
-                    <li class="list-group-item bg-secondary">{{ entity.type }}</li>
-                    <li class="list-group-item bg-dark">{{ entity.presentation}}</li>
-                    <li class="list-group-item bg-secondary">{{ entity.adresse }}</li>
-                    <li class="list-group-item bg-dark">{{ entity.CodePostal() }}</li>
-                    <li class="list-group-item bg-secondary">{{ entity.ville }}</li>
-                    <li class="list-group-item bg-dark">{{ entity.latitude }}</li>
-                    <li class="list-group-item bg-secondary">{{ entity.longitude }}</li>
-                    <li class="list-group-item bg-dark">{{ entity.NumTelephone() }}</li>
-                </ul>
-
-                {% if is_granted('edit', entity) %}
-                    <div class="row">
-                        <div class="col mt-3">
-                            <a href="{{ path('lieu_index') }}"><button class="btn">Retour</button></a>
-                        </div>
-                        <div class="col mt-3">
-                            <a href="{{ path('lieu_edit', {'id': entity.id }) }}"><button class="btn">Modifier</button></a>
-                        </div>
-                        <div class="col mt-3">
-                            {{ include('lieu/_delete_form.html.twig') }}
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div> #}
 
 {% endblock %}

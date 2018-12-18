@@ -3,20 +3,24 @@
 {% block title %}Créer un événement | P'tites Scènes{% endblock %}
 
 {% block page_content %}
-    {{ form_start(form) }}
-        {% embed 'decorator/_card.html.twig' %}
-            {% block header %}
-                <h1> {{ 'evenement.new.title'|trans }} </h1>
-            {% endblock header %}
-
-            {% block body %}
-                {{ include('evenement/_form.html.twig', {'button_label': 'Créer'}) }}
-            {% endblock body %}
-
-            {% block footer %}
-                <a class="btn btn-secondary" href="{{ path('evenement_index') }}">Annuler</a>
-                <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-            {% endblock footer %}
-        {% endembed %}
-    {{ form_end(form) }}
+    <div class="evenement row justify-content-center">
+        <div class="col-10 px-0 mt-3 pb-5">
+            {{ form_start(form) }}
+                {% embed 'decorator/_card.html.twig' %}
+                    {% block header %}
+                        <h1> {{ 'evenement.new.title'|trans }} </h1>
+                    {% endblock header %}
+        
+                    {% block body %}
+                        {{ include('evenement/_form.html.twig', {'button_label': 'Créer'}) }}
+                    {% endblock body %}
+        
+                    {% block footer %}
+                        <a class="btn btn-dark" href="{{ path('evenement_index') }}">Annuler</a>
+                        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+                    {% endblock footer %}
+                {% endembed %}
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

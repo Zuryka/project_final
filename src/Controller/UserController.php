@@ -116,7 +116,7 @@ class UserController extends AbstractController
     /**
      * @Route("/delete/{username}", name="delete")
      */
-    public function delete(Request $request, User $entity)
+    public function delete(Request $request, User $entity, TranslatorInterface $translator)
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('user_delete', ['username' => $entity->getUsername()]))
@@ -130,10 +130,9 @@ class UserController extends AbstractController
             $em->remove($entity);
             $em->flush();
 
-            $t = $this->get('translator');
-            $this->addFlash('success', $t->trans('user.delete.success'));
+            $this->addFlash('success', $translator->trans('user.delete.success'));
 
-            return $this->redirectToRoute('user_show');
+            return $this->redirectToRoute('evenement_index');
         }
         return $this->render('user/delete.html.twig', array(
             'form' => $form->createView(),  // Envoi le formulaire à la vue

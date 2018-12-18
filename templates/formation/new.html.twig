@@ -3,21 +3,24 @@
 {% block title %}Créer un formation | P'tites Scènes{% endblock %}
 
 {% block page_content %}
-{{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
-    {% block header %}
-    <h1> {{ 'formation.new.title'|trans }} </h1>
-    {% endblock %}
-
-    {% block body %}
-    {{ include('formation/_form.html.twig', {'button_label': 'Créer'}) }}
-    {% endblock %}
-
-    {% block footer %}
-    <a class="btn btn-secondary" href="{{ path('formation_index') }}">Annuler</a>
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-    {% endblock %}
-
-    {% endembed %}
-    {{ form_end(form) }}
+    <div class="formation row justify-content-center">
+        <div class="col-10 px-0 mt-3 pb-5">
+            {{ form_start(form) }}
+                {% embed 'decorator/_card.html.twig' %}
+                    {% block header %}
+                        <h1> {{ 'formation.new.title'|trans }} </h1>
+                    {% endblock %}
+        
+                    {% block body %}
+                        {{ include('formation/_form.html.twig', {'button_label': 'Créer'}) }}
+                    {% endblock %}
+        
+                    {% block footer %}
+                        <a class="btn btn-dark" href="{{ path('formation_index') }}">Annuler</a>
+                        <button class="btn btn-formation text-light">{{ button_label|default('Enregistrer') }}</button>
+                    {% endblock %}
+                {% endembed %}
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

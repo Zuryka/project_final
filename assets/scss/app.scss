@@ -24,7 +24,7 @@ body {
 
 .contenu {
     padding-top: 240px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .text_evt {
@@ -32,7 +32,8 @@ body {
 }
 
 .text_artiste {
-    color: #0088A3; 
+    color: #0088A3;
+    margin-top: 10px;
 }
 
 .text_formation {
@@ -63,6 +64,14 @@ body {
 
 .btn-formation:hover {
     background-color: #A956B5;
+}
+
+.btn-lieu {
+    background-color: #C42020;
+}
+
+.btn-lieu:hover {
+    background-color: #E73131;
 }
 
 
@@ -322,4 +331,68 @@ body {
 
 .custom-control{
     margin-left: 20px !important;
+}
+/* *****************
+ * **** FOOTER *****
+ * *****************/
+
+.footer {
+    background-color: #000;
+    color: whitesmoke;
+    padding: 50px;
+}
+
+.footer h3 {
+    font-size: 0.9em;
+    color: grey;
+}
+
+.footer ul {
+    padding: 0%;
+}
+
+.footer ul li {
+    font-size: 1em;
+    list-style: none;
+    transition: 0.8s
+}
+
+.footer ul li a {
+    color: whitesmoke;
+}
+
+.footer ul li a:hover {
+    text-decoration: none;
+    color: $primary;
+}
+
+.footer .float-right {
+    font-size: 0.7em;
+    color: grey;
+}
+
+.footer i {
+    margin: 50px 5px 10px 30px;
+    color: white;
+    font-size: 20px;
+}
+
+.footer .fa-facebook-f {
+    margin-left: 30px;
+}
+
+.footer i:hover {
+    color: $primary;
+}
+
+@media screen and (max-width: 1044px) {
+    .footer i {
+        margin: 50px 0px 10px 20px;
+    }
+} 
+
+@media screen and (max-width: 992px) {
+    .footer .droite {
+        padding-left: 40px;
+    }
 }
