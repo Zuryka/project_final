@@ -56,9 +56,9 @@ class UserType extends AbstractType
             ->add('niveau', Type\ChoiceType::class, array(
                 'label' => 'user.niveau',
                 'choices'  => array(
-                    'amateur' => 'user_amateur',
-                    'semi-pro' => 'user_semi-pro',
-                    'pro' => 'user_pro',
+                    'Amateur' => 'user_amateur',
+                    'Semi-pro' => 'user_semi-pro',
+                    'Pro' => 'user_pro',
                 ),
                 'required' => true,
             ))

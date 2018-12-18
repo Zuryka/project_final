@@ -56,22 +56,25 @@ user:
       title: Edition de mon profil artiste
     show:
       musicien: Musicien
-      style: Style
-      instrument: Instrument
+      style: Styles
+      instrument: Instruments
       chant: Chant
   username: Pseudo
-  email: Adresse Mail
-  password: Mot des passes
+  email: Adresse email
+  password: Mot de passe
   name: Nom
   userlastname: Prenom
   codepostal: Code Postal
   ville: Ville
   numtelephone: Numéro de Telephone
-  nivau: Status profesionnel
+  nivau: Statut profesionnel
   adresse: Adresse
-  artistename: Nom D'artiste
+  artistename: Nom d'artiste
   presentation: Présentation
-  niveau: Status professionnel
+  niveau: Statut professionnel
+  formation:
+    show:
+      style: Styles
   styles:
     liste: Liste de Styles
     rock: Rock
@@ -102,6 +105,9 @@ registration:
   lastname: Prenom
 
 user_artiste: Artiste
+user_amateur: Amateur
+user_semi-pro: Semi-pro
+user_pro: Pro
 
 register: S'inscrire
 login: Se connecter
@@ -110,3 +116,7 @@ logout: .icon-door-open Se déconnecter
 security:
   login:
     submit: Se connecter
+
+image:
+  delete: Supprimer l'image
+File: Insérer une image

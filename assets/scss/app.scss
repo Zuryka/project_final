@@ -24,6 +24,7 @@ body {
 
 .contenu {
     padding-top: 240px;
+    height: 100vh;
 }
 
 .text_evt {
@@ -40,6 +41,28 @@ body {
 
 .text_lieu {
     color: #FF3E3E; 
+}
+
+.bg-artiste {
+    background-color: #006A80;
+}
+
+.btn-artiste {
+    color: #EBEBEB;
+    background-color: #006A80;
+}
+
+.btn-artiste:hover {
+    color: #EBEBEB;
+    background-color: #0088A3;
+}
+
+.btn-formation {
+    background-color: #843E8E;
+}
+
+.btn-formation:hover {
+    background-color: #A956B5;
 }
 
 
@@ -73,8 +96,8 @@ body {
     color: rgba(189, 190, 175, 1);
 }
 
-.nav-item a:hover {
-    color: rgba(227, 202, 38, 1);
+#events a:hover {
+    color: rgba(135, 120, 18, 1);
 }
 
 
@@ -87,8 +110,11 @@ body {
     color: rgba(227, 202, 38, 1);
 }
 
+#artists a:hover {
+    color: rgba(0, 106, 128, 1);
+}
 .artists_bg {
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
     height: 100%;
 }
 
@@ -96,8 +122,12 @@ body {
     color: rgba(0, 161, 194, 1);
 }
 
+#formations a:hover {
+    color : rgba(132, 62, 142, 1);
+}
+
 .formations_bg {
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
     height: 100%;
 }
 
@@ -105,8 +135,12 @@ body {
     color: rgba(210, 136, 221, 1);
 }
 
+#lieux a:hover {
+    color: rgba(196, 32, 32, 1);
+}
+
 .lieux_bg {
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
 }
 
 .lieux_bg a {
@@ -122,15 +156,15 @@ body {
 }
 
 .bordure_top_artist {
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
 }
 
 .bordure_top_formation {
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
 }
 
 .bordure_top_lieu {
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
 }
 
 
@@ -159,7 +193,7 @@ body {
 }
 
 .border-standard {
-    border: 2px solid $dark;
+    border: transparent;
     border-radius: 10px;
 }
 
@@ -170,12 +204,14 @@ body {
 .evenement {
     padding-top: 20px;
     background-color: rgba(203, 180, 26, 0.2);
+    min-height: 100%;
 }
 
 .event {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
+    background-color: rgba(0,0,0,1);
 }
 
 .event-image {
@@ -201,7 +237,8 @@ body {
 
 .artistes {
     padding-top: 20px;
-    background-color: rgba(0, 136, 163, 0.2);
+    background-color: rgba(0, 136, 163, 0.1);
+    min-height: 100%;
 }
 
 .artist {
@@ -228,7 +265,12 @@ body {
 
 .formation {
     padding-top: 20px;
-    background-color: rgba(169, 86, 181, 0.2);
+    background-color: rgba(169, 86, 181, 0.1);
+    min-height: 100%;
+}
+
+.formation hr {
+    border-top: 1px solid lighten($dark, 10%);
 }
 
 .format {
@@ -256,5 +298,11 @@ body {
 
 .lieu {
     padding-top: 20px;
-    background-color: rgba(231, 49, 49, 0.2);
+    background-color: rgba(231, 49, 49, 0.1);
+    min-height: 100%;
+}
+
+.bg-lieu {
+    background-color: rgb(47, 23, 23) !important;
+    //background-color: rgb(72, 36, 36) !important;
 }

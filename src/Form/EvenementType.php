@@ -121,7 +121,7 @@ class EvenementType extends AbstractType
         ))
         ->add('heureFin', Type\TimeType::class, array(
             'label' => 'evenement.heureFin',
-            'required' => false,
+            'required' => true,
         ))
         ;
         

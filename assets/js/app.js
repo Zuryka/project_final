@@ -56,27 +56,35 @@ $(function() {
      * ***** MENU *****
      * ****************/
 
-    if ($('#events').hasClass('active')) {
+    var chemin = window.location.pathname;
+
+    if ($('#events').hasClass('active') || chemin.search(/evenement/) > 0) {
         $('#events').addClass('events_bg');
+        $('#events').addClass('active');
         $('#bordure_top').addClass('bordure_top_evt');
     } else {
         $('#events').removeClass('events_bg');
+        $('#events').removeClass('active');
         $('#bordure_top').removeClass('bordure_top_evt');
     }
     
-    if ($('#artists').hasClass('active')) {
+    if ($('#artists').hasClass('active') || chemin.search(/artisteshow/) > 0) {
         $('#artists').addClass('artists_bg');
+        $('#artists').addClass('active');
         $('#bordure_top').addClass('bordure_top_artist');
     } else {
         $('#artists').removeClass('artists_bg');
+        $('#artists').removeClass('active');
         $('#bordure_top').removeClass('bordure_top_artist');
     }
     
-    if ($('#formations').hasClass('active')) {
+    if ($('#formations').hasClass('active') || chemin.search(/formation/) > 0) {
         $('#formations').addClass('formations_bg');
+        $('#formations').addClass('active');
         $('#bordure_top').addClass('bordure_top_formation');
     } else {
         $('#formations').removeClass('formations_bg');
+        $('#formations').removeClass('active');
         $('#bordure_top').removeClass('bordure_top_formation');
     }
     
