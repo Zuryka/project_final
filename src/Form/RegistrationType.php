@@ -5,13 +5,14 @@ namespace App\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type;
+use App\Form\ChoiceButtonType;
 
 class RegistrationType extends AbstractType 
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', Type\ChoiceType::class, array(
+            ->add('type', ChoiceButtonType::class, array(
                 'label' => 'registration.type',
                 'choices'  => array(
                     'artiste' => 'user_artiste',
@@ -20,6 +21,7 @@ class RegistrationType extends AbstractType
                 ),
                 'required' => true,
                 'multiple' => true,
+                'expanded' => true,
             ))
             ->add('nom', Type\TextType::class, array(
                 'label' => 'registration.name',

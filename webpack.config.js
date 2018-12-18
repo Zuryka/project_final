@@ -25,8 +25,7 @@ Encore
   .addStyleEntry('css/login', './assets/scss/login.scss')
   .addStyleEntry('css/admin', './assets/scss/admin.scss')
   .addStyleEntry('css/register', './assets/scss/register.scss')
-  .addStyleEntry('css/formation', './assets/scss/formation.scss')
-
+  .addStyleEntry('css/profil', './assets/scss/profil.scss')
   // will require an extra script tag for runtime.js
   // but, you probably want this, unless you're building a single-page app
   .enableSingleRuntimeChunk()

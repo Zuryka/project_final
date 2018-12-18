@@ -26,6 +26,22 @@ body {
     padding-top: 240px;
 }
 
+.text_evt {
+    color: #CBB41A; 
+}
+
+.text_artiste {
+    color: #0088A3; 
+}
+
+.text_formation {
+    color: #A956B5; 
+}
+
+.text_lieu {
+    color: #FF3E3E; 
+}
+
 
 /* ****************** *
  * ***** HEADER ***** *
@@ -118,6 +134,35 @@ body {
 }
 
 
+/* ************************
+ * ***** PAGE_CONTENT *****
+ * ************************/
+
+.border-createur-evt {
+    border: 5px solid $secondary;
+    border-radius: 10px;
+}
+
+.border-createur-artiste {
+    border: 5px solid #006A80;
+    border-radius: 10px;
+}
+
+.border-createur-formation {
+    border: 5px solid #843E8E;
+    border-radius: 10px;
+}
+
+.border-createur-lieu {
+    border: 5px solid #C42020;
+    border-radius: 10px;
+}
+
+.border-standard {
+    border: 2px solid $dark;
+    border-radius: 10px;
+}
+
 /* *************************** *
  * ***** PAGE EVENEMENTS ***** *
  * *************************** */
@@ -149,16 +194,6 @@ body {
     display: none;
 }
 
-
-.border-createur {
-    border: 5px solid $primary;
-    border-radius: 10px;
-}
-
-.border-standard {
-    border: 2px solid $dark;
-    border-radius: 8px;
-}
 
 /* *************************** *
  * ***** PAGE ARTISTES ***** *
