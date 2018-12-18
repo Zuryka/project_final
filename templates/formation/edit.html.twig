@@ -15,7 +15,7 @@
                         {% endblock %}
             
                         {% block footer %}
-                            <a class="btn btn-secondary" href="{{ path('formation_show', {'id': entity.id }) }}">Annuler</a>
+                            <a class="btn btn-dark" href="{{ path('formation_show', {'id': entity.id }) }}">Annuler</a>
                             <button class="btn btn-formation text-light">{{ button_label|default('Enregistrer') }}</button>
                         {% endblock %}
                     {% endembed %}

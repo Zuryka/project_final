@@ -47,4 +47,52 @@
         {% block page_content %}
         {% endblock page_content %}
     </div>
+
+    <div class="contenu container-fluid footer">
+        {% block footer %}
+            <div class="container-fluid">
+            <div class="row">
+                <div class="offset-1 col-2">
+                    <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+                    <a href="#" target="_blank" style="padding-left: 55px;"><i class="fab fa-facebook-f"></i></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="offset-1 col-2">
+                    <h3>P'TITES SCENES</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">A propos</a></li>
+                        <li><a href="#" target="_blank">Fonctionnalités</a></li>
+                        <li><a href="#" target="_blank">Explorer tous nos Univers</a></li>
+                        <li><a href="#" target="_blank">Aide</a></li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3>QUI ÊTES-VOUS ?</h3>
+                    <ul>
+                        <li><a href="{{ path('user_index') }}" target="_blank">Labels & artistes</a></li>
+                        <li><a href="{{ path('lieu_index') }}" target="_blank">Gérants de locaux</a></li>
+                        <li><a href="mailto:presse@ptites_scenes.com">Presse</a></li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3>LÉGAL</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Conditions générales d'utilisation</a></li>
+                        <li><a href="#" target="_blank">Données personnelles et cookies</a></li>
+                        <li><a href="mailto:privacite@ptites_scenes.com">Contact : privacite@ptites_scenes.com</a></li>
+                        <li><a href="#" target="_blank">Mentions légales</a></li>
+                        <li><a href="#" target="_blank">Paramètres de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row float-right">
+                <div class="col-12">
+                    © Christopher .V, Sandra .PDS, Yvon .R, Yann .B 
+                </div>
+            </div>
+        </div>
+        {% endblock footer %}
+    </div>
 {% endblock body %}
