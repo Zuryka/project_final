@@ -9,7 +9,8 @@
 <header class="main-header">
     {% embed 'decorator/_navbar.html.twig' with {'class': 'fixed-top navbar-dark bg-primary', 'brandUrl': path('index') } %}
         {% block brand %}
-            Music Site Admin
+            {# Music Site Admin #}
+            {{ 'admin.titre'|trans }}
         {% endblock %}
 
         {% block menu %}

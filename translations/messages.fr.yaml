@@ -122,6 +122,41 @@ image:
 File: Insérer une image
 
 admin:
+  titre: Administration du site
   menu:
     users: Utilisateurs
     events: Evènements
+  user:
+    index:
+      title: Utilisateurs
+      titreliste: Liste des utilisateurs
+      username: Nom d'utilisateur
+      mail: Adresse mail
+      active: Actif
+      lastLogin: Dernière connexion
+      roles: Rôles
+      type: Type
+      actions: Actions
+      view: Voir
+      modify: Modifier
+      nouserfound: Aucun utilisateur trouvé
+      createuser: Créer un nouvel utilisateur
+    show:
+      titre: Utilisateur
+      viewuser: Utilisateur
+      username: Nom d'utilisateur
+      mail: Adresse mail
+      password: Mot de passe
+      lastLogin: Dernière connexion
+      roles: Rôles
+      backtolist: Retour à la liste
+      edit: Modifier
+    edit:
+      titre: Modification utilisateur
+      modifuser: Modification de l'utilisateur
+      backtolist: Retour à la liste
+    new:
+      titre: Nouvel utilisateur
+      newuser: Création nouvel utilisateur
+      backtolist: Retour à la liste
+
