@@ -132,7 +132,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success', $translator->trans('user.delete.success'));
 
-            return $this->redirectToRoute('user_show');
+            return $this->redirectToRoute('evenement_index');
         }
         return $this->render('user/delete.html.twig', array(
             'form' => $form->createView(),  // Envoi le formulaire à la vue
