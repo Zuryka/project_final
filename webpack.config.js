@@ -22,7 +22,10 @@ Encore
   //.addEntry('page2', './assets/js/page2.js')
   .addStyleEntry('css/app', './assets/scss/app.scss')
   .addStyleEntry('css/front', './assets/scss/front.scss')
+  .addStyleEntry('css/login', './assets/scss/login.scss')
   .addStyleEntry('css/admin', './assets/scss/admin.scss')
+  .addStyleEntry('css/register', './assets/scss/register.scss')
+  .addStyleEntry('css/profil', './assets/scss/profil.scss')
 
   // will require an extra script tag for runtime.js
   // but, you probably want this, unless you're building a single-page app

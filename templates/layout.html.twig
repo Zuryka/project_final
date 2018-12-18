@@ -5,19 +5,106 @@
 {% endblock %}
 
 {% block body %}
-{% embed 'decorator/_navbar.html.twig' with {'class' : 'fixed-top navbar-dark bg-dark', 'brandUrl' : path('index')} %}
-    {% block brand %}
-    P'TITES SCENES
-    {% endblock %}
+    <div class="entete container-fluid fixed-top">
+        <div class="row justify-content-center">
+            <div class="col-1 lateral-column"></div>
+                <div class="col-10 px-0">
+                    {% block header %}
+                        <div class="logo text-center row justify-content-around">
+                            <div class="col-2">
+                            </div>
 
-    {% block menu %}
-        {{ knp_menu_render('main', {'style': 'horizontal-right'})}}
+                            <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+                            
+                            <div class="col-lg-4 col-md-6 col-sm-10 align-self-center">
+                                {# Formulaire de recherche d'un évènement, artiste, formation ou lieu #}
+                                <form id="form-search" name="form-search">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <div class="typeahead__query">
+                                                <input class="js-typeahead-search" name="search[query]" type="search" placeholder="Recherche" autocomplete="off">
+                                            </div>
+                                            <div class="typeahead__button">
+                                                <button type="submit">
+                                                    <i class="typeahead__search-icon"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>                     
+                            </div>
+                        </div>
+                        {% embed 'decorator/_navbar.html.twig' %}
+                            {% block menu %}
+                                {{ knp_menu_render('main', {'style': 'horizontal'}) }}
+                            {% endblock menu %}
+                        {% endembed %}
+                    {% endblock header %}
+                </div>
+            <div class="col-1 lateral-column"></div>
+        </div>
+        <div id="bordure_top" class="row"></div>
+    </div>
 
-        {{ knp_menu_render('user', {'style': 'horizontal-right'})}}
-    {% endblock %}
-{% endembed %}
-<div class="container">
-    {% block page_content %}
-    {% endblock %}
-</div>
-{% endblock %}
+    <div class="contenu container-fluid">
+        {% block page_content %}
+        {% endblock page_content %}
+    </div>
+
+    <div class="contenu container-fluid footer">
+        {% block footer %}
+            <div class="container-fluid footer">
+            <div class="row">
+                <div class="offset-1 col-2">
+                    <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+                    <hr>
+                    <a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-2">
+                    <h3>P'TITES SCENES</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Fonctionnalités</a></li>
+                        <li><a href="#" target="_blank">Explorer tous nos Univers</a></li>
+                        <li><a href="#" target="_blank">Appareils</a></li>
+                        <li><a href="#" target="_blank">Blog</a></li>
+                        <li><a href="#" target="_blank">Aide</a></li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3>QUI ÊTES-VOUS ?</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Labels & artistes</a></li>
+                        <li><a href="#" target="_blank">Développeurs</a></li>
+                        <li><a href="#" target="_blank">Presse</a></li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3>QUI SOMMES-NOUS ?</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">A propos</a></li>
+                        <li><a href="#" target="_blank">Carrières</a></li>
+                    </ul>  
+                </div>
+                <div class="col-2">
+                    <h3>LÉGAL</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Conditions générales d'utilisation</a></li>
+                        <li><a href="#" target="_blank">Données personnelles et cookies</a></li>
+                        <li><a href="mailto:privacy@ptites_scenes.com">Contact : privacy@ptites_scenes.com</a></li>
+                        <li><a href="#" target="_blank">Mentions légales</a></li>
+                        <li><a href="#" target="_blank">Paramètres de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 float-right">
+                    © Christopher Vega, Sandra Pimenta Da Silva, Yvon Rorbacher,Yann Barthelemy 
+                </div>
+            </div>
+        </div>
+        {% endblock footer %}
+    </div>
+{% endblock body %}

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Formation
 {
+    use MediaContainerTrait;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -66,14 +67,31 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user_contact;
+
+    /**
+     * @var ?\Doctrine\Common\Collections\ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", cascade={"all"}, mappedBy="formation")
+     */
+    private $medias;
+
+        /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"all"}, orphanRemoval=true)
+     * @var ?\App\Entity\Image
+     */
+    private $image;
+
+    /**
+     * @var bool
+     */
+    private $deleteImage;
 
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->deleteImage = false;
     }
 
     public function getId(): ?int
@@ -221,16 +239,100 @@ class Formation
         return $this;
     }
 
-    public function getUserContact(): ?User
+    /**
+     * Get the value of medias
+     *
+     * @return  ?\Doctrine\Common\Collections\ArrayCollection
+     */ 
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * Set the value of medias
+     *
+     * @param  ?\Doctrine\Common\Collections\ArrayCollection  $medias
+     *
+     * @return  self
+     */ 
+    public function setMedias(?\Doctrine\Common\Collections\ArrayCollection $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     *
+     * @return  ?\App\Entity\Image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @param  ?\App\Entity\Image  $image
+     *
+     * @return  self
+     */ 
+    public function setImage(?\App\Entity\Image $image)
+    {
+        if ($image instanceof Image && !is_null($image->getFile())){ // Test si une image est envoyéee
+            $this->image = $image;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of deleteImage
+     *
+     * @return  bool
+     */ 
+    public function getDeleteImage()
+    {
+        return $this->deleteImage;
+    }
+
+    /**
+     * Set the value of deleteImage
+     *
+     * @param  bool  $deleteImage
+     *
+     * @return  self
+     */ 
+    public function setDeleteImage(bool $deleteImage)
+    {
+        $this->deleteImage = $deleteImage;
+        if ($deleteImage){
+            $this->image = null;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_contact
+     */ 
+    public function getUser_contact()
     {
         return $this->user_contact;
     }
 
-    public function setUserContact(?User $user_contact): self
+    /**
+     * Set the value of user_contact
+     *
+     * @return  self
+     */ 
+    public function setUser_contact($user_contact)
     {
         $this->user_contact = $user_contact;
 
         return $this;
     }
-
 }

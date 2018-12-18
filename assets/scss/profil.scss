@@ -1,0 +1,204 @@
+$primary: #771144;
+$secondary: #a04472;
+$muted: #420926;
+$dark: #222222;
+$light: #F8F8F8;
+$white: #FFF;
+
+.col-3 {
+    background-color: #1f1f20;
+}
+
+.col-3 .col-12 {
+    border-bottom: 1px solid #5f5f5f;
+    box-shadow: 5px 5px 10px #202020 inset,5px 5px 10px #1a1a1a;
+    padding: 15px 15px 15px 30px;
+}
+
+.col-3 .col-12 a {
+    color: rgb(180, 180, 180);
+    font-size: 17px;
+    transition: 0.6s;
+}
+
+.col-3 .col-12 a:hover {
+    color: $white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.col-3 .image {
+    padding: 0px;
+    margin: 0px;
+}
+
+// Partie droite
+.col-9 {
+    padding: 20px 15px 15px 30px;
+    background-color: $light;
+}
+
+.col-9 h2 {
+    margin-top: 50px;
+    color: $primary;
+}
+
+.col-9 .profil {
+    background-color: $white;
+    width: 50%;
+    padding-left: 20px;
+}
+
+.col-9 .profil h1 {
+    font-size: 30px;
+    color: $primary;
+    padding: 5px 0px 10px 0px;
+}
+
+.col-9 .profil span {
+    padding-left: 70px;
+}
+
+.col-9 .profil button {
+    background-color: #000;
+    width: 90%;
+    margin-bottom: 40px;
+    max-width: 290px;
+    border-radius: 500px;
+    padding: 10px 32px;
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.col-9 .profil button:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.col-9 .profil a {
+    text-decoration: none;
+}
+
+.news {
+    background-color: $primary;
+    color: $white;
+    width: 95%;
+}
+
+.news h2 {
+    color: $white;
+    font-size: 30px;
+    padding: 10px 5px 5px 0px;
+}
+
+.news p {
+    padding: 0px 15px 10px 0px;
+}
+
+.supp {
+    background-color: $primary;
+    color: $white;
+    width: 95%;
+}
+
+.supp h2 {
+    color: $white;
+    font-size: 25px;
+    margin-top: 20px;
+    padding: 10px 5px 5px 0px;
+}
+
+.supp a {
+    float: right;
+    margin-bottom: 5px;
+}
+
+.col-9 .form {
+    background-color: $white;
+    padding-left: 50px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    margin: 10px 30px 50px 15px;
+}
+
+.col-9 .form label {
+    color: #919496;
+}
+
+.col-9 .form span {
+    padding-left: 70px;
+}
+
+.col-9 .form button {
+    background-color: #000;
+    width: 90%;
+    margin-bottom: 40px;
+    max-width: 290px;
+    border-radius: 500px;
+    padding: 10px 32px;
+}
+
+.col-9 .form a {
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.col-9 .form a {
+    text-decoration: none;
+}
+
+.col-9 .form button:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.supprimer {
+    background-color: $muted;
+}
+
+.supprimer:hover {
+    background-color: #420926c4;
+}
+
+.col-9 .form .btn-primary {
+    background-color: $primary;
+    color: $white;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    max-width: 290px;
+    border-radius: 500px;
+    padding: 10px 32px;
+    float: right;
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    border: 1px solid $primary;
+}
+
+.col-9 .form .btn-primary:hover {
+    background-color: #420926c4;
+    border: 1px solid #420926c4;
+}
+
+.col-9 .form a {
+    margin-left: 30px;
+    letter-spacing: 1px;
+    color: $dark;
+    font-size: 16px;
+    line-height: 50px;
+}
+
+.card-header {
+    padding: 25px;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}

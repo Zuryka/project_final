@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Créer un formation | P'tites Scènes{% endblock %}
+
+{% block page_content %}
+{{ form_start(form) }}
+    {% embed 'decorator/_card.html.twig' %}
+    {% block header %}
+    <h1> {{ 'formation.new.title'|trans }} </h1>
+    {% endblock %}
+
+    {% block body %}
+    {{ include('formation/_form.html.twig', {'button_label': 'Créer'}) }}
+    {% endblock %}
+
+    {% block footer %}
+    <a class="btn btn-secondary" href="{{ path('formation_index') }}">Annuler</a>
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    {% endblock %}
+
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock %}

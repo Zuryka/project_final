@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Modification d'un lieu{% endblock %}
+{% block title %}Modifier {{ entity.nom}} | P'tites Scènes{% endblock %}
 
 {% block page_content %}
 {{ form_start(form) }}
@@ -14,8 +14,8 @@
     {% endblock %}
 
     {% block footer %}
-    <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Retour vers la liste</a>
-    <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+    <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Annuler</a>
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
     {% endblock %}
 
     {% endembed %}

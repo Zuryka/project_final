@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Formations | P'tites Scènes{% endblock %}
+
+{% block page_content %}
+
+<div class="bordure_top_evt fixed-top"></div>
+<div class="formation row justify-content-center">
+    <div class="col-10 px-0">
+        <div class="formats row justify-content-between">
+            {% for entity in entities %}
+                <div class="allformats col-sm-12 col-md-6 col-lg-4 col-xl-3 my-3 
+                {% if entity.styles is not empty %}
+                {% for i in 0..(entity.styles|length - 1) %}{{ entity.styles[i] }}{% endfor %}
+                {% endif %}">
+                    {% if is_granted('edit', entity) %}
+                    <div class="border-createur format">
+                    {% else %}
+                    <div class="border-standard format">
+                    {% endif %}
+                        <a href="{{ path('formation_show', {'id': entity.id}) }}">
+                            <div class="format-image">
+                                {% if entity.getMediaWithPhotoIdent() is not empty %}
+                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.getMediaWithPhotoIdent().lien) }}" alt="{{ entity.getMediaWithPhotoIdent().titre }}">
+                                {% elseif entity.image is not empty %}
+                                    <img class="card-img-top" src="{{ asset('/uploads/img/' ~ entity.image.path) }}" alt="{{ entity.nom }}">
+                                {% else %}
+                                    <img class="card-img-top" src="{{ asset('/img/form_def.jpg') }}" alt="Card image cap">
+                                {% endif %}
+                            </div>
+                            <div class="format-infos text-center">
+                                <p class="lead text-primary">{{ entity.nom }}</p>
+                                <p class="text-light"><small>{{ entity.type }}</small></p>
+                                <p class="text-secondary">{{ entity.styles ? entity.styles|join(', ') : '' }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

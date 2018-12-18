@@ -3,6 +3,9 @@ menu:
     users: .icon-users Utilisateurs
 
 lieu:
+  new:
+    title: Création d'un nouveau lieu
+  photo: Photo de présentation du lieu
   nom: Nom
   type: Type
   presentation: Présentation
@@ -14,8 +17,12 @@ lieu:
   num_telephone: Numéro de téléphone de la structure
 
 evenement:
+  new:
+    title: Création d'un nouvel évènement
+  photo: Photo de présentation
   nom: Nom
   presentation: Présentation
+  lieu: Nom du lieu
   adresse: Adresse
   code_postal: Code Postal
   ville: Ville
@@ -26,17 +33,80 @@ evenement:
   date: Date
   heureDebut: Heure de début
   heureFin: Heure de fin
+  styles: Styles musicaux
   type: Type
+
+formation:
+  new:
+    title: Création d'une nouvelle formation
+  photo: Photo de présentation de la formation
+  nom: Nom
+  type: Type
+  localisation: Localisation
+  presentation: Présentation
+  styles: Styles joués ou chantés
+  niveau: Niveau
+
+user:
+  edit:
+    title: Modification du profil
+  artiste:
+    photo: Photo de présentation de l'artiste
+    edit:
+      title: Edition de mon profil artiste
+    show:
+      musicien: Musicien
+      style: Styles
+      instrument: Instruments
+      chant: Chant
+  username: Pseudo
+  email: Adresse email
+  password: Mot de passe
+  name: Nom
+  userlastname: Prenom
+  codepostal: Code Postal
+  ville: Ville
+  numtelephone: Numéro de Telephone
+  nivau: Statut profesionnel
+  adresse: Adresse
+  artistename: Nom d'artiste
+  presentation: Présentation
+  niveau: Statut professionnel
+  styles:
+    liste: Liste de Styles
+    rock: Rock
+    pop: Pop
+    indie: Indie
+    classique: Classique
+    autre: Autre
+  instruments:
+    liste: Instruments joués
+    guitare: Guitare
+    violon: Violon
+    batterie: Batterie
+    contrebasse: Contrebasse
+    triangle: Triangle
+    autre: Autre
+  chants:
+    liste: Type de chants
+    choeur: Choeur
+    lead: Lead
 
 date:
   create: Date d'ajout
 registration:
   type: Type d'utilisateur
   adresse: Adresse
-  policy: Acceptez les droits d'utilisation
-  name: nom
-  lastname: prenom
+  policy: En m'inscrivant, j'accepte les Conditions d'Utilisation et reconnais avoir lu la Politique de Confidentialité de P'tites Scènes.
+  name: Nom
+  lastname: Prenom
 
 user_artiste: Artiste
 
+register: S'inscrire
+login: Se connecter
 logout: .icon-door-open Se déconnecter
+
+security:
+  login:
+    submit: Se connecter

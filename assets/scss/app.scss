@@ -1,4 +1,313 @@
+$primary: #E3CA26;
+$secondary: #CBB41A;
+$muted: #877812;
+$dark: #222222;
+$light: #BDBEAF;
+$white: #EBEBEB;
+
 @import "~bootstrap/scss/bootstrap";
 
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+
+body {
+    background-image: url(../images/bg_site.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+}
+
+.entete {
+    background-image: url(../images/bg_header.jpg);
+    background-size: cover;
+}
+
+.contenu {
+    padding-top: 240px;
+}
+
+.text_evt {
+    color: #CBB41A; 
+}
+
+.text_artiste {
+    color: #0088A3; 
+}
+
+.text_formation {
+    color: #A956B5; 
+}
+
+.text_lieu {
+    color: #FF3E3E; 
+}
+
+.btn-artiste {
+    color: #EBEBEB;
+    background-color: #006A80;
+}
+
+.btn-artiste:hover {
+    color: #EBEBEB;
+    background-color: #0088A3;
+}
+
+
+/* ****************** *
+ * ***** HEADER ***** *
+ * ****************** */
+
+.logo {
+    width: 100%;
+    height: 160px;
+}
+
+.lateral-column {
+    border-bottom: #BDBEAF 1px solid;
+    padding-right: -1px !important;
+    padding-left: -1px !important;
+}
+
+.nav-item {
+    border-bottom: #BDBEAF 1px solid;
+}
+
+.active {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: #BDBEAF 1px solid;
+    border-bottom: transparent;
+}
+
+.nav-item a{
+    color: rgba(189, 190, 175, 1);
+}
+
+.nav-item a:hover {
+    color: rgba(227, 202, 38, 1);
+}
+
+
+.events_bg {
+    background-color: rgba(203, 180, 26, 0.2);
+    height: 100%;
+}
+
+.events_bg a {
+    color: rgba(227, 202, 38, 1);
+}
+
+.artists_bg {
+    background-color: rgba(0, 136, 163, 0.2);
+    height: 100%;
+}
+
+.artists_bg a {
+    color: rgba(0, 161, 194, 1);
+}
+
+.formations_bg {
+    background-color: rgba(169, 86, 181, 0.2);
+    height: 100%;
+}
+
+.formations_bg a {
+    color: rgba(210, 136, 221, 1);
+}
+
+.lieux_bg {
+    background-color: rgba(231, 49, 49, 0.2);
+}
+
+.lieux_bg a {
+    color: rgba(255, 62, 62, 1);
+}
+
+#bordure_top {
+    height: 48px;
+}
+
+.bordure_top_evt {
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.bordure_top_artist {
+    background-color: rgba(0, 136, 163, 0.2);
+}
+
+.bordure_top_formation {
+    background-color: rgba(169, 86, 181, 0.2);
+}
+
+.bordure_top_lieu {
+    background-color: rgba(231, 49, 49, 0.2);
+}
+
+
+/* ************************
+ * ***** PAGE_CONTENT *****
+ * ************************/
+
+.border-createur-evt {
+    border: 5px solid $secondary;
+    border-radius: 10px;
+}
+
+.border-createur-artiste {
+    border: 5px solid #006A80;
+    border-radius: 10px;
+}
+
+.border-createur-formation {
+    border: 5px solid #843E8E;
+    border-radius: 10px;
+}
+
+.border-createur-lieu {
+    border: 5px solid #C42020;
+    border-radius: 10px;
+}
+
+.border-standard {
+    border: 2px solid $dark;
+    border-radius: 10px;
+}
+
+/* *************************** *
+ * ***** PAGE EVENEMENTS ***** *
+ * *************************** */
+
+.evenement {
+    padding-top: 20px;
+    background-color: rgba(203, 180, 26, 0.2);
+}
+
+.event {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: rgba(0,0,0,1);
+}
+
+.event-image {
+    width: 100%;
+}
+
+.event-infos {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+}
+
+.desactive {
+    display: none;
+}
+
+
+/* *************************** *
+ * ***** PAGE ARTISTES ***** *
+ * *************************** */
+
+.artistes {
+    padding-top: 20px;
+    background-color: rgba(0, 136, 163, 0.2);
+}
+
+.artist {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.artist-image {
+    width: 100%;
+}
+
+.artist-infos {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+}
+
+/* *************************** *
+ * ***** PAGE FORMATIONS ***** *
+ * *************************** */
+
+.formation {
+    padding-top: 20px;
+    background-color: rgba(169, 86, 181, 0.2);
+}
+
+.format {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.format-image {
+    width: 100%;
+}
+
+.format-infos {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+}
+
+
+/* *****************
+ * ***** LIEUX *****
+ * *****************/
+
+.lieu {
+    padding-top: 20px;
+    background-color: rgba(231, 49, 49, 0.2);
+}
+
+/* FOOTER */ 
+
+.contenu .footer {
+    padding: 0%;
+}
+
+.footer {
+    background-color: #000;
+    color: whitesmoke;
+    padding: 50px;
+}
+
+.footer h3 {
+    font-size: 0.9em;
+    color: grey;
+}
+
+.footer ul {
+    padding: 0%;
+}
+
+.footer ul li {
+    font-size: 1em;
+    list-style: none;
+    transition: 0.8s
+}
+
+.footer ul li a {
+    color: whitesmoke;
+}
+
+.footer ul li a:hover {
+    text-decoration: none;
+    color: $primary;
+}
+
+.footer .float-right {
+    font-size: 0.7em;
+    color: grey;
+    margin-top: 50px;
+}

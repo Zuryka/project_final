@@ -2,15 +2,175 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}P'TITES SCENES{% endblock %}</title>
+        <title>{% block title %}P'tites Scènes | Grand talent !{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.min.css">
+        {# <link rel="stylesheet" href="/vendor/jquery-typeahead/dist/jquery.typeahead.min.css"> #}
+
         {% block stylesheets %}{% endblock %}
+
     </head>
     <body>
         {% block body %}{% endblock %}
         <script src="{{ asset('build/runtime.js') }}"></script>
         <script src="{{ asset('build/js/app.js') }}"></script>
+
+
+        {# <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script> #}
+        {# <script src="/vendor/jquery-typeahead/dist/jquery.typeahead.min.js"></script>         #}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.min.js"></script>
+
+        <script>
+            $(function() {
+                var memDataEvenement = [];
+                var memDataArtiste = [];
+                var memDataFormation = [];
+                var memDataLieu = [];
+
+                $.typeahead({
+                    input: '.js-typeahead-search',
+                    minLength: 1,
+                    maxItem: 20,
+                    maxItemPerGroup: 5,
+                    order: "asc",
+                    group: true,
+                    accent: true,
+                    hint: true,
+                    delay: 500,
+                    dynamic: true, // requète ajax                    
+                    backdrop: {
+                        "background-color": "#877812"
+                    },
+                    //display: ["name"],
+                    // template: //function (query, item) { return 'code html' } 
+                    emptyTemplate: 'Pas de résultat',
+                    dropdownFilter: "Tous",
+                    source: {
+                        "Evenement":{
+                            ajax: function() {
+                                return {
+                                    type: "GET",
+                                    url: "/ajax",
+                                    path: "data.evenement.nom",
+                                    data: {
+                                        cible: "evenement"
+                                    },
+                                    callback: {
+                                        done: function (data) {
+                                            memDataEvenement = data;
+                                            return data;
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Artiste":{
+                            ajax: function() {
+                                return {
+                                    type: "GET",
+                                    url: "/ajax",
+                                    path: "data.artiste.username",
+                                    data: {
+                                        cible: "artiste"
+                                    },
+                                    callback: {
+                                        done: function (data) {
+                                            memDataArtiste = data;
+                                            return data;
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Formation":{
+                            ajax: function() {
+                                return {
+                                    type: "GET",
+                                    url: "/ajax",
+                                    path: "data.formation.nom",
+                                    data: {
+                                        cible: "formation"
+                                    },
+                                    callback: {
+                                        done: function (data) {
+                                            memDataFormation = data;
+                                            return data;
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Lieu":{
+                            ajax: function() {
+                                return {
+                                    type: "GET",
+                                    url: "/ajax",
+                                    path: "data.lieu.nom",
+                                    data: {
+                                        cible: "lieu"
+                                    },
+                                    callback: {
+                                        done: function (data) {
+                                            memDataLieu = data;
+                                            return data;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+
+                    callback: {
+                        onSubmit: function (node, form, item, event) {
+                            console.log("ici");
+                            console.log(item);
+                            console.log(memDataArtiste);
+                        },
+
+                        onClickAfter: function (node, a, item, event) {
+                            event.preventDefault;
+
+                            if (item.group == "Artiste") {   
+                                window.location.href = "/user/artisteshow/" + item.display;
+                           }
+
+                            if (item.group == "Evenement") {  
+                                for (var i = 0 ; i < memDataEvenement.data.evenement.nom.length ; i++) {
+                                    if (memDataEvenement.data.evenement.nom[i]["display"] == item.display) {
+                                        window.location.href = "/evenement/show/" + memDataEvenement.data.evenement.id[i];
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (item.group == "Formation") {  
+                                for (var i = 0 ; i < memDataFormation.data.formation.nom.length ; i++) {
+                                    if (memDataFormation.data.formation.nom[i]["display"] == item.display) {
+                                        window.location.href = "/formation/show/" + memDataFormation.data.formation.id[i];
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (item.group == "Lieu") {  
+                                for (var i = 0 ; i < memDataLieu.data.lieu.nom.length ; i++) {
+                                    if (memDataLieu.data.lieu.nom[i]["display"] == item.display) {
+                                        window.location.href = "/lieu/show/" + memDataLieu.data.lieu.id[i];
+                                        i = memDataLieu.data.lieu.nom.length;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+
         {% block javascripts %}{% endblock %}
-        
     </body>
 </html>

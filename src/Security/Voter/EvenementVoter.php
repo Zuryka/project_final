@@ -5,6 +5,7 @@ namespace App\Security\Voter;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\User;
 
 class EvenementVoter extends Voter
 {
@@ -46,6 +47,13 @@ class EvenementVoter extends Voter
             case 'view':
                 // logic to determine if the user can VIEW
                 return true;
+                break;
+            case 'create':
+                if ($user instanceof UserInterface) {
+                    return true;
+                } else {
+                    return false;
+                }
                 break;
         }
 
