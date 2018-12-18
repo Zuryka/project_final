@@ -25,22 +25,22 @@ class MainMenuBuilder
         $user = $this->tokenStorage->getToken()->getUser();
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('EVENEMENTS', ['route' => 'evenement_index'], array('attributes' => array('id' => 'events', 'class' => 'col-2 text-center')));
-        $menu->addChild('ARTISTES', ['route' => 'user_index'], array('attributes' => array('id' => 'artists', 'class' => 'col-2 text-center')));
-        $menu->addChild('FORMATIONS', ['route' => 'formation_index'], array('attributes' => array('id' => 'formations', 'class' => 'col-2 text-center')));
-        $menu->addChild('LIEUX', ['route' => 'lieu_index'], array('attributes' => array('id' => 'lieux', 'class' => 'col-2 text-center')));
+        $menu->addChild('EVENEMENTS', ['route' => 'evenement_index'], array('attributes' => array('id' => 'events', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
+        $menu->addChild('ARTISTES', ['route' => 'user_index'], array('attributes' => array('id' => 'artists', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
+        $menu->addChild('FORMATIONS', ['route' => 'formation_index'], array('attributes' => array('id' => 'formations', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
+        $menu->addChild('LIEUX', ['route' => 'lieu_index'], array('attributes' => array('id' => 'lieux', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
         
-        $menu['EVENEMENTS']->setAttributes(array('id' => 'events', 'class' => 'col-2 text-center'));
-        $menu['ARTISTES']->setAttributes(array('id' => 'artists', 'class' => 'col-2 text-center'));
-        $menu['FORMATIONS']->setAttributes(array('id' => 'formations', 'class' => 'col-2 text-center'));
-        $menu['LIEUX']->setAttributes(array('id' => 'lieux', 'class' => 'col-2 text-center'));
+        $menu['EVENEMENTS']->setAttributes(array('id' => 'events', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
+        $menu['ARTISTES']->setAttributes(array('id' => 'artists', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
+        $menu['FORMATIONS']->setAttributes(array('id' => 'formations', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
+        $menu['LIEUX']->setAttributes(array('id' => 'lieux', 'class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
         
         $menu->setChildrenAttribute('class', 'col-12 px-0');
 
         if (is_object($user)) {
             // Ajout menu edition
-            $parent = $menu->addChild('EDITION', ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
-            $parent->setAttributes(array('class' => 'col-2 text-center'));
+            $parent = $menu->addChild('EDITION', ['uri' => '#'], array('attributes' => array('class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
+            $parent->setAttributes(array('class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
 
             if ($this->autorisationChecker->isGranted('createArtiste', $user))
             {
@@ -59,9 +59,9 @@ class MainMenuBuilder
                 $parent->addChild('Nouveau lieu', ['route' => 'lieu_new']);
             }
 
-            $parent = $menu->addChild('<i class="fas fa-user"></i>' . '     ' . $user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-2 text-center')));
+            $parent = $menu->addChild('<i class="fas fa-user"></i>' . '     ' . $user->getUsername(), ['uri' => '#'], array('attributes' => array('class' => 'col-md-12 col-lg-2 col-xl-2 text-center')));
             $parent->setExtra('translation_domain', false); // Na pas traduire le pseudo
-            $parent->setAttributes(array('class' => 'col-2 text-center'));
+            $parent->setAttributes(array('class' => 'col-md-12 col-lg-2 col-xl-2 text-center'));
             
             $parent->addChild('Mon Compte', ['route' => 'user_show', 'routeParameters' => ['username' => $user->getUsername()]]);
 
