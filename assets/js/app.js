@@ -88,11 +88,13 @@ $(function() {
         $('#bordure_top').removeClass('bordure_top_formation');
     }
     
-    if ($('#lieux').hasClass('active')) {
+    if ($('#lieux').hasClass('active') || chemin.search(/lieu/) > 0) {
         $('#lieux').addClass('lieux_bg');
+        $('#lieux').addClass('active');
         $('#bordure_top').addClass('bordure_top_lieu');
     } else {
         $('#lieux').removeClass('lieux_bg');
+        $('#lieux').removeClass('active');
         $('#bordure_top').removeClass('bordure_top_lieu');
     }
 

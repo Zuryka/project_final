@@ -3,21 +3,24 @@
 {% block title %}Créer un lieu | P'tites Scènes{% endblock %}
 
 {% block page_content %}
-{{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
-    {% block header %}
-    <h1> {{ 'lieu.new.title'|trans }} </h1>
-    {% endblock %}
-
-    {% block body %}
-    {{ include('lieu/_form.html.twig', {'button_label': 'Créer'}) }}
-    {% endblock %}
-
-    {% block footer %}
-    <a class="btn btn-secondary" href="{{ path('lieu_index') }}">Annuler</a>
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-    {% endblock %}
-
-    {% endembed %}
-    {{ form_end(form) }}
+    <div class="lieu row justify-content-center">
+        <div class="col-10 mt-3 px-0 pb-5">
+            {{ form_start(form) }}
+                {% embed 'decorator/_card.html.twig' %}
+                    {% block header %}
+                        <h1> {{ 'lieu.new.title'|trans }} </h1>
+                    {% endblock %}
+        
+                    {% block body %}
+                        {{ include('lieu/_form.html.twig', {'button_label': 'Créer'}) }}
+                    {% endblock %}
+        
+                    {% block footer %}
+                        <a class="btn btn-dark" href="{{ path('lieu_index') }}">Annuler</a>
+                        <button class="btn btn-lieu text-light">{{ button_label|default('Enregistrer') }}</button>
+                    {% endblock %}
+                {% endembed %}
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
