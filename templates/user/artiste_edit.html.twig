@@ -3,7 +3,6 @@
 {% block title %} Modifier votre profil artiste | P'tites Scènes{% endblock %}
 
 {% block page_content %}
-    
     <div class="artistes row justify-content-center">
         <div class="col-10 px-0 mt-3 pb-5">
             {{ form_start(form) }}
@@ -28,7 +27,7 @@
                     {% endblock body %}
 
                     {% block footer %}
-                        <a href="{{ path('user_index') }}" class="btn btn-dark">Annuler</a>
+                        <a class="btn btn-secondary" href="{{ path('user_artiste_show', {'username': entity.username }) }}">Annuler</a>
                         <button type="submit" class="btn btn-artiste">Enregistrer</button>
                     {% endblock footer %}
 
@@ -36,5 +35,4 @@
             {{ form_end(form) }}
         </div>
     </div>
-
 {% endblock page_content %}

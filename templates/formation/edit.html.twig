@@ -1,5 +1,4 @@
 {% extends 'layout.html.twig' %}
-
     {% block title %}Modification de {{ entity.nom }} | P'tites Scènes{% endblock %}
     
     {% block page_content %}
@@ -16,11 +15,11 @@
                         {% endblock %}
             
                         {% block footer %}
-                            <a class="btn btn-dark" href="{{ path('formation_index') }}">Annuler</a>
+                            <a class="btn btn-secondary" href="{{ path('formation_show', {'id': entity.id }) }}">Annuler</a>
                             <button class="btn btn-formation text-light">{{ button_label|default('Enregistrer') }}</button>
                         {% endblock %}
                     {% endembed %}
                 {{ form_end(form) }}
             </div>
         </div>
-    {% endblock page_content %}
+{% endblock page_content %}
