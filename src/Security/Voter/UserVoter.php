@@ -60,7 +60,7 @@ class UserVoter extends Voter
                 return false;
             }
 
-            // Vérifier que l'utilisateur connecté correspond à l'artiste qu'iol souhaîte modifier
+            // Vérifier que l'utilisateur connecté correspond à l'artiste qu'il souhaîte modifier
             return $subject->getId() == $user->getId();
             break;
 
