@@ -1,33 +1,33 @@
 {% if id is not defined %}
     {% set id = "navbar" %}
 {% endif %}
-
-{#
-{% if class is not defined %}
-    {% set class = "navbar-light bg-light" %}
-{% endif %}
-#}
-<nav class="navbar navbar-expand-lg {# {{ class }} #} p-0">
-    {% if block('brand') is defined %}
-        <a class="navbar-brand" href="{% if brandUrl is not empty %}{{ brandUrl }}{% else %}#{% endif %}">
-            {{ block('brand') }}
-        </a>
-    {% endif %}
-
-    {% if block('menu') is defined %}
-        <button class="navbar-toggler collapsed" controls="navbarResponsive" type="button" data-toggle="collapse" data-target="#{{ id }}" aria-controls="{{ id }}" aria-expanded="false" aria-label="Toggle navigation">
-            {% block toggler_button %}
+    <nav class="navbar navbar-expand-lg row p-0">
+        <a class="logo navbar-brand mr-0" href="{{ path('index') }}"><img class="img-fluid" src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
+        {% if block('menu') is defined %}
+            <button class="navbar-toggler" controls="navbarResponsive" type="button" data-toggle="collapse" data-target="#{{ id }}" aria-controls="{{ id }}" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-            {% endblock %}
-        </button>
-    
-
-        <div class="collapse navbar-collapse" id="{{ id }}">
-
-            {{ block('menu') }}
+            </button>
+        
+            <div class="collapse navbar-collapse align-self-end" id="{{ id }}">
+                {{ block('menu') }}
+            </div>
+        {% endif %}
+    </nav>
+    <div class="row">
+        <div id="bordure_top">
+            <form id="form-search" class="col-sm-12 col-md-9 col-lg-6 col-xl-4 ml-auto mr-auto" name="form-search">
+                <div class="typeahead__container">
+                    <div class="typeahead__field">
+                        <div class="typeahead__query">
+                            <input class="js-typeahead-search" name="search[query]" type="search" placeholder="Recherche" autocomplete="off">
+                        </div>
+                        <div class="typeahead__button">
+                            <button type="submit">
+                                <i class="typeahead__search-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>                     
         </div>
-    {% endif %}
-
-    {% block body %}
-    {% endblock %}
-</nav>
+    </div>

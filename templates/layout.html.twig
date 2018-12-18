@@ -6,49 +6,25 @@
 
 {% block body %}
     <div class="entete container-fluid fixed-top">
-        <div class="row justify-content-center">
-            <div class="col-1 lateral-column"></div>
-                <div class="col-10 px-0">
-                    {% block header %}
-                        <div class="logo text-center row justify-content-between">
-                            <a href="{{ path('index') }}"><img src="{{ asset('/img/logo01.png') }}" alt="Les P'tites Scènes"></a>
-                            
-                            <div class="col-lg-4 col-md-6 col-sm-10 align-self-center">
-                                {# Formulaire de recherche d'un évènement, artiste, formation ou lieu #}
-                                <form id="form-search" name="form-search">
-                                    <div class="typeahead__container">
-                                        <div class="typeahead__field">
-                                            <div class="typeahead__query">
-                                                <input class="js-typeahead-search" name="search[query]" type="search" placeholder="Recherche" autocomplete="off">
-                                            </div>
-                                            <div class="typeahead__button">
-                                                <button type="submit">
-                                                    <i class="typeahead__search-icon"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>                     
-                            </div>
-                        </div>
-                        {% embed 'decorator/_navbar.html.twig' %}
-                            {% block menu %}
-                                {{ knp_menu_render('main', {'style': 'horizontal'}) }}
-                            {% endblock menu %}
-                        {% endembed %}
-                    {% endblock header %}
-                </div>
-            <div class="col-1 lateral-column"></div>
-        </div>
-        <div id="bordure_top" class="row"></div>
+        {% block header %}
+            {% embed 'decorator/_navbar.html.twig' %}
+                {% block menu %}
+                    {{ knp_menu_render('main', {'style': 'horizontal'}) }}
+                {% endblock menu %}
+            {% endembed %}
+        {% endblock header %}
     </div>
-
+       
+    
+        
+    
+    
     <div class="contenu container-fluid">
         {% block page_content %}
         {% endblock page_content %}
     </div>
 
-    <div class="contenu container-fluid footer">
+    <div class="container-fluid footer">
         {% block footer %}
             <div class="container-fluid">
             <div class="row">
