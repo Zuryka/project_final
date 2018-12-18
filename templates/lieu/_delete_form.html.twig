@@ -1,5 +1,5 @@
 {# C'est visible seulement si l'user connecté est l'usercreateur sont pareils #}
-<button type="button" class="btn bg-lieu text-light" data-toggle="modal" data-target="#deleteModal">
+<button type="button" class="btn btn-lieu text-light" data-toggle="modal" data-target="#deleteModal">
   Supprimer
 </button>
 
@@ -20,7 +20,7 @@
         <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ entity.id) }}">
-        <button class="btn bg-lieu text-light">Supprimer</button>
+        <button class="btn btn-lieu text-light">Supprimer</button>
       </div>
     </div>
   </div>
