@@ -16,6 +16,9 @@ class ChoiceButtonType extends AbstractType
             'label_attr' => array(
                 'class' => 'radio-custom',
             ),
+            'attr' => array(
+                'class' => '',
+            )
         ));
     }
 
@@ -24,6 +27,8 @@ class ChoiceButtonType extends AbstractType
         if( isset($options['multiple']) && isset($options['expanded']) && $options['expanded']){
             $view->vars['label_attr']['class'] .= ($options['multiple']? 'checkbox-custom' : 'radio-custom');
         }
+
+        $view->vars['attr']['class'] .= 'inline-choice';
     }
 
     public function getParent()
