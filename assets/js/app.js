@@ -68,7 +68,7 @@ $(function() {
         $('#bordure_top').removeClass('bordure_top_evt');
     }
     
-    if ($('#artists').hasClass('active') || chemin.search(/artisteshow/) > 0) {
+    if ($('#artists').hasClass('active') || chemin.search(/artisteshow/) > 0 || chemin.search(/artisteedit/) > 0) {
         $('#artists').addClass('artists_bg');
         $('#artists').addClass('active');
         $('#bordure_top').addClass('bordure_top_artist');

@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="artistes row justify-content-center">
-    <div class="col-10 mt-3">
+<div class="artistes row justify-content-center pb-5">
+    <div class="col-10 mt-3 px-0 pb-5">
         <div class="card">
             <div class="card-body p-0">
                 <div class="card-group">
@@ -23,8 +23,8 @@
                             <img class="card-img-top" src="{{ asset('/img/artist_def.jpg') }}" alt="Card image cap">
                         {% endif %}
                     </div>
-                    <div class="card col-7 bg-dark text-light p-3">
-                        <h2 class="card-title text_artiste text-center">
+                    <div class="card col-7 bg-dark text-light text-center p-3">
+                        <h2 class="card-title text_artiste">
                             {% if entity.nomArtiste is not empty %}
                                 {{ entity.nomArtiste }}
                             {% else %}
@@ -37,8 +37,8 @@
                             </h4>
                         {% endif %}
                         {% if entity.styles is not empty %}
-                            <div class="btn-group mt-3">
-                                <div class="btn btn-dark disabled">
+                            <div class="btn-group mt-4 align-self-center">
+                                <div class="btn btn-light disabled">
                                     {{ 'user.artiste.show.style'|trans }} : 
                                 </div>
                                 <div class="btn btn-artiste disabled">
@@ -48,12 +48,12 @@
                         {% endif %}
                         <hr>
                         {% if entity.presentation is not empty %}
-                            <p class="card-text mt-3"> {{ entity.presentation }} </p>
+                            <p class="card-text text-left mt-3"> {{ entity.presentation }} </p>
                         {% endif %}
                         <hr>
                         {% if entity.instruments is not empty %}
-                            <div class="btn-group">
-                                <div class="btn btn-dark disabled">
+                            <div class="btn-group align-self-center">
+                                <div class="btn btn-light disabled">
                                     {{ 'user.artiste.show.instrument'|trans }} : 
                                 </div>
                                 <div class="btn btn-artiste disabled">
@@ -62,8 +62,8 @@
                             </div>
                             {% endif %}
                             {% if entity.chants is not empty %}
-                                <div class="btn-group mt-2">
-                                    <div class="btn btn-dark disabled">
+                                <div class="btn-group align-self-center mt-2">
+                                    <div class="btn btn-light disabled">
                                         {{ 'user.artiste.show.chant'|trans }} : 
                                     </div>
                                     <div class="btn btn-artiste disabled">
@@ -71,6 +71,8 @@
                                     </div>             
                                 </div>
                         {% endif %}
+                        <hr>
+                        <p>{{ entity.ville }}</p>
                         <hr>
                         <p>Contact : </p>
                     </div>

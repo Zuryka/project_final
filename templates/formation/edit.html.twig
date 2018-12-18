@@ -1,23 +1,26 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Modification de {{ entity.nom }} | P'tites Scènes{% endblock %}
-
-{% block page_content %}
-{{ form_start(form) }}
-    {% embed 'decorator/_card.html.twig' %}
-    {% block header %}
-    <h1>Modification d'une formation</h1>
-    {% endblock %}
-
-    {% block body %}
-    {{ include('formation/_form.html.twig', {'button_label': 'Modifier'}) }}
-    {% endblock %}
-
-    {% block footer %}
-    <a class="btn btn-secondary" href="{{ path('formation_index') }}">Annuler</a>
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-    {% endblock %}
-
-    {% endembed %}
-    {{ form_end(form) }}
-{% endblock %}
+    {% block title %}Modification de {{ entity.nom }} | P'tites Scènes{% endblock %}
+    
+    {% block page_content %}
+        <div class="formation row justify-content-center">
+            <div class="col-10 px-0 mt-3 pb-5">
+                {{ form_start(form) }}
+                    {% embed 'decorator/_card.html.twig' %}
+                        {% block header %}
+                            <h1>Modification d'une formation</h1>
+                        {% endblock %}
+            
+                        {% block body %}
+                            {{ include('formation/_form.html.twig', {'button_label': 'Modifier'}) }}
+                        {% endblock %}
+            
+                        {% block footer %}
+                            <a class="btn btn-dark" href="{{ path('formation_index') }}">Annuler</a>
+                            <button class="btn btn-formation text-light">{{ button_label|default('Enregistrer') }}</button>
+                        {% endblock %}
+                    {% endembed %}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    {% endblock page_content %}
