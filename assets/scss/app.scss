@@ -306,3 +306,48 @@ body {
     background-color: rgb(47, 23, 23) !important;
     //background-color: rgb(72, 36, 36) !important;
 }
+
+/* *****************
+ * **** FOOTER *****
+ * *****************/
+
+.footer {
+    background-color: #000;
+    color: whitesmoke;
+    padding: 50px;
+    height: 300px;;
+}
+
+.footer h3 {
+    font-size: 0.9em;
+    color: grey;
+}
+
+.footer ul {
+    padding: 0%;
+}
+
+.footer ul li {
+    font-size: 1em;
+    list-style: none;
+    transition: 0.8s
+}
+
+.footer ul li a {
+    color: whitesmoke;
+}
+
+.footer ul li a:hover {
+    text-decoration: none;
+    color: $primary;
+}
+
+.footer .float-right {
+    font-size: 0.7em;
+    color: grey;
+    margin-top: 50px;
+}
+
+.footer i {
+    margin: 15px 5px 10px 30px;
+}
