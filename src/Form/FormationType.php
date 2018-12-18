@@ -26,7 +26,7 @@ class FormationType extends AbstractType
                 'required' => true,
             ))
 
-            ->add('type', Type\ChoiceType::class, array(
+            ->add('type', ChoiceButtonType::class, array(
                 'label' => 'formation.type',
                 'choices' => array(
                     'Band music' => 'Band music',
@@ -46,6 +46,7 @@ class FormationType extends AbstractType
                     'Autre ...' => 'Autre',
                 ),
                 'required' => true,
+                'expanded' => true,
             ))
 
             ->add('localisation', Type\TextType::class, array(
@@ -58,7 +59,7 @@ class FormationType extends AbstractType
                 'required' => true,
             ))
 
-            ->add('styles', Type\ChoiceType::class, array(
+            ->add('styles', ChoiceButtonType::class, array(
                 'label' => 'formation.styles',
                 'choices' => array(
                     'Blues' => 'Blues',
@@ -82,9 +83,10 @@ class FormationType extends AbstractType
                 ),
                 'required' => true,
                 'multiple' => true,
+                'expanded' => true,
             ))
 
-            ->add('niveau', Type\ChoiceType::class, array(
+            ->add('niveau', ChoiceButtonType::class, array(
                 'label' => 'formation.niveau',
                 'choices' => array(
                     'Professionnel' => 'Professionnel',
@@ -92,6 +94,7 @@ class FormationType extends AbstractType
                     'Amateur' => 'Amateur',
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
         ;
 

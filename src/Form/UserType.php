@@ -54,7 +54,7 @@ class UserType extends AbstractType
                 'label' => 'user.numtelephone',
                 'required' => false,
             ))
-            ->add('niveau', Type\ChoiceType::class, array(
+            ->add('niveau', ChoiceButtonType::class, array(
                 'label' => 'user.niveau',
                 'choices'  => array(
                     'Amateur' => 'user_amateur',
@@ -62,6 +62,7 @@ class UserType extends AbstractType
                     'Pro' => 'user_pro',
                 ),
                 'required' => true,
+                'expanded' => true,
             ))
             ->add('type', ChoiceButtonType::class, array(
                 'label' => 'registration.type',

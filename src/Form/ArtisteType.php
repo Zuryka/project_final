@@ -31,7 +31,7 @@ class ArtisteType extends AbstractType
                 'required' => false,
             ))
 
-            ->add('niveau', Type\ChoiceType::class, array(
+            ->add('niveau', ChoiceButtonType::class, array(
                 'label' => 'user.niveau',
                 'choices'  => array(
                     'amateur' => 'amateur',
@@ -39,9 +39,10 @@ class ArtisteType extends AbstractType
                     'pro' => 'pro',
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
 
-            ->add('styles', Type\ChoiceType::class, array(
+            ->add('styles', ChoiceButtonType::class, array(
                     'label' => 'user.styles.liste',
                     'choices' => array(
                         'Blues' => 'Blues',
@@ -66,9 +67,11 @@ class ArtisteType extends AbstractType
                     ),
                     'required' => false,
                     'multiple' => true,
+                    'expanded' => true,
+
                 ))
 
-            ->add('instruments', Type\ChoiceType::class, array(
+            ->add('instruments', ChoiceButtonType::class, array(
                 'label' => 'user.instruments.liste',
                 'choices' => array(
                     'guitare' => 'guitare',
@@ -80,9 +83,10 @@ class ArtisteType extends AbstractType
                 ),
                 'required' => false,
                 'multiple' => true,
+                'expanded' => true,
             ))
 
-            ->add('chants', Type\ChoiceType::class, array(
+            ->add('chants', ChoiceButtonType::class, array(
                 'label' => 'user.chants.liste',
                 'choices' => array(
                     'choeur' => 'choeur',
@@ -91,6 +95,7 @@ class ArtisteType extends AbstractType
                 ),
                 'required' => false,
                 'multiple' => true,
+                'expanded' => true,
             ))
             //->add('formations')
         ;
