@@ -14,9 +14,9 @@
                     {% endif %}">
 
                     {% if is_granted('editArtiste', entity) %}
-                        <div class="border-createur-artiste artist">
+                        <div class="border-createur-artiste vignette">
                     {% else %}
-                        <div class="border-standard artist">
+                        <div class="border-standard vignette">
                     {% endif %}
                         <a href="{{ path('user_artiste_show', {'username': entity.username}) }}">
                             <div class="artist-image">
